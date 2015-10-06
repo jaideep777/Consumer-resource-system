@@ -1,0 +1,113 @@
+Found 3 CUDA Capable devices:
+0) Tesla K20c
+    Driver Version: 6.0
+    Runtime Version: 5.5
+    Compute Capability: 3.5
+    Multiprocessors: 13
+    Max threads per multiprocessor:  2048
+    Max threads per block: 1024
+    Shared Memory per block: 48 kB
+    Maximum sizes of each dimension of a block: 1024 x 1024 x 64
+
+1) GeForce 210
+    Driver Version: 6.0
+    Runtime Version: 5.5
+    Compute Capability: 1.2
+    Multiprocessors: 2
+    Max threads per multiprocessor:  1024
+    Max threads per block: 512
+    Shared Memory per block: 16 kB
+    Maximum sizes of each dimension of a block: 512 x 512 x 64
+
+2) Tesla K20c
+    Driver Version: 6.0
+    Runtime Version: 5.5
+    Compute Capability: 3.5
+    Multiprocessors: 13
+    Max threads per multiprocessor:  2048
+    Max threads per block: 1024
+    Shared Memory per block: 48 kB
+    Maximum sizes of each dimension of a block: 1024 x 1024 x 64
+
+
+> Using device 0...
+
+-------:
+STRINGS:
+-------:
+exptName: ens
+homeDir: /home/jaideep/expts_7/output
+outDir: turbulence_main
+-------:
+SCALARS:
+-------:
+Fbase: 1
+Rr: 1
+Rs: 4
+arenaSize: 300
+b: 100
+b_anim_on: 0
+b_baseline: 0
+b_constRg: 1
+blockSize: 256
+copyErrSd: 0.05
+dataOut: 1
+dispInterval: 50
+dt: 0.2
+dt_t: 0.2
+fC0: 0
+genMax: 20000
+graphicsQual: 0
+lambda0_t: 1
+mu: 0.5
+mu_t: 0.1
+nStepsLife: 4000
+nu_t: 0.005
+nxt: 243
+nyt: 243
+particles: 1024
+rDisp: -1
+rGroup: 2
+speed: 1
+stk0: 0
+stkNoiseSd: 0.01
+turnRateMax: 50
+xi_t: 0.05
+-------:
+ARRAYS:
+------:
+c: 0.1 
+cS: 100 
+ens: 1 
+
+creating FFT plan config...
+init particle system
+blocks: 4, threads: 256, Total threads: 1024
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	0	0	0	0	0	0	
+2	0	0	0	0	0	0	
+3	0	0	0	0	0	0	
+4	0	0	0	0	0	0	
+5	0	0	0	0	0	0	
+6	0	0	0	0	0	0	
+7	0	0	0	0	0	0	
+8	0	0	0	0	0	0	
+9	0	0	0	0	0	0	
+10	0	0	0	0	0	0	
+11	0	0	0	0	0	0	
+12	0	0	0	0	0	0	
+13	0	0	0	0	0	0	
+14	0	0	0	0	0	0	
+15	0	0	0	0	0	0	
+16	0	0	0	0	0	0	
+17	0	0	0	0	0	0	
+18	0	0	0	0	0	0	
+19	0	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(4000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.1)_cS(100)_ens(1)
+   > ________________________________________ v
+   > ........................................ |  t = 11:17:38.4648 hrs | 677.641 min. 
+

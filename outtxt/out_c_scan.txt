@@ -1,0 +1,2332 @@
+Found 3 CUDA Capable devices:
+0) Tesla K20c
+    Driver Version: 6.0
+    Runtime Version: 5.5
+    Compute Capability: 3.5
+    Multiprocessors: 13
+    Max threads per multiprocessor:  2048
+    Max threads per block: 1024
+    Shared Memory per block: 48 kB
+    Maximum sizes of each dimension of a block: 1024 x 1024 x 64
+
+1) GeForce 210
+    Driver Version: 6.0
+    Runtime Version: 5.5
+    Compute Capability: 1.2
+    Multiprocessors: 2
+    Max threads per multiprocessor:  1024
+    Max threads per block: 512
+    Shared Memory per block: 16 kB
+    Maximum sizes of each dimension of a block: 512 x 512 x 64
+
+2) Tesla K20c
+    Driver Version: 6.0
+    Runtime Version: 5.5
+    Compute Capability: 3.5
+    Multiprocessors: 13
+    Max threads per multiprocessor:  2048
+    Max threads per block: 1024
+    Shared Memory per block: 48 kB
+    Maximum sizes of each dimension of a block: 1024 x 1024 x 64
+
+
+> Using device 0...
+
+-------:
+STRINGS:
+-------:
+exptName: ens
+homeDir: /home/jaideep/expts_7/output
+outDir: turbulence_scan
+-------:
+SCALARS:
+-------:
+Fbase: 1
+Rr: 1
+Rs: 4
+arenaSize: 300
+b: 100
+b_anim_on: 0
+b_baseline: 0
+b_constRg: 1
+blockSize: 256
+copyErrSd: 0.05
+dataOut: 1
+dispInterval: 50
+dt: 0.2
+dt_t: 0.2
+fC0: 0
+genMax: 2000
+graphicsQual: 0
+lambda0_t: 1
+mu: 0.5
+mu_t: 0.1
+nStepsLife: 2000
+nu_t: 0.005
+nxt: 243
+nyt: 243
+particles: 1024
+rDisp: -1
+rGroup: 2
+speed: 1
+stk0: 0
+stkNoiseSd: 0.01
+turnRateMax: 50
+xi_t: 0.05
+-------:
+ARRAYS:
+------:
+c: 0.1 0.14 0.19 0.26 0.35 0.48 0.65 0.89 1.22 1.67 2.29 3.13 4.28 5.85 8 10.95 
+cS: 100 
+ens: 1 2 3 4 5 6 7 8 9 10 
+
+creating FFT plan config...
+init particle system
+blocks: 4, threads: 256, Total threads: 1024
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.1)_cS(100)_ens(1)
+   > ________________________________________ v
+   > ........................................ |  t = 31:46.21 min | 1906.21 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.1)_cS(100)_ens(2)
+   > ________________________________________ v
+   > ........................................ |  t = 31:47.2184 min | 1907.22 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.1)_cS(100)_ens(3)
+   > ________________________________________ v
+   > ........................................ |  t = 31:45.1926 min | 1905.19 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.1)_cS(100)_ens(4)
+   > ________________________________________ v
+   > ........................................ |  t = 31:46.7216 min | 1906.72 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.1)_cS(100)_ens(5)
+   > ________________________________________ v
+   > ........................................ |  t = 31:47.9944 min | 1907.99 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.1)_cS(100)_ens(6)
+   > ________________________________________ v
+   > ........................................ |  t = 31:40.1494 min | 1900.15 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.1)_cS(100)_ens(7)
+   > ________________________________________ v
+   > ........................................ |  t = 31:46.6146 min | 1906.61 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.1)_cS(100)_ens(8)
+   > ________________________________________ v
+   > ........................................ |  t = 31:46.8403 min | 1906.84 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.1)_cS(100)_ens(9)
+   > ________________________________________ v
+   > ........................................ |  t = 31:48.0945 min | 1908.09 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.1)_cS(100)_ens(10)
+   > ________________________________________ v
+   > ........................................ |  t = 31:46.0663 min | 1906.07 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.14)_cS(100)_ens(1)
+   > ________________________________________ v
+   > ........................................ |  t = 31:46.3574 min | 1906.36 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.14)_cS(100)_ens(2)
+   > ________________________________________ v
+   > ........................................ |  t = 31:47.0116 min | 1907.01 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.14)_cS(100)_ens(3)
+   > ________________________________________ v
+   > ........................................ |  t = 31:39.4255 min | 1899.43 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.14)_cS(100)_ens(4)
+   > ________________________________________ v
+   > ........................................ |  t = 31:44.6238 min | 1904.62 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.14)_cS(100)_ens(5)
+   > ________________________________________ v
+   > ........................................ |  t = 31:41.463 min | 1901.46 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.14)_cS(100)_ens(6)
+   > ________________________________________ v
+   > ........................................ |  t = 31:41.6538 min | 1901.65 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.14)_cS(100)_ens(7)
+   > ________________________________________ v
+   > ........................................ |  t = 31:47.697 min | 1907.7 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.14)_cS(100)_ens(8)
+   > ________________________________________ v
+   > ........................................ |  t = 31:47.4694 min | 1907.47 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.14)_cS(100)_ens(9)
+   > ________________________________________ v
+   > ........................................ |  t = 31:46.7917 min | 1906.79 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.14)_cS(100)_ens(10)
+   > ________________________________________ v
+   > ........................................ |  t = 32:7.83862 min | 1927.84 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.19)_cS(100)_ens(1)
+   > ________________________________________ v
+   > ........................................ |  t = 32:14.4253 min | 1934.43 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.19)_cS(100)_ens(2)
+   > ________________________________________ v
+   > ........................................ |  t = 32:15.6882 min | 1935.69 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.19)_cS(100)_ens(3)
+   > ________________________________________ v
+   > ........................................ |  t = 32:17.0863 min | 1937.09 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.19)_cS(100)_ens(4)
+   > ________________________________________ v
+   > ........................................ |  t = 32:16.1545 min | 1936.15 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.19)_cS(100)_ens(5)
+   > ________________________________________ v
+   > ........................................ |  t = 32:17.2058 min | 1937.21 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.19)_cS(100)_ens(6)
+   > ________________________________________ v
+   > ........................................ |  t = 32:17.5228 min | 1937.52 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.19)_cS(100)_ens(7)
+   > ________________________________________ v
+   > ........................................ |  t = 32:16.7585 min | 1936.76 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.19)_cS(100)_ens(8)
+   > ________________________________________ v
+   > ........................................ |  t = 32:15.4584 min | 1935.46 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.19)_cS(100)_ens(9)
+   > ________________________________________ v
+   > ........................................ |  t = 32:16.1819 min | 1936.18 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.19)_cS(100)_ens(10)
+   > ________________________________________ v
+   > ........................................ |  t = 32:14.8821 min | 1934.88 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.26)_cS(100)_ens(1)
+   > ________________________________________ v
+   > ........................................ |  t = 32:13.5066 min | 1933.51 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.26)_cS(100)_ens(2)
+   > ________________________________________ v
+   > ........................................ |  t = 32:15.7756 min | 1935.78 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.26)_cS(100)_ens(3)
+   > ________________________________________ v
+   > ........................................ |  t = 32:13.2947 min | 1933.29 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.26)_cS(100)_ens(4)
+   > ________________________________________ v
+   > ........................................ |  t = 32:15.3315 min | 1935.33 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.26)_cS(100)_ens(5)
+   > ________________________________________ v
+   > ........................................ |  t = 32:13.1633 min | 1933.16 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.26)_cS(100)_ens(6)
+   > ________________________________________ v
+   > ........................................ |  t = 32:12.803 min | 1932.8 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.26)_cS(100)_ens(7)
+   > ________________________________________ v
+   > ........................................ |  t = 32:13.2152 min | 1933.22 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.26)_cS(100)_ens(8)
+   > ________________________________________ v
+   > ........................................ |  t = 32:14.9913 min | 1934.99 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.26)_cS(100)_ens(9)
+   > ________________________________________ v
+   > ........................................ |  t = 32:10.8752 min | 1930.88 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.26)_cS(100)_ens(10)
+   > ________________________________________ v
+   > ........................................ |  t = 32:13.6161 min | 1933.62 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.35)_cS(100)_ens(1)
+   > ________________________________________ v
+   > ........................................ |  t = 32:11.3643 min | 1931.36 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.35)_cS(100)_ens(2)
+   > ________________________________________ v
+   > ........................................ |  t = 32:10.6313 min | 1930.63 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.35)_cS(100)_ens(3)
+   > ________________________________________ v
+   > ........................................ |  t = 32:10.7499 min | 1930.75 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.35)_cS(100)_ens(4)
+   > ________________________________________ v
+   > ........................................ |  t = 32:12.1482 min | 1932.15 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.35)_cS(100)_ens(5)
+   > ________________________________________ v
+   > ........................................ |  t = 32:12.6952 min | 1932.7 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.35)_cS(100)_ens(6)
+   > ________________________________________ v
+   > ........................................ |  t = 32:13.4476 min | 1933.45 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.35)_cS(100)_ens(7)
+   > ________________________________________ v
+   > ........................................ |  t = 32:8.26111 min | 1928.26 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.35)_cS(100)_ens(8)
+   > ________________________________________ v
+   > ........................................ |  t = 32:12.2725 min | 1932.27 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.35)_cS(100)_ens(9)
+   > ________________________________________ v
+   > ........................................ |  t = 32:12.012 min | 1932.01 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.35)_cS(100)_ens(10)
+   > ________________________________________ v
+   > ........................................ |  t = 32:13.6613 min | 1933.66 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.48)_cS(100)_ens(1)
+   > ________________________________________ v
+   > ........................................ |  t = 32:7.09607 min | 1927.1 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.48)_cS(100)_ens(2)
+   > ________________________________________ v
+   > ........................................ |  t = 32:8.65845 min | 1928.66 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.48)_cS(100)_ens(3)
+   > ________________________________________ v
+   > ........................................ |  t = 32:8.5376 min | 1928.54 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.48)_cS(100)_ens(4)
+   > ________________________________________ v
+   > ........................................ |  t = 32:13.1829 min | 1933.18 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.48)_cS(100)_ens(5)
+   > ________________________________________ v
+   > ........................................ |  t = 32:11.2203 min | 1931.22 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.48)_cS(100)_ens(6)
+   > ________________________________________ v
+   > ........................................ |  t = 32:13.7467 min | 1933.75 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.48)_cS(100)_ens(7)
+   > ________________________________________ v
+   > ........................................ |  t = 32:10.6226 min | 1930.62 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.48)_cS(100)_ens(8)
+   > ________________________________________ v
+   > ........................................ |  t = 32:8.98047 min | 1928.98 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.48)_cS(100)_ens(9)
+   > ________________________________________ v
+   > ........................................ |  t = 32:7.77112 min | 1927.77 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.48)_cS(100)_ens(10)
+   > ________________________________________ v
+   > ........................................ |  t = 32:8.88513 min | 1928.89 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.65)_cS(100)_ens(1)
+   > ________________________________________ v
+   > ........................................ |  t = 32:6.29529 min | 1926.3 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.65)_cS(100)_ens(2)
+   > ________________________________________ v
+   > ........................................ |  t = 32:0.909058 min | 1920.91 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.65)_cS(100)_ens(3)
+   > ________________________________________ v
+   > ........................................ |  t = 32:5.80237 min | 1925.8 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.65)_cS(100)_ens(4)
+   > ________________________________________ v
+   > ........................................ |  t = 32:5.85107 min | 1925.85 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.65)_cS(100)_ens(5)
+   > ________________________________________ v
+   > ........................................ |  t = 32:5.25293 min | 1925.25 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.65)_cS(100)_ens(6)
+   > ________________________________________ v
+   > ........................................ |  t = 32:1.27502 min | 1921.28 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.65)_cS(100)_ens(7)
+   > ________________________________________ v
+   > ........................................ |  t = 31:59.1089 min | 1919.11 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.65)_cS(100)_ens(8)
+   > ________________________________________ v
+   > ........................................ |  t = 32:1.44092 min | 1921.44 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.65)_cS(100)_ens(9)
+   > ________________________________________ v
+   > ........................................ |  t = 32:3.15076 min | 1923.15 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.65)_cS(100)_ens(10)
+   > ________________________________________ v
+   > ........................................ |  t = 32:3.86377 min | 1923.86 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.89)_cS(100)_ens(1)
+   > ________________________________________ v
+   > ........................................ |  t = 31:58.2104 min | 1918.21 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.89)_cS(100)_ens(2)
+   > ________________________________________ v
+   > ........................................ |  t = 31:57.2612 min | 1917.26 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.89)_cS(100)_ens(3)
+   > ________________________________________ v
+   > ........................................ |  t = 31:54.4991 min | 1914.5 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.89)_cS(100)_ens(4)
+   > ________________________________________ v
+   > ........................................ |  t = 31:52.5265 min | 1912.53 sec.
+
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan’: File exists
+mkdir: cannot create directory ‘/home/jaideep/expts_7/output/turbulence_scan/data’: File exists
+Particles:
+Sr. n	gID   	wA   	stk  	ng   	kg   	fit  	
+0	0	0	0	0	0	0	
+1	1	0	0	0	0	0	
+2	2	0	0	0	0	0	
+3	3	0	0	0	0	0	
+4	4	0	0	0	0	0	
+5	5	0	0	0	0	0	
+6	6	0	0	0	0	0	
+7	7	0	0	0	0	0	
+8	8	0	0	0	0	0	
+9	9	0	0	0	0	0	
+10	10	0	0	0	0	0	
+11	11	0	0	0	0	0	
+12	12	0	0	0	0	0	
+13	13	0	0	0	0	0	
+14	14	0	0	0	0	0	
+15	15	0	0	0	0	0	
+16	16	0	0	0	0	0	
+17	17	0	0	0	0	0	
+18	18	0	0	0	0	0	
+19	19	0	0	0	0	0	
+
+
+> Launch: p_ens_n(1024)_nm(2000)_rd(-1)_mu(0.5)_fb(1)_as(300)_rg(2)_c(0.89)_cS(100)_ens(5)
+   > ________________________________________ v
+   > 
