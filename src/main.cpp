@@ -111,6 +111,8 @@ int main(int argc, char **argv){
 }
 
 
+
+
 	// create output dirs
 //	if (dataOut || plotsOut || framesOut) system(string("mkdir " + outDir).c_str());
 //	if (dataOut)   system(string("mkdir " + dataDir).c_str());
