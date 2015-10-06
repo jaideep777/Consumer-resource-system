@@ -84,7 +84,7 @@ int main(int argc, char **argv){
 	// launch sim end.
 
 
-	ofstream fout("res.txt");
+	ofstream fout("res.txt"); // haha
 	
 	int nx = I.getScalar("nx");
 	int ny = I.getScalar("ny");
