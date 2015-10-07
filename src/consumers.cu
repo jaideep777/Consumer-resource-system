@@ -99,14 +99,15 @@ void ConsumerSystem::init(Initializer &I){
 	
 	initRNG();
 	
-//	// create resource grid color-map
-//	res_shape = ColorMap("res", false, 100, nx, 0, L);
-//	float2 cmap_pos[res_shape.nVertices];
-//	res_shape.createGridCentres(cmap_pos); 
-//	res_shape.createShaders();
-//	res_shape.createVBO(cmap_pos, res_shape.nVertices*sizeof(float2));	
-//	res_shape.createColorBuffer();
-//	res_shape.updateColors(res, nx*ny);
+	// create resource grid color-map
+//	cons_shape = PointSet("cmap", false, nc, 0, L);
+//	cons_shape.nVertices = nc;
+//	cons_shape.createShaders();
+//	float2 tmp[nc]; 
+//	for (int i=0; i<nc; ++i) tmp[i] = cell2pos(consumers[i].pos_i, dL);
+//	cons_shape.createVBO(tmp, cons_shape.nVertices*sizeof(float2));	
+//	cons_shape.createColorBuffer();
+//	cons_shape.setDefaultColor();
 
 }
 

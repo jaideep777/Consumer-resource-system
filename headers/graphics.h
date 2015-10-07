@@ -18,6 +18,7 @@
 class Shape{
 	public:
 	string objName;
+	string type;
 	bool doubleBuffered;
 	int swap;
 	int nVertices;
@@ -75,6 +76,18 @@ class ColorMap : public Shape{
 	void destroy();
 };
 
+
+class PointSet : public ColorMap{
+	public:
+	Colour_rgb col;
+	float pointSize;
+		
+	PointSet();
+	PointSet(string obj_name, bool dbuff, int nc, float _xmin, float _xmax);
+
+	void setDefaultColor();
+	void render();
+};
 
 /* =======================================================================
 	NOTE ON USING A RENDERER

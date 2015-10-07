@@ -45,7 +45,7 @@ h0				0.2
 RT0				25
 kdsd0			8
 
-nc				100
+nc				10
 Ke_sd			4
 Ke_cutoff		12
 

@@ -72,8 +72,8 @@ void ResourceGrid::init(Initializer &I){
 	cudaMemcpy(K_dev, K, nx*ny*sizeof(float), cudaMemcpyHostToDevice);	
 	
 
-	for (int i=0; i<nx*ny; ++i) res[i]=1;
-	res[ix2(128,128,256)] = 1;
+	for (int i=0; i<nx*ny; ++i) res[i]=K0;
+	res[ix2(128,128,256)] = K0;
 	
 	cudaMemcpy(res_dev, res, nx*ny*sizeof(float), cudaMemcpyHostToDevice);
 
@@ -101,7 +101,7 @@ void ResourceGrid::freeMemory(){
 
 void ResourceGrid::graphics_updateArrays(){
 	cudaMemcpy(res, res_dev, nx*ny*sizeof(float), cudaMemcpyDeviceToHost);
-	res_shape.updateColors(res, nx*ny);
+	res_shape.updateColors(res, nx*ny, 0, 50);
 }
 
 

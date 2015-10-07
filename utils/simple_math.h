@@ -41,6 +41,7 @@ inline int discretize_index(float f, int n, float minf, float maxf){
 	else return int((f-minf)/(maxf-minf)*(n-1));
 }
 
+
 inline DEVICE_NAME int pos2cell(float x, float dL){
 	return int((x-dL/2)/dL+0.5); //+1
 }
@@ -50,6 +51,18 @@ inline DEVICE_NAME int2 pos2cell(float2 v, float dL){
 	int celly = pos2cell(v.y, dL);
 	return make_int2(cellx, celly);
 }
+
+
+inline DEVICE_NAME int cell2pos(int i, float dL){
+	return i*dL + dL/2;
+}
+
+inline DEVICE_NAME float2 cell2pos(int2 v, float dL){
+	float x = cell2pos(v.x, dL);
+	float y = cell2pos(v.y, dL);
+	return make_float2(x, y);
+}
+
 
 
 // =============================================================================

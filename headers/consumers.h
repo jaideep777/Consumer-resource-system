@@ -48,7 +48,7 @@ class ConsumerSystem{
 	curandState * cs_dev_XWstates;
 	int *cs_seeds_h, *cs_seeds_dev; 
 
-	Shape particles_shape;
+	PointSet cons_shape;
 	
 	public:
 	void init(Initializer &I);
@@ -57,6 +57,8 @@ class ConsumerSystem{
 	void updateExploitationKernels();
 	void calcResConsumed(float * resource_grid);
 	void disperse(float * resource);
+
+	void graphics_updateColors_h();
 	
 };
 

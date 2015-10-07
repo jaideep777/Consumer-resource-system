@@ -73,7 +73,7 @@ int main(int argc, char **argv){
 		++istep;
 		resGrid->graphics_updateArrays();
 	
-		usleep(5000e2);	// sleep for 20 ms. This dramatically reduces CPU consumption
+		usleep(500e2);	// sleep for 20 ms. This dramatically reduces CPU consumption
 		prog.update();
 
 		

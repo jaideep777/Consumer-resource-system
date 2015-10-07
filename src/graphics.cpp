@@ -31,6 +31,7 @@ Shape::Shape(string obj_name, bool dbuff){
 	fragmentShaderFile = "shaders/shader_fragment_" + obj_name + ".glsl";
 	doubleBuffered = dbuff;
 	swap = 0;
+	type = "";
 }
 
 
@@ -148,6 +149,7 @@ ColorMap::ColorMap(){
 	xmax = 100;
 	vertexShaderFile = "shaders/shader_vertex_" + objName + ".glsl";
 	fragmentShaderFile = "shaders/shader_fragment_" + objName + ".glsl";
+	type = "colormap";
 
 	palette = createPalette_grayscale(nlevs, 0.1, 0.9);
 }
@@ -163,7 +165,8 @@ ColorMap::ColorMap(string obj_name, bool dbuff, int _nlevs, int _nx, float _xmin
 	xmax = _xmax;
 	vertexShaderFile = "shaders/shader_vertex_" + obj_name + ".glsl";
 	fragmentShaderFile = "shaders/shader_fragment_" + obj_name + ".glsl";
-	
+	type = "colormap";
+
 	palette = createPalette_grayscale(nlevs, 0.1, 0.9);
 };
 
@@ -234,6 +237,80 @@ void ColorMap::render(){
 //	swap = 1-swap;
 }
 
+
+
+// ===========================================================
+// class Renderer
+// ===========================================================
+
+
+PointSet::PointSet(){
+	objName = "psys";
+	doubleBuffered = false;
+	swap = 0;
+	nlevs = 100;
+	nx = 10;
+	nVertices = 100;
+	xmin = 0;
+	xmax = 100;
+	vertexShaderFile = "shaders/shader_vertex_" + objName + ".glsl";
+	fragmentShaderFile = "shaders/shader_fragment_" + objName + ".glsl";
+	pointSize = 1;
+	col = Colour_rgb(1,0,0);
+	type = "pointset";
+
+	palette = createPalette_rainbow(nlevs, 0.1, 0.9);
+}
+
+PointSet::PointSet(string obj_name, bool dbuff, int _nc, float _xmin, float _xmax){
+	objName = obj_name;
+	doubleBuffered = dbuff;
+	swap = 0;
+	nlevs = _nc;
+	nx = _nc;
+	nVertices = nx;
+	xmin = _xmin;
+	xmax = _xmax;
+	vertexShaderFile = "shaders/shader_vertex_" + obj_name + ".glsl";
+	fragmentShaderFile = "shaders/shader_fragment_" + obj_name + ".glsl";
+	pointSize = 1;
+	col = Colour_rgb(1,0,0);
+	type = "pointset";
+
+	
+	palette = createPalette_rainbow(nlevs, 0.1, 0.9);
+};
+
+
+void PointSet::setDefaultColor(){
+	float4 col_tmp[nVertices];
+	for (int i=0; i<nVertices; ++i) col_tmp[i] = make_float4(col.r, col.g, col.b, 1);
+	
+	setColors(col_tmp, nx);
+}
+
+void PointSet::render(){
+
+	useProgram();
+	
+	// set the coord system bounds for getting orthograhic projection in vertex-shader
+	setRenderVariable("bounds", make_float4(xmin, xmax, xmin, xmax));
+	
+	// set the point size to match physical scale
+	setRenderVariable("psize", pointSize);
+
+	glBindBuffer(GL_ARRAY_BUFFER, vbo_ids[swap]);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(0);	
+
+	glBindBuffer(GL_ARRAY_BUFFER, colorBuffer_id);
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(1);	
+
+	glDrawArrays(GL_POINTS, 0, nVertices);
+
+//	swap = 1-swap;
+}
 
 
 // ===========================================================
