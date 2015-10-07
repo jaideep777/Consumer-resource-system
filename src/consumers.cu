@@ -214,7 +214,7 @@ __global__ void disperse_kernel(float * res, int2 * pos_cell,
 	makePeriodic(xnew.x, 0, L);
 	makePeriodic(xnew.y, 0, L);
 	
-	pos_cell[tid] = pos2cell(xnew, nx);
+	pos_cell[tid] = pos2cell(xnew, L/nx);
 	
 }
 

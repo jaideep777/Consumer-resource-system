@@ -5,6 +5,7 @@
 *.dll
 *.exe
 *.o
+*.cu_o
 *.so
 
 # Packages #
