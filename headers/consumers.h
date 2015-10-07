@@ -58,7 +58,7 @@ class ConsumerSystem{
 	void calcResConsumed(float * resource_grid);
 	void disperse(float * resource);
 
-	void graphics_updateColors_h();
+	void graphics_updateArrays();
 	
 };
 

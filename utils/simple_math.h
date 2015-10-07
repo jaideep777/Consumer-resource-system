@@ -53,7 +53,7 @@ inline DEVICE_NAME int2 pos2cell(float2 v, float dL){
 }
 
 
-inline DEVICE_NAME int cell2pos(int i, float dL){
+inline DEVICE_NAME float cell2pos(int i, float dL){
 	return i*dL + dL/2;
 }
 

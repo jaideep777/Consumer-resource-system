@@ -55,7 +55,7 @@ int main(int argc, char **argv){
 	ConsumerSystem * csys = new ConsumerSystem;
 	csys->init(I);
 	csys->updateExploitationKernels();
-
+	glRenderer->addShape(&csys->cons_shape);
 
 	// launch sim
 	SimpleProgressBar prog(1000, &istep, "Diffusion");
@@ -72,6 +72,7 @@ int main(int argc, char **argv){
 		
 		++istep;
 		resGrid->graphics_updateArrays();
+		csys->graphics_updateArrays();
 	
 		usleep(500e2);	// sleep for 20 ms. This dramatically reduces CPU consumption
 		prog.update();

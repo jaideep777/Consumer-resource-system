@@ -139,19 +139,19 @@ void Shape::setRenderVariable(string s, float4 f){
 // ===========================================================
 
 ColorMap::ColorMap(){
-	objName = "cmap";
-	doubleBuffered = false;
-	swap = 0;
-	nlevs = 100;
-	nx = 10;
-	nVertices = 100;
-	xmin = 0;
-	xmax = 100;
-	vertexShaderFile = "shaders/shader_vertex_" + objName + ".glsl";
-	fragmentShaderFile = "shaders/shader_fragment_" + objName + ".glsl";
-	type = "colormap";
+//	objName = "cmap";
+//	doubleBuffered = false;
+//	swap = 0;
+//	nlevs = 100;
+//	nx = 10;
+//	nVertices = 100;
+//	xmin = 0;
+//	xmax = 100;
+//	vertexShaderFile = "shaders/shader_vertex_" + objName + ".glsl";
+//	fragmentShaderFile = "shaders/shader_fragment_" + objName + ".glsl";
+//	type = "colormap";
 
-	palette = createPalette_grayscale(nlevs, 0.1, 0.9);
+//	palette = createPalette_grayscale(nlevs, 0.1, 0.9);
 }
 
 ColorMap::ColorMap(string obj_name, bool dbuff, int _nlevs, int _nx, float _xmin, float _xmax){
@@ -245,21 +245,21 @@ void ColorMap::render(){
 
 
 PointSet::PointSet(){
-	objName = "psys";
-	doubleBuffered = false;
-	swap = 0;
-	nlevs = 100;
-	nx = 10;
-	nVertices = 100;
-	xmin = 0;
-	xmax = 100;
-	vertexShaderFile = "shaders/shader_vertex_" + objName + ".glsl";
-	fragmentShaderFile = "shaders/shader_fragment_" + objName + ".glsl";
-	pointSize = 1;
-	col = Colour_rgb(1,0,0);
-	type = "pointset";
+//	objName = "psys";
+//	doubleBuffered = false;
+//	swap = 0;
+//	nlevs = 100;
+//	nx = 10;
+//	nVertices = 100;
+//	xmin = 0;
+//	xmax = 100;
+//	vertexShaderFile = "shaders/shader_vertex_" + objName + ".glsl";
+//	fragmentShaderFile = "shaders/shader_fragment_" + objName + ".glsl";
+//	pointSize = 1;
+//	col = Colour_rgb(1,0,0);
+//	type = "pointset";
 
-	palette = createPalette_rainbow(nlevs, 0.1, 0.9);
+//	palette = createPalette_rainbow(nlevs, 0.1, 0.9);
 }
 
 PointSet::PointSet(string obj_name, bool dbuff, int _nc, float _xmin, float _xmax){
@@ -273,11 +273,10 @@ PointSet::PointSet(string obj_name, bool dbuff, int _nc, float _xmin, float _xma
 	xmax = _xmax;
 	vertexShaderFile = "shaders/shader_vertex_" + obj_name + ".glsl";
 	fragmentShaderFile = "shaders/shader_fragment_" + obj_name + ".glsl";
-	pointSize = 1;
+	pointSize = 4;
 	col = Colour_rgb(1,0,0);
 	type = "pointset";
 
-	
 	palette = createPalette_rainbow(nlevs, 0.1, 0.9);
 };
 
@@ -510,7 +509,9 @@ void display(){
 
 //	render all shapes in list
 	for (int i=0; i<glRenderer->shapes_vec.size(); ++i){
-		((ColorMap*)glRenderer->shapes_vec[i])->render();
+		Shape * s = glRenderer->shapes_vec[i];
+		if      (s->type == "colormap") ((ColorMap*)s)->render();
+		else if (s->type == "pointset") ((PointSet*)s)->render();
 	}
 
 	glRenderer->frameCounter.increment();	// calculate display rate

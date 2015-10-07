@@ -72,13 +72,17 @@ void ConsumerSystem::init(Initializer &I){
 
 	consumers.resize(nc);
 	for (int i=0; i<nc; ++i){
-		consumers[i].pos   = runif2(L,L);
+		consumers[i].pos   = runif2(0,L,0,L);
 		consumers[i].pos_i = pos2cell(consumers[i].pos, dL);
 		consumers[i].RT    = I.getScalar("RT0");
 		consumers[i].Kdsd  = I.getScalar("kdsd0");
 		consumers[i].h     = I.getScalar("h0");
 		if (i<nc/2) consumers[i].h = 0.1;
 		else 		consumers[i].h = 0.3;
+		
+		cout << consumers[i].pos.x << " " << consumers[i].pos.y << ", "   
+			 << consumers[i].pos_i.x << " " << consumers[i].pos_i.y   << endl;
+
 	}
 	cudaMalloc((void**)&h_dev, sizeof(float)*nc);
 	cudaMalloc((void**)&pos_i_dev, sizeof(int2)*nc);	
@@ -100,15 +104,33 @@ void ConsumerSystem::init(Initializer &I){
 	initRNG();
 	
 	// create resource grid color-map
-//	cons_shape = PointSet("cmap", false, nc, 0, L);
-//	cons_shape.nVertices = nc;
-//	cons_shape.createShaders();
-//	float2 tmp[nc]; 
-//	for (int i=0; i<nc; ++i) tmp[i] = cell2pos(consumers[i].pos_i, dL);
-//	cons_shape.createVBO(tmp, cons_shape.nVertices*sizeof(float2));	
-//	cons_shape.createColorBuffer();
-//	cons_shape.setDefaultColor();
+	cons_shape = PointSet("res", false, nc, 0, L);
+	cons_shape.nVertices = nc;
+	cons_shape.createShaders();
+	float2 tmp[nc]; 
+	for (int i=0; i<nc; ++i) {
+		tmp[i] = cell2pos(consumers[i].pos_i, dL);
+//		cout << consumers[i].pos_i.x << " " << consumers[i].pos_i.y  << ", " << tmp[i].x << " " << tmp[i].y << endl;
+	}
+	cons_shape.createVBO(tmp, cons_shape.nVertices*sizeof(float2));	
+	cons_shape.createColorBuffer();
+	cons_shape.setDefaultColor();
 
+}
+
+
+void ConsumerSystem::graphics_updateArrays(){
+
+	cudaMemcpy2D((void*)&consumers[0].pos_i, sizeof(Consumer), (void*)pos_i_dev, sizeof(int2), sizeof(int2),  nc, cudaMemcpyDeviceToHost);	
+	float2 tmp[nc]; 
+	for (int i=0; i<nc; ++i) {
+		tmp[i] = cell2pos(consumers[i].pos_i, dL);
+//		cout << consumers[i].pos_i.x << " " << consumers[i].pos_i.y  << ", " << tmp[i].x << " " << tmp[i].y << endl;
+	}
+	glBindBuffer(GL_ARRAY_BUFFER, cons_shape.vbo_ids[0]); 	// Bring 1st buffer into current openGL context
+	glBufferData(GL_ARRAY_BUFFER, nc*sizeof(float2), tmp, GL_DYNAMIC_DRAW); 
+	glBindBuffer(GL_ARRAY_BUFFER, 0); 	// Bring 1st buffer into current openGL context
+		
 }
 
 

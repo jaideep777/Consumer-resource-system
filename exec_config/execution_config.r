@@ -30,12 +30,12 @@ b_baseline 		1			# Baseline  - is this a baseline experiment (Rs = 0)
 b_constRg  		1			# Grouping  - use constant radius of grouping?
 
 # > RESOURCE GRID
-nx 				256
-ny				256
+nx 				128
+ny				128
 D				1
 r				0.2
 K				50
-L 				256		# the size of the entire space (x & y), when body size = 1 --# > determines density
+L 				128		# the size of the entire space (x & y), when body size = 1 --# > determines density
  
 
 # > PARTICLES
