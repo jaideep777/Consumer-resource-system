@@ -42,7 +42,7 @@ L 				128		# the size of the entire space (x & y), when body size = 1 --# > dete
 # movement parameters
 dt  			0.1			# time step (for movement)
 h0				0.2
-RT0				25
+RT0				15
 kdsd0			8
 
 nc				10

@@ -115,12 +115,14 @@ void ConsumerSystem::init(Initializer &I){
 	cons_shape.createVBO(tmp, cons_shape.nVertices*sizeof(float2));	
 	cons_shape.createColorBuffer();
 	cons_shape.setDefaultColor();
-
+	cons_shape.palette = createPalette_ramp(nc, Colour_rgb(0,0.9,0), Colour_rgb(1,0,0));
+	printPalette(cons_shape.palette);
 }
 
 
 void ConsumerSystem::graphics_updateArrays(){
 
+	// positions buffer
 	cudaMemcpy2D((void*)&consumers[0].pos_i, sizeof(Consumer), (void*)pos_i_dev, sizeof(int2), sizeof(int2),  nc, cudaMemcpyDeviceToHost);	
 	float2 tmp[nc]; 
 	for (int i=0; i<nc; ++i) {
@@ -130,7 +132,14 @@ void ConsumerSystem::graphics_updateArrays(){
 	glBindBuffer(GL_ARRAY_BUFFER, cons_shape.vbo_ids[0]); 	// Bring 1st buffer into current openGL context
 	glBufferData(GL_ARRAY_BUFFER, nc*sizeof(float2), tmp, GL_DYNAMIC_DRAW); 
 	glBindBuffer(GL_ARRAY_BUFFER, 0); 	// Bring 1st buffer into current openGL context
-		
+	
+	// color buffer
+	float h_tmp[nc];
+	for (int i=0; i<nc; ++i) {
+		h_tmp[i] = consumers[i].h;
+	}
+	cons_shape.updateColors(h_tmp, nc);
+	
 }
 
 

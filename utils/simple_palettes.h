@@ -119,6 +119,17 @@ inline vector <Colour_rgb> createPalette_grayscale(int N, float start=0, float e
 }
 
 
+inline vector <Colour_rgb> createPalette_ramp(int N, Colour_rgb start, Colour_rgb end){
+	vector <Colour_rgb> p(N);
+	for (int i=0; i<N; ++i){
+		p[i].r = start.r + (end.r-start.r)*float(i)/(N-1);
+		p[i].g = start.g + (end.g-start.g)*float(i)/(N-1);
+		p[i].b = start.b + (end.b-start.b)*float(i)/(N-1);
+	}
+	return p;	
+}
+
+
 inline void printPalette(vector <Colour_rgb> &p){
 	cout << "palette:\n";
 	for (int i=0; i<p.size(); ++i){
