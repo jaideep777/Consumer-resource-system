@@ -20,7 +20,10 @@ class Consumer{
 	float Kdsd;
 	
 	float rc;
-	float V;
+	
+	float ld;
+	float nd;
+	float vc;
 	
 };
 
@@ -37,13 +40,18 @@ class ConsumerSystem{
 	float ke_nmax;		// bound for exploitation kernel in index units
 	float ke_sd;
 	
-	float *ke, *ke_dev;
+	float *ke, *ke_dev;			// exploitation kernels on grid
 	float *ke_all, *ke_all_dev;
 	
-	int2 * pos_i_dev;
+	int2 * pos_i_dev;			// gpu arrays for consumer traits
 	float * h_dev;
 	float * rc_dev;
 	float * kdsd_dev, *RT_dev;
+	
+	float * nd_dev, *lenDisp_dev;
+	
+	int vc_Tw;
+	float * vc_window_dev, * vc_dev;
 	
 	curandState * cs_dev_XWstates;
 	int *cs_seeds_h, *cs_seeds_dev; 
@@ -57,6 +65,7 @@ class ConsumerSystem{
 	void updateExploitationKernels();
 	void calcResConsumed(float * resource_grid);
 	void disperse(float * resource);
+	void calcPayoffs(int t);
 
 	void graphics_updateArrays();
 	

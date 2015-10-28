@@ -69,12 +69,14 @@ int main(int argc, char **argv){
 		resGrid->grow(csys->ke_all_dev);
 		csys->disperse(resGrid->res_dev);
 		csys->updateExploitationKernels();
+		csys->calcPayoffs(istep);
 		
 		++istep;
 		resGrid->graphics_updateArrays();
 		csys->graphics_updateArrays();
 	
-		usleep(500e2);	// sleep for 20 ms. This dramatically reduces CPU consumption
+		usleep(50e2);	// sleep for 20 ms. This dramatically reduces CPU consumption
+		
 		prog.update();
 
 		

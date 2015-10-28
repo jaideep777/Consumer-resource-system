@@ -49,6 +49,8 @@ nc				10
 Ke_sd			4
 Ke_cutoff		12
 
+payoff_Tw		20
+
 # > SELECTION
 # selection and mutation
 
