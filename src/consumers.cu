@@ -53,7 +53,7 @@ void ConsumerSystem::init(Initializer &I){
 
 	getLastCudaError("resgrid");
 	
-	// allocate space
+	// calculate and allocate exploitation kernels
 	int ke_arrlen = (2*ke_nmax+1)*(2*ke_nmax+1);  // ke goes from [-ke_nmax, ke_nmax]
 	ke = new float[ke_arrlen];
 	for (int j=-ke_nmax; j<=ke_nmax; ++j){
@@ -70,6 +70,7 @@ void ConsumerSystem::init(Initializer &I){
 	for (int i=0; i<nx*ny; ++i) ke_all[i] = 0;
 	cudaMalloc((void**)&ke_all_dev, sizeof(float)*nx*ny);
 
+	// init consumers
 	consumers.resize(nc);
 	for (int i=0; i<nc; ++i){
 		consumers[i].pos   = runif2(0,L,0,L);
@@ -84,25 +85,27 @@ void ConsumerSystem::init(Initializer &I){
 			 << consumers[i].pos_i.x << " " << consumers[i].pos_i.y   << endl;
 
 	}
-	cudaMalloc((void**)&h_dev, sizeof(float)*nc);
-	cudaMalloc((void**)&pos_i_dev, sizeof(int2)*nc);	
-	cudaMalloc((void**)&rc_dev, sizeof(float)*nc);
-	cudaMalloc((void**)&RT_dev, sizeof(float)*nc);
-	cudaMalloc((void**)&kdsd_dev, sizeof(float)*nc);
-	
-	cudaMalloc((void**)&nd_dev, sizeof(float)*nc);
-	cudaMalloc((void**)&lenDisp_dev, sizeof(float)*nc);
+//	cudaMalloc((void**)&h_dev, sizeof(float)*nc);
+//	cudaMalloc((void**)&pos_i_dev, sizeof(int2)*nc);	
+//	cudaMalloc((void**)&rc_dev, sizeof(float)*nc);
+//	cudaMalloc((void**)&RT_dev, sizeof(float)*nc);
+//	cudaMalloc((void**)&kdsd_dev, sizeof(float)*nc);
+//	
+//	cudaMalloc((void**)&nd_dev, sizeof(float)*nc);
+//	cudaMalloc((void**)&lenDisp_dev, sizeof(float)*nc);
+	cudaMalloc((void**)&consumers_dev, nc*sizeof(Consumer));
+	cudaMemcpy(consumers_dev, &consumers[0], nc*sizeof(Consumer), cudaMemcpyHostToDevice);
 
 	vc_Tw = I.getScalar("payoff_Tw");
 	cudaMalloc((void**)&vc_window_dev, sizeof(float)*nc*vc_Tw);
-	cudaMalloc((void**)&vc_dev, sizeof(float)*nc);
-	float vc
+//	cudaMalloc((void**)&vc_dev, sizeof(float)*nc);
+//	float vc
 	
-	cudaMemcpy2D((void*)h_dev, sizeof(float), (void*)&consumers[0].h, sizeof(Consumer), sizeof(float),  nc, cudaMemcpyHostToDevice);	
-	cudaMemcpy2D((void*)RT_dev, sizeof(float), (void*)&consumers[0].RT, sizeof(Consumer), sizeof(float),  nc, cudaMemcpyHostToDevice);	
-	cudaMemcpy2D((void*)kdsd_dev, sizeof(float), (void*)&consumers[0].Kdsd, sizeof(Consumer), sizeof(float),  nc, cudaMemcpyHostToDevice);	
-	cudaMemcpy2D((void*)pos_i_dev, sizeof(int2), (void*)&consumers[0].pos_i, sizeof(Consumer), sizeof(int2),  nc, cudaMemcpyHostToDevice);	
-	getLastCudaError("memcpy2D");
+//	cudaMemcpy2D((void*)h_dev, sizeof(float), (void*)&consumers[0].h, sizeof(Consumer), sizeof(float),  nc, cudaMemcpyHostToDevice);	
+//	cudaMemcpy2D((void*)RT_dev, sizeof(float), (void*)&consumers[0].RT, sizeof(Consumer), sizeof(float),  nc, cudaMemcpyHostToDevice);	
+//	cudaMemcpy2D((void*)kdsd_dev, sizeof(float), (void*)&consumers[0].Kdsd, sizeof(Consumer), sizeof(float),  nc, cudaMemcpyHostToDevice);	
+//	cudaMemcpy2D((void*)pos_i_dev, sizeof(int2), (void*)&consumers[0].pos_i, sizeof(Consumer), sizeof(int2),  nc, cudaMemcpyHostToDevice);	
+//	getLastCudaError("memcpy2D");
 
 	
 	cs_seeds_h = new int[nc];
@@ -131,7 +134,7 @@ void ConsumerSystem::init(Initializer &I){
 void ConsumerSystem::graphics_updateArrays(){
 
 	// positions buffer
-	cudaMemcpy2D((void*)&consumers[0].pos_i, sizeof(Consumer), (void*)pos_i_dev, sizeof(int2), sizeof(int2),  nc, cudaMemcpyDeviceToHost);	
+	cudaMemcpy2D((void*)&consumers[0].pos_i, sizeof(Consumer), (void*)&consumers_dev[0].pos_i, sizeof(Consumer), sizeof(int2),  nc, cudaMemcpyDeviceToHost);	
 	float2 tmp[nc]; 
 	for (int i=0; i<nc; ++i) {
 		tmp[i] = cell2pos(consumers[i].pos_i, dL);
@@ -151,14 +154,14 @@ void ConsumerSystem::graphics_updateArrays(){
 }
 
 
-__global__ void calc_exploitation_kernels_kernel(float* ke_all, int2* pos_cell, float* h, int nc, float* ke, int rkn, int nx){
+__global__ void calc_exploitation_kernels_kernel(float* ke_all, Consumer* cons, int nc, float* ke, int rkn, int nx){
 	
 	int tid = blockIdx.x*blockDim.x + threadIdx.x;
 	if (tid >= nc) return;
 
-	int ixc = pos_cell[tid].x;
-	int iyc = pos_cell[tid].y;
-	float hc = h[tid];
+	int ixc = cons[tid].pos_i.x;
+	int iyc = cons[tid].pos_i.y;
+	float hc = cons[tid].h;
 
 	for (int i=-rkn; i<=rkn; ++i){
 		for (int j=-rkn; j<=rkn; ++j){
@@ -176,7 +179,7 @@ void::ConsumerSystem::updateExploitationKernels(){
 	for (int i=0; i<nx*ny; ++i) ke_all[i] = 0;	// reset exploitation kernels on host
 	cudaMemcpy(ke_all_dev, ke_all, nx*ny*sizeof(float), cudaMemcpyHostToDevice); // reset ke_all_dev to zeros
 	int nt = min(256, nc); int nb = 1; 
-	calc_exploitation_kernels_kernel <<< nb, nt >>> (ke_all_dev, pos_i_dev, h_dev, nc, ke_dev, ke_nmax, nx);
+	calc_exploitation_kernels_kernel <<< nb, nt >>> (ke_all_dev, consumers_dev, nc, ke_dev, ke_nmax, nx);
 	getLastCudaError("exploitation kernel");
 
 //	cudaMemcpy(ke_all, ke_all_dev, nx*ny*sizeof(float), cudaMemcpyDeviceToHost);
@@ -192,14 +195,14 @@ void::ConsumerSystem::updateExploitationKernels(){
 
 
 
-__global__ void calc_resource_consumed_kernel(float *res, float* rc_vec, int2* pos_cell, float* h, int nc, float* ke, int rkn, int nx){
+__global__ void calc_resource_consumed_kernel(float *res, Consumer* cons, int nc, float* ke, int rkn, int nx){
 
 	int tid = blockIdx.x*blockDim.x + threadIdx.x;
 	if (tid >= nc) return;
 
-	int ixc = pos_cell[tid].x;
-	int iyc = pos_cell[tid].y;
-	float hc = h[tid];
+	int ixc = cons[tid].pos_i.x;
+	int iyc = cons[tid].pos_i.y;
+	float hc = cons[tid].h;
 
 	float R_avail = 0;
 	for (int i=-rkn; i<=rkn; ++i){
@@ -209,14 +212,14 @@ __global__ void calc_resource_consumed_kernel(float *res, float* rc_vec, int2* p
 			R_avail += res[ix2(iK, jK, nx)] * ke[ix2(i+rkn, j+rkn, (2*rkn+1))];
 		}
 	}	
-	rc_vec[tid] = hc * R_avail;
+	cons[tid].rc = hc * R_avail;
 
 }
 
 void::ConsumerSystem::calcResConsumed(float * resource_dev){
 	
 	int nt = min(256, nc); int nb = 1; 
-	calc_resource_consumed_kernel <<< nb, nt >>> (resource_dev, rc_dev, pos_i_dev, h_dev, nc, ke_dev, ke_nmax, nx);
+	calc_resource_consumed_kernel <<< nb, nt >>> (resource_dev, consumers_dev, nc, ke_dev, ke_nmax, nx);
 	getLastCudaError("rc kernel");
 
 //	cudaMemcpy2D(&consumers[0].rc, sizeof(Consumer), rc_dev, sizeof(float), sizeof(float), nc, cudaMemcpyDeviceToHost);
@@ -227,46 +230,42 @@ void::ConsumerSystem::calcResConsumed(float * resource_dev){
 }
 
 
-__global__ void disperse_kernel(float * res, int2 * pos_cell, 
-								float * kdsd_vec, float * RT_vec, 
+__global__ void disperse_kernel(float * res, Consumer* cons, 
 								curandState * RNG_states, 
-								float L, int nc, int nx, 
-								float * lenDisp, float * nd){
+								float L, int nc, int nx ){
 	
 	int tid = blockIdx.x*blockDim.x + threadIdx.x;
 	if (tid >= nc) return;
 	
-	int ixc = pos_cell[tid].x;
-	int iyc = pos_cell[tid].y;
+	int ixc = cons[tid].pos_i.x;
+	int iyc = cons[tid].pos_i.y;
 
-	float p_disperse = 1/(1+exp(10*(res[ix2(ixc, iyc, nx)] - RT_vec[tid])));	
+	float p_disperse = 1/(1+exp(10*(res[ix2(ixc, iyc, nx)] - cons[tid].RT)));	
 	float b_disperse = curand_uniform(&RNG_states[tid]) < p_disperse;
 	
-	float len   = fabs(curand_normal(&RNG_states[tid]))*kdsd_vec[tid];
+	float len   = fabs(curand_normal(&RNG_states[tid]))*cons[tid].Kdsd;
 	float theta = curand_uniform(&RNG_states[tid])*2*3.14159;
 	
 	float xdisp = b_disperse*len*cos(theta);
 	float ydisp = b_disperse*len*sin(theta);
 	
-	float2 xnew = make_float2(pos_cell[tid].x + xdisp, 
-							  pos_cell[tid].y + ydisp );
+	float2 xnew = make_float2(ixc + xdisp, 
+							  iyc + ydisp );
 	makePeriodic(xnew.x, 0, L);
 	makePeriodic(xnew.y, 0, L);
 	
-	pos_cell[tid] = pos2cell(xnew, L/nx);
-	lenDisp[tid]  = b_disperse*len;
-	nd[tid] = b_disperse;
+	cons[tid].pos_i = pos2cell(xnew, L/nx);
+	cons[tid].ld  = b_disperse*len;
+	cons[tid].nd = b_disperse;
 	
 }
 
 
 void ConsumerSystem::disperse(float * resource){
 	int nt = min(256, nc); int nb = 1; 
-	disperse_kernel <<< nb, nt >>> (resource, pos_i_dev, 
-									kdsd_dev, RT_dev, 
+	disperse_kernel <<< nb, nt >>> (resource, consumers_dev, 
 									cs_dev_XWstates, 
-									L, nc, nx,
-									lenDisp_dev, nd_dev);	
+									L, nc, nx);	
 }
 
 
@@ -279,39 +278,39 @@ void ConsumerSystem::disperse(float * resource){
 //	tw	
 //
 
-__global__ void calc_payoffs_kernel(float * rc, float * lend, float * hc, int nc, 
-									float * vc_window, float * vc, int tw, int t,
-									float b, float cdisp, float charv ){
+//__global__ void calc_payoffs_kernel(float * rc, float * lend, float * hc, int nc, 
+//									float * vc_window, float * vc, int tw, int t,
+//									float b, float cdisp, float charv ){
 
-	int tid = blockIdx.x*blockDim.x + threadIdx.x;
-	if (tid >= nc) return;
+//	int tid = blockIdx.x*blockDim.x + threadIdx.x;
+//	if (tid >= nc) return;
 
-	float v = b*rc[tid] - cdisp*lend[tid] - charv*hc[tid]*hc[tid]; 
-	vc_window[ix2(tid, t%tw, nc)] = v;
+//	float v = b*rc[tid] - cdisp*lend[tid] - charv*hc[tid]*hc[tid]; 
+//	vc_window[ix2(tid, t%tw, nc)] = v;
 
-	float vavg = 0;
-	for (int i=0; i<tw; ++i) vavg = vc_window[ix2(tid, i, nc)];
-	vavg = vavg/tw;
-	
-	vc[tid] = vavg;
-									
-} 
+//	float vavg = 0;
+//	for (int i=0; i<tw; ++i) vavg = vc_window[ix2(tid, i, nc)];
+//	vavg = vavg/tw;
+//	
+//	vc[tid] = vavg;
+//									
+//} 
 
-void ConsumerSystem::calcPayoffs(int t){
-	int nt = min(256, nc); int nb = 1; 
-	calc_payoffs_kernel <<<nb, nt >>> (rc_dev, lenDisp_dev, h_dev, nc, 
-									   vc_window_dev, vc_dev, vc_Tw, t,
-									   0.002, 0.1, 0.08);
-									   
-	cudaMemcpy2D(&consumers[0].rc, sizeof(Consumer), rc_dev, sizeof(float), sizeof(float), nc, cudaMemcpyDeviceToHost);
-	cudaMemcpy2D(&consumers[0].h, sizeof(Consumer), h_dev, sizeof(float), sizeof(float), nc, cudaMemcpyDeviceToHost);
-	cudaMemcpy2D(&consumers[0].ld, sizeof(Consumer), lenDisp_dev, sizeof(float), sizeof(float), nc, cudaMemcpyDeviceToHost);
-	cudaMemcpy2D(&consumers[0].nd, sizeof(Consumer), nd_dev, sizeof(float), sizeof(float), nc, cudaMemcpyDeviceToHost);
-	cudaMemcpy2D(&consumers[0].vc, sizeof(Consumer), vc_dev, sizeof(float), sizeof(float), nc, cudaMemcpyDeviceToHost);
-	for (int i=0; i<nc; ++i){
-		
-	}
-									   
-}
+//void ConsumerSystem::calcPayoffs(int t){
+//	int nt = min(256, nc); int nb = 1; 
+//	calc_payoffs_kernel <<<nb, nt >>> (rc_dev, lenDisp_dev, h_dev, nc, 
+//									   vc_window_dev, vc_dev, vc_Tw, t,
+//									   0.002, 0.1, 0.08);
+//									   
+//	cudaMemcpy2D(&consumers[0].rc, sizeof(Consumer), rc_dev, sizeof(float), sizeof(float), nc, cudaMemcpyDeviceToHost);
+//	cudaMemcpy2D(&consumers[0].h, sizeof(Consumer), h_dev, sizeof(float), sizeof(float), nc, cudaMemcpyDeviceToHost);
+//	cudaMemcpy2D(&consumers[0].ld, sizeof(Consumer), lenDisp_dev, sizeof(float), sizeof(float), nc, cudaMemcpyDeviceToHost);
+//	cudaMemcpy2D(&consumers[0].nd, sizeof(Consumer), nd_dev, sizeof(float), sizeof(float), nc, cudaMemcpyDeviceToHost);
+//	cudaMemcpy2D(&consumers[0].vc, sizeof(Consumer), vc_dev, sizeof(float), sizeof(float), nc, cudaMemcpyDeviceToHost);
+//	for (int i=0; i<nc; ++i){
+//		
+//	}
+//									   
+//}
 
 

@@ -31,6 +31,7 @@ class ConsumerSystem{
 
 	public:
 	vector <Consumer> consumers;
+	Consumer * consumers_dev;
 	
 	int nx, ny;
 	float L, dL;
@@ -43,15 +44,15 @@ class ConsumerSystem{
 	float *ke, *ke_dev;			// exploitation kernels on grid
 	float *ke_all, *ke_all_dev;
 	
-	int2 * pos_i_dev;			// gpu arrays for consumer traits
-	float * h_dev;
-	float * rc_dev;
-	float * kdsd_dev, *RT_dev;
-	
-	float * nd_dev, *lenDisp_dev;
+//	int2 * pos_i_dev;			// gpu arrays for consumer traits
+//	float * h_dev;
+//	float * rc_dev;
+//	float * kdsd_dev, *RT_dev;
+//	
+//	float * nd_dev, *lenDisp_dev;
 	
 	int vc_Tw;
-	float * vc_window_dev, * vc_dev;
+	float * vc_window_dev; //, * vc_dev;
 	
 	curandState * cs_dev_XWstates;
 	int *cs_seeds_h, *cs_seeds_dev; 

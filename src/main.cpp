@@ -56,6 +56,7 @@ int main(int argc, char **argv){
 	csys->init(I);
 	csys->updateExploitationKernels();
 	glRenderer->addShape(&csys->cons_shape);
+	cout << "here" << endl;
 
 	// launch sim
 	SimpleProgressBar prog(1000, &istep, "Diffusion");
@@ -69,13 +70,13 @@ int main(int argc, char **argv){
 		resGrid->grow(csys->ke_all_dev);
 		csys->disperse(resGrid->res_dev);
 		csys->updateExploitationKernels();
-		csys->calcPayoffs(istep);
+//		csys->calcPayoffs(istep);
 		
 		++istep;
 		resGrid->graphics_updateArrays();
 		csys->graphics_updateArrays();
 	
-		usleep(50e2);	// sleep for 20 ms. This dramatically reduces CPU consumption
+//		usleep(50e2);	// sleep for 20 ms. This dramatically reduces CPU consumption
 		
 		prog.update();
 

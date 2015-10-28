@@ -35,7 +35,7 @@ ny				128
 D				1
 r				0.2
 K				50
-L 				128		# the size of the entire space (x & y), when body size = 1 --# > determines density
+L 				128			# the size of the entire space (x & y), when body size = 1 --# > determines density
  
 
 # > PARTICLES
