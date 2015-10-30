@@ -13,7 +13,7 @@ using namespace std;
 class Consumer{
 	public:
 	float2 pos;		// actual pos (float) 
-	int2 pos_i;	// grid cell id of pos
+	int2 pos_i;		// grid cell id of pos
 
 	float h;
 	float RT;
@@ -24,6 +24,8 @@ class Consumer{
 	float ld;
 	float nd;
 	float vc;
+	float vc_x;
+	float vc_avg;
 	
 };
 
@@ -36,9 +38,10 @@ class ConsumerSystem{
 	int nx, ny;
 	float L, dL;
 	int nc;
+	float dt;
 	
-	float ke_lmax;		// bound for exploitation kernel in length units
-	float ke_nmax;		// bound for exploitation kernel in index units
+	float ke_lmax;		// bound for exploitation kernel in length units 
+	float ke_nmax;		// bound for exploitation kernel in index units (kernel will go from [-ke_n...0...ke_n])
 	float ke_sd;
 	
 	float *ke, *ke_dev;			// exploitation kernels on grid
@@ -52,7 +55,9 @@ class ConsumerSystem{
 //	float * nd_dev, *lenDisp_dev;
 	
 	int vc_Tw;
-	float * vc_window_dev; //, * vc_dev;
+	float * vc_window, *vc_window_dev; //, * vc_dev;
+	
+	float b, cd, ch;
 	
 	curandState * cs_dev_XWstates;
 	int *cs_seeds_h, *cs_seeds_dev; 
@@ -66,7 +71,8 @@ class ConsumerSystem{
 	void updateExploitationKernels();
 	void calcResConsumed(float * resource_grid);
 	void disperse(float * resource);
-	void calcPayoffs(int t);
+	void calcPayoff(int t);
+	void calcAvgPayoff();
 
 	void graphics_updateArrays();
 	

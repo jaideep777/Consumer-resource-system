@@ -44,10 +44,15 @@ void ConsumerSystem::init(Initializer &I){
 	ny = I.getScalar("ny");
 	L  = I.getScalar("L");
 	nc = I.getScalar("nc");
+	dt = I.getScalar("dt");
 	dL = L/nx;
 	
+	b = I.getScalar("b");
+	cd = I.getScalar("cd");
+	ch = I.getScalar("ch");
+	
 	ke_lmax = I.getScalar("Ke_cutoff");		// bound for exploitation kernel in length units
-	ke_nmax = int(ke_lmax/(L/nx));
+	ke_nmax = int(ke_lmax/dL);
 	ke_sd = I.getScalar("Ke_sd");
 	cout << "ke_nmax = " << ke_nmax << endl;
 
@@ -78,6 +83,8 @@ void ConsumerSystem::init(Initializer &I){
 		consumers[i].RT    = I.getScalar("RT0");
 		consumers[i].Kdsd  = I.getScalar("kdsd0");
 		consumers[i].h     = I.getScalar("h0");
+		consumers[i].vc    = 0;
+		consumers[i].vc_avg = 0;
 		if (i<nc/2) consumers[i].h = 0.1;
 		else 		consumers[i].h = 0.3;
 		
@@ -97,7 +104,11 @@ void ConsumerSystem::init(Initializer &I){
 	cudaMemcpy(consumers_dev, &consumers[0], nc*sizeof(Consumer), cudaMemcpyHostToDevice);
 
 	vc_Tw = I.getScalar("payoff_Tw");
+	vc_window = new float[nc*vc_Tw];
+	for (int i=0; i<nc*vc_Tw; ++i) vc_window[i] = 0;
 	cudaMalloc((void**)&vc_window_dev, sizeof(float)*nc*vc_Tw);
+	cudaMemcpy(vc_window_dev, vc_window, nc*vc_Tw*sizeof(float), cudaMemcpyHostToDevice);
+
 //	cudaMalloc((void**)&vc_dev, sizeof(float)*nc);
 //	float vc
 	
@@ -154,31 +165,52 @@ void ConsumerSystem::graphics_updateArrays(){
 }
 
 
+// blocks run over consumers
+// threads run over gridcells in Ke
+
 __global__ void calc_exploitation_kernels_kernel(float* ke_all, Consumer* cons, int nc, float* ke, int rkn, int nx){
 	
-	int tid = blockIdx.x*blockDim.x + threadIdx.x;
-	if (tid >= nc) return;
+	int ke_nx = (2*rkn+1);
 
-	int ixc = cons[tid].pos_i.x;
-	int iyc = cons[tid].pos_i.y;
-	float hc = cons[tid].h;
+	if (threadIdx.x >= ke_nx*ke_nx) return;
+	if (blockIdx.x >= nc) return;
 
-	for (int i=-rkn; i<=rkn; ++i){
-		for (int j=-rkn; j<=rkn; ++j){
-			int iK = makePeriodicID(ixc+i, nx);
-			int jK = makePeriodicID(iyc+j, nx);
-			ke_all[ix2(iK, jK, nx)] += hc * ke[ix2(i+rkn, j+rkn, (2*rkn+1))];
-		}
-	}	
+	// get position and harvesting rate of consumer from block ID
+	int ixc = cons[blockIdx.x].pos_i.x;
+	int iyc = cons[blockIdx.x].pos_i.y;
+	float hc = cons[blockIdx.x].h;
+
+	// i and j are 2D indices on Ke. They range from [-rkn, rkn]
+	int i = (threadIdx.x % ke_nx) - rkn;	
+	int j = (threadIdx.x / ke_nx) - rkn;
 	
+	// i and j are also 2D indices on Ke_all. They must be periodic over the grd boundary
+	int iK = makePeriodicID(ixc+i, nx);
+	int jK = makePeriodicID(iyc+j, nx);
+	
+	// multiple consumers might be adding to the same grid cell. Hence need atomic add.
+	atomicAdd(&ke_all[ix2(iK, jK, nx)], hc * ke[ix2(i+rkn, j+rkn, ke_nx)]);
+
 }
+
+
+__global__ void resetKeAll_kernel(float * keall, int nx, int ny){
+	int tid = blockIdx.x*blockDim.x + threadIdx.x;
+	if (tid >= nx*ny) return;
+
+	keall[tid] = 0;
+}
+
 
 
 void::ConsumerSystem::updateExploitationKernels(){
 	
-	for (int i=0; i<nx*ny; ++i) ke_all[i] = 0;	// reset exploitation kernels on host
-	cudaMemcpy(ke_all_dev, ke_all, nx*ny*sizeof(float), cudaMemcpyHostToDevice); // reset ke_all_dev to zeros
-	int nt = min(256, nc); int nb = 1; 
+//	for (int i=0; i<nx*ny; ++i) ke_all[i] = 0;	// reset exploitation kernels on host
+//	cudaMemcpy(ke_all_dev, ke_all, nx*ny*sizeof(float), cudaMemcpyHostToDevice); // reset ke_all_dev to zeros
+	int nt = 256; int nb = (nx*ny-1)/nt + 1;
+	resetKeAll_kernel <<< nb, nt>>> (ke_all_dev, nx, ny);
+
+	nt = (2*ke_nmax+1)*(2*ke_nmax+1); nb = nc; 
 	calc_exploitation_kernels_kernel <<< nb, nt >>> (ke_all_dev, consumers_dev, nc, ke_dev, ke_nmax, nx);
 	getLastCudaError("exploitation kernel");
 
@@ -194,39 +226,56 @@ void::ConsumerSystem::updateExploitationKernels(){
 }
 
 
-
-__global__ void calc_resource_consumed_kernel(float *res, Consumer* cons, int nc, float* ke, int rkn, int nx){
-
+__global__ void resetRc_kernel(Consumer * cons, int nc){
 	int tid = blockIdx.x*blockDim.x + threadIdx.x;
 	if (tid >= nc) return;
 
-	int ixc = cons[tid].pos_i.x;
-	int iyc = cons[tid].pos_i.y;
-	float hc = cons[tid].h;
+	cons[tid].rc = 0;
+}
 
-	float R_avail = 0;
-	for (int i=-rkn; i<=rkn; ++i){
-		for (int j=-rkn; j<=rkn; ++j){
-			int iK = makePeriodicID(ixc+i, nx);
-			int jK = makePeriodicID(iyc+j, nx);
-			R_avail += res[ix2(iK, jK, nx)] * ke[ix2(i+rkn, j+rkn, (2*rkn+1))];
-		}
-	}	
-	cons[tid].rc = hc * R_avail;
+
+// in this kernel, blocks run over grid cells and threads run over consumers.
+// this is done to minimize conflicts in atomicAdd
+// this puts limitation on max number of consumers, but thats OK.
+__global__ void calc_resource_consumed_kernel(float *res, Consumer* cons, int nc, float* ke, int rkn, int nx, float dt){
+
+	int ke_nx = (2*rkn+1);
+
+	if (blockIdx.x >= ke_nx*ke_nx) return;
+	if (threadIdx.x >= nc) return;
+
+	// get position and harvesting rate of consumer from block ID
+	int ixc = cons[threadIdx.x].pos_i.x;
+	int iyc = cons[threadIdx.x].pos_i.y;
+	float hc = cons[threadIdx.x].h;
+
+	// i and j are 2D indices on Ke. They range from [-rkn, rkn]
+	int i = (blockIdx.x % ke_nx) - rkn;	
+	int j = (blockIdx.x / ke_nx) - rkn;
+	
+	// i and j are also 2D indices on Ke_all. They must be periodic over the grd boundary
+	int iK = makePeriodicID(ixc+i, nx);
+	int jK = makePeriodicID(iyc+j, nx);
+
+	atomicAdd(&cons[threadIdx.x].rc, hc * res[ix2(iK, jK, nx)] * ke[ix2(i+rkn, j+rkn, (2*rkn+1))] * dt);
 
 }
 
 void::ConsumerSystem::calcResConsumed(float * resource_dev){
 	
-	int nt = min(256, nc); int nb = 1; 
-	calc_resource_consumed_kernel <<< nb, nt >>> (resource_dev, consumers_dev, nc, ke_dev, ke_nmax, nx);
+	int nt = min(256, nc); int nb = (nc-1)/nt+1; 
+	resetRc_kernel <<<nb, nt >>> (consumers_dev, nc);
+	
+	nb = (2*ke_nmax+1)*(2*ke_nmax+1); nt = nc; 
+	calc_resource_consumed_kernel <<< nb, nt >>> (resource_dev, consumers_dev, nc, ke_dev, ke_nmax, nx, dt);
 	getLastCudaError("rc kernel");
 
-//	cudaMemcpy2D(&consumers[0].rc, sizeof(Consumer), rc_dev, sizeof(float), sizeof(float), nc, cudaMemcpyDeviceToHost);
+
+//	cudaMemcpy2D(&consumers[0].rc, sizeof(Consumer), &consumers_dev[0].rc, sizeof(Consumer), sizeof(float), nc, cudaMemcpyDeviceToHost);
 //	for (int i=0; i<nc; ++i){
 //		cout << consumers[i].rc << "\n";
 //	}
-//	cout << "\n";
+//	cout << "\n\n";
 }
 
 
@@ -249,8 +298,7 @@ __global__ void disperse_kernel(float * res, Consumer* cons,
 	float xdisp = b_disperse*len*cos(theta);
 	float ydisp = b_disperse*len*sin(theta);
 	
-	float2 xnew = make_float2(ixc + xdisp, 
-							  iyc + ydisp );
+	float2 xnew = make_float2(ixc + xdisp, iyc + ydisp );
 	makePeriodic(xnew.x, 0, L);
 	makePeriodic(xnew.y, 0, L);
 	
@@ -262,7 +310,7 @@ __global__ void disperse_kernel(float * res, Consumer* cons,
 
 
 void ConsumerSystem::disperse(float * resource){
-	int nt = min(256, nc); int nb = 1; 
+	int nt = min(256, nc); int nb = (nt-1)/nc+1; 
 	disperse_kernel <<< nb, nt >>> (resource, consumers_dev, 
 									cs_dev_XWstates, 
 									L, nc, nx);	
@@ -270,34 +318,92 @@ void ConsumerSystem::disperse(float * resource){
 
 
 // note: vc_window is as follows (because all quantities are in row arrays):
-//		c1 c2 c3 c4 ....
-//	t1   
-//	t2
-//	t3
+//		t1 t2 t3  .... tw
+//	c1   
+//	c2
+//	c3
 //	...
-//	tw	
+//	cn	
 //
 
-//__global__ void calc_payoffs_kernel(float * rc, float * lend, float * hc, int nc, 
-//									float * vc_window, float * vc, int tw, int t,
-//									float b, float cdisp, float charv ){
+__global__ void calc_payoffs_kernel(Consumer * cons, int nc, float b, float cd, float ch){
+	int tid = blockIdx.x*blockDim.x + threadIdx.x;
+	if (tid >= nc) return;
+	
+	cons[tid].vc = b*cons[tid].rc - cd*cons[tid].ld - ch*cons[tid].h*cons[tid].h;
+}
 
+__global__ void avg_payoffs_kernel(Consumer * cons, int nc, int tw){
+	
+	int tid = blockIdx.x*blockDim.x + threadIdx.x;
+	if (tid >= nc) return;
+	
+	cons[tid].vc_avg += (cons[tid].vc - cons[tid].vc_x)/tw;
+}
+
+
+void ConsumerSystem::calcPayoff(int t){
+	
+	// calculate payoffs for current time step
+	int nt = min(256, nc); int nb = (nt-1)/nc+1;
+	calc_payoffs_kernel <<<nb, nt>>> (consumers_dev, nc, b, cd, ch); 
+	getLastCudaError("payoffs kernel");
+
+	// update the vc_window (discard the oldest column, and replace with current)
+	int win_id = t % vc_Tw;
+	cudaMemcpy2D(&consumers_dev[0].vc_x, sizeof(Consumer), &vc_window_dev[win_id], sizeof(float)*vc_Tw, sizeof(float), nc, cudaMemcpyDeviceToDevice); 
+	cudaMemcpy2D(&vc_window_dev[win_id], sizeof(float)*vc_Tw, &consumers_dev[0].vc, sizeof(Consumer), sizeof(float), nc, cudaMemcpyDeviceToDevice); 
+
+	nt = min(256, nc); nb = (nt-1)/nc+1;
+	avg_payoffs_kernel <<< nb, nt >>>  (consumers_dev, nc, vc_Tw);
+	getLastCudaError("avg payoffs kernel");
+
+//	cudaMemcpy(vc_window, vc_window_dev, sizeof(float)*nc*vc_Tw, cudaMemcpyDeviceToHost);
+//	cudaMemcpy(&consumers[0], consumers_dev, sizeof(Consumer)*nc, cudaMemcpyDeviceToHost);	
+//	cout << "\n";
+//	for (int i=0; i<nc; ++i){
+//		cout << consumers[i].vc << ", " << consumers[i].vc_x << ":\t";
+//		for (int t=0; t<vc_Tw; ++t){
+//			cout << vc_window[i*vc_Tw + t] << "\t";		
+//		}
+//		cout << "| " << consumers[i].vc_avg << "\n";
+//	}
+//	cout << "\n";
+
+}
+
+
+//__global__ void imitate_global_kernel(Consumer* cons, curandState * RNG_states, int nc){
 //	int tid = blockIdx.x*blockDim.x + threadIdx.x;
 //	if (tid >= nc) return;
-
-//	float v = b*rc[tid] - cdisp*lend[tid] - charv*hc[tid]*hc[tid]; 
-//	vc_window[ix2(tid, t%tw, nc)] = v;
-
-//	float vavg = 0;
-//	for (int i=0; i<tw; ++i) vavg = vc_window[ix2(tid, i, nc)];
-//	vavg = vavg/tw;
 //	
-//	vc[tid] = vavg;
-//									
-//} 
+//	int imit_id = 
+//	
+//}
+
+void ConsumerSystem::imitate_global(){
+	
+	float rImit = 0.1;
+	
+	// generate a binomial RN for number of imitations
+	for (int i=0; i<nc; ++i){
+		if (runif() < rImit*dt){
+			int id_who = i;
+			int id_whom = rand()%(nc-1);
+			if (id_who == id_whom) id_whom = nc-1;
+			
+			consumers
+		}
+	}	
+	
+		
+}
+
+
+
 
 //void ConsumerSystem::calcPayoffs(int t){
-//	int nt = min(256, nc); int nb = 1; 
+//	int nb = 1; 
 //	calc_payoffs_kernel <<<nb, nt >>> (rc_dev, lenDisp_dev, h_dev, nc, 
 //									   vc_window_dev, vc_dev, vc_Tw, t,
 //									   0.002, 0.1, 0.08);

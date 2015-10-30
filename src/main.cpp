@@ -56,7 +56,6 @@ int main(int argc, char **argv){
 	csys->init(I);
 	csys->updateExploitationKernels();
 	glRenderer->addShape(&csys->cons_shape);
-	cout << "here" << endl;
 
 	// launch sim
 	SimpleProgressBar prog(1000, &istep, "Diffusion");
@@ -70,36 +69,36 @@ int main(int argc, char **argv){
 		resGrid->grow(csys->ke_all_dev);
 		csys->disperse(resGrid->res_dev);
 		csys->updateExploitationKernels();
-//		csys->calcPayoffs(istep);
+		csys->calcPayoff(istep);
 		
-		++istep;
-		resGrid->graphics_updateArrays();
-		csys->graphics_updateArrays();
-	
 //		usleep(50e2);	// sleep for 20 ms. This dramatically reduces CPU consumption
+		++istep;
+//		if (istep % 100 == 0){
+			resGrid->graphics_updateArrays();
+			csys->graphics_updateArrays();
+//		}	
 		
 		prog.update();
 
-		
-		if (istep ==1000) {
+		if (istep == 1000) {
 			break;
 		}
 	}
 	// launch sim end.
 
 
-	ofstream fout("res.txt"); // haha
-	
-	int nx = I.getScalar("nx");
-	int ny = I.getScalar("ny");
-	cudaMemcpy(resGrid->res, resGrid->res_dev, resGrid->nx*resGrid->ny*sizeof(float), cudaMemcpyDeviceToHost);
-	for (int j=0; j<ny; ++j){
-		for (int i=0; i<nx; ++i){
-			fout << resGrid->res[ix2(i,j,resGrid->nx)] << "\t";
-		}
-		fout << "\n";
-	}
-	fout << "\n"; 
+//	ofstream fout("res.txt"); // haha
+//	
+//	int nx = I.getScalar("nx");
+//	int ny = I.getScalar("ny");
+//	cudaMemcpy(resGrid->res, resGrid->res_dev, resGrid->nx*resGrid->ny*sizeof(float), cudaMemcpyDeviceToHost);
+//	for (int j=0; j<ny; ++j){
+//		for (int i=0; i<nx; ++i){
+//			fout << resGrid->res[ix2(i,j,resGrid->nx)] << "\t";
+//		}
+//		fout << "\n";
+//	}
+//	fout << "\n"; 
 	
 	
 //	// disconnect renderer

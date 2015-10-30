@@ -47,12 +47,15 @@ kdsd0			8
 
 nc				10
 Ke_sd			4
-Ke_cutoff		12
+Ke_cutoff		6
 
-payoff_Tw		20
+payoff_Tw		5
 
 # > SELECTION
-# selection and mutation
+# payoff
+b				0.002
+cd				0.1
+ch				0.08
 
 # > INIT
 # init
