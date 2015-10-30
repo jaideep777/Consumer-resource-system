@@ -50,13 +50,16 @@ void ConsumerSystem::init(Initializer &I){
 	b = I.getScalar("b");
 	cd = I.getScalar("cd");
 	ch = I.getScalar("ch");
+	b_imit_h  = I.getScalar("imitate_h");
+	b_imit_rt = I.getScalar("imitate_RT");
+	b_imit_kd = I.getScalar("imitate_Kd");
+	rImit = I.getScalar("imitation_rate");
 	
 	ke_lmax = I.getScalar("Ke_cutoff");		// bound for exploitation kernel in length units
 	ke_nmax = int(ke_lmax/dL);
 	ke_sd = I.getScalar("Ke_sd");
 	cout << "ke_nmax = " << ke_nmax << endl;
 
-	getLastCudaError("resgrid");
 	
 	// calculate and allocate exploitation kernels
 	int ke_arrlen = (2*ke_nmax+1)*(2*ke_nmax+1);  // ke goes from [-ke_nmax, ke_nmax]
@@ -85,21 +88,14 @@ void ConsumerSystem::init(Initializer &I){
 		consumers[i].h     = I.getScalar("h0");
 		consumers[i].vc    = 0;
 		consumers[i].vc_avg = 0;
-		if (i<nc/2) consumers[i].h = 0.1;
-		else 		consumers[i].h = 0.3;
+		if (i<nc/2) consumers[i].h = 0.01;
+		else 		consumers[i].h = 0.01;
 		
-		cout << consumers[i].pos.x << " " << consumers[i].pos.y << ", "   
-			 << consumers[i].pos_i.x << " " << consumers[i].pos_i.y   << endl;
+//		cout << consumers[i].pos.x << " " << consumers[i].pos.y << ", "   
+//			 << consumers[i].pos_i.x << " " << consumers[i].pos_i.y   << endl;
 
 	}
-//	cudaMalloc((void**)&h_dev, sizeof(float)*nc);
-//	cudaMalloc((void**)&pos_i_dev, sizeof(int2)*nc);	
-//	cudaMalloc((void**)&rc_dev, sizeof(float)*nc);
-//	cudaMalloc((void**)&RT_dev, sizeof(float)*nc);
-//	cudaMalloc((void**)&kdsd_dev, sizeof(float)*nc);
-//	
-//	cudaMalloc((void**)&nd_dev, sizeof(float)*nc);
-//	cudaMalloc((void**)&lenDisp_dev, sizeof(float)*nc);
+
 	cudaMalloc((void**)&consumers_dev, nc*sizeof(Consumer));
 	cudaMemcpy(consumers_dev, &consumers[0], nc*sizeof(Consumer), cudaMemcpyHostToDevice);
 
@@ -109,16 +105,6 @@ void ConsumerSystem::init(Initializer &I){
 	cudaMalloc((void**)&vc_window_dev, sizeof(float)*nc*vc_Tw);
 	cudaMemcpy(vc_window_dev, vc_window, nc*vc_Tw*sizeof(float), cudaMemcpyHostToDevice);
 
-//	cudaMalloc((void**)&vc_dev, sizeof(float)*nc);
-//	float vc
-	
-//	cudaMemcpy2D((void*)h_dev, sizeof(float), (void*)&consumers[0].h, sizeof(Consumer), sizeof(float),  nc, cudaMemcpyHostToDevice);	
-//	cudaMemcpy2D((void*)RT_dev, sizeof(float), (void*)&consumers[0].RT, sizeof(Consumer), sizeof(float),  nc, cudaMemcpyHostToDevice);	
-//	cudaMemcpy2D((void*)kdsd_dev, sizeof(float), (void*)&consumers[0].Kdsd, sizeof(Consumer), sizeof(float),  nc, cudaMemcpyHostToDevice);	
-//	cudaMemcpy2D((void*)pos_i_dev, sizeof(int2), (void*)&consumers[0].pos_i, sizeof(Consumer), sizeof(int2),  nc, cudaMemcpyHostToDevice);	
-//	getLastCudaError("memcpy2D");
-
-	
 	cs_seeds_h = new int[nc];
 	cudaMalloc((void**)&cs_seeds_dev, nc*sizeof(int));
 	cudaMalloc((void**)&cs_dev_XWstates, nc*sizeof(curandState));
@@ -373,29 +359,42 @@ void ConsumerSystem::calcPayoff(int t){
 }
 
 
-//__global__ void imitate_global_kernel(Consumer* cons, curandState * RNG_states, int nc){
-//	int tid = blockIdx.x*blockDim.x + threadIdx.x;
-//	if (tid >= nc) return;
-//	
-//	int imit_id = 
-//	
-//}
+__global__ void imitate_global_kernel(Consumer* cons, curandState * RNG_states, int nc, float rImit, float dt,
+									  bool b_ih, bool b_irt, bool b_ikd){
+	int tid = blockIdx.x*blockDim.x + threadIdx.x;
+	if (tid >= nc) return;
+	
+	bool b_imit = curand_uniform(&RNG_states[tid]) < rImit*dt;
+	if (b_imit){
+	
+		int id_whom = (1-curand_uniform(&RNG_states[tid]))*(nc-1);	// curand_uniform gives (0,1]. do 1-X to get [0,1)
+		float self = id_whom == tid;
+		id_whom = self*(nc-1) + (1-self)*id_whom;
+
+		float dv = cons[id_whom].vc_avg - cons[tid].vc_avg;
+		float imitation_prob = float(dv > 0);
+
+		if (curand_uniform(&RNG_states[tid]) <= imitation_prob) { 
+
+			float h_new    = cons[id_whom].h    + 0.02*curand_normal(&RNG_states[tid]);	
+			float RT_new   = cons[id_whom].RT   + 1.00*curand_normal(&RNG_states[tid]);	
+			float Kdsd_new = cons[id_whom].Kdsd + 0.20*curand_normal(&RNG_states[tid]);	
+
+			if (b_ih)  cons[tid].h    = clamp(h_new, 0.f, h_new);	
+			if (b_irt) cons[tid].RT   = clamp(RT_new, 0.f, RT_new);	
+			if (b_ikd) cons[tid].Kdsd = clamp(Kdsd_new, 0.f, Kdsd_new);	
+		}
+	}
+
+}
+
 
 void ConsumerSystem::imitate_global(){
 	
-	float rImit = 0.1;
-	
-	// generate a binomial RN for number of imitations
-	for (int i=0; i<nc; ++i){
-		if (runif() < rImit*dt){
-			int id_who = i;
-			int id_whom = rand()%(nc-1);
-			if (id_who == id_whom) id_whom = nc-1;
-			
-			consumers
-		}
-	}	
-	
+	int nt = min(256, nc); int nb = (nt-1)/nc+1;
+	imitate_global_kernel <<< nb, nt >>> (consumers_dev, cs_dev_XWstates, nc, rImit, dt,
+										  b_imit_h, b_imit_rt, b_imit_kd);
+	getLastCudaError("imitate global kernel");
 		
 }
 

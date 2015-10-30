@@ -59,6 +59,9 @@ class ConsumerSystem{
 	
 	float b, cd, ch;
 	
+	bool b_imit_h, b_imit_rt, b_imit_kd;
+	float rImit;
+	
 	curandState * cs_dev_XWstates;
 	int *cs_seeds_h, *cs_seeds_dev; 
 
@@ -73,6 +76,7 @@ class ConsumerSystem{
 	void disperse(float * resource);
 	void calcPayoff(int t);
 	void calcAvgPayoff();
+	void imitate_global();
 
 	void graphics_updateArrays();
 	

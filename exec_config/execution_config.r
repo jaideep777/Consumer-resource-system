@@ -30,12 +30,12 @@ b_baseline 		1			# Baseline  - is this a baseline experiment (Rs = 0)
 b_constRg  		1			# Grouping  - use constant radius of grouping?
 
 # > RESOURCE GRID
-nx 				128
-ny				128
+nx 				400
+ny				400
 D				1
 r				0.2
 K				50
-L 				128			# the size of the entire space (x & y), when body size = 1 --# > determines density
+L 				400			# the size of the entire space (x & y), when body size = 1 --# > determines density
  
 
 # > PARTICLES
@@ -43,9 +43,9 @@ L 				128			# the size of the entire space (x & y), when body size = 1 --# > det
 dt  			0.1			# time step (for movement)
 h0				0.2
 RT0				15
-kdsd0			8
+kdsd0			0
 
-nc				10
+nc				100
 Ke_sd			4
 Ke_cutoff		6
 
@@ -57,15 +57,19 @@ b				0.002
 cd				0.1
 ch				0.08
 
-# > INIT
-# init
+# > IMIT
+imitation_rate	0.1	
+imitate_h		1
+imitate_RT		0
+imitate_Kd		0
+
 
 # > OUTPUT
 # output
 dataOut  		1			# output all values in files?
 
 # > SIM
-# movement and SimParams
+nsteps			25000
 
 
 # Altruism params
