@@ -55,6 +55,8 @@ void ConsumerSystem::init(Initializer &I){
 	b_imit_kd = I.getScalar("imitate_Kd");
 	rImit = I.getScalar("imitation_rate");
 	
+	graphics = I.getScalar("graphicsQual")>0;
+	
 	ke_lmax = I.getScalar("Ke_cutoff");		// bound for exploitation kernel in length units
 	ke_nmax = int(ke_lmax/dL);
 	ke_sd = I.getScalar("Ke_sd");
@@ -64,13 +66,16 @@ void ConsumerSystem::init(Initializer &I){
 	// calculate and allocate exploitation kernels
 	int ke_arrlen = (2*ke_nmax+1)*(2*ke_nmax+1);  // ke goes from [-ke_nmax, ke_nmax]
 	ke = new float[ke_arrlen];
+	float kernelSum = 0;
 	for (int j=-ke_nmax; j<=ke_nmax; ++j){
 		for (int i=-ke_nmax; i<=ke_nmax; ++i){
 			float ker = 1-(i*i+j*j)*dL*dL/ke_sd/ke_sd;
 			if (ker < 0) ker = 0;
 			ke[ix2(i+ke_nmax, j+ke_nmax, 2*ke_nmax+1)] = ker;
+			kernelSum += ker;
 		}
 	}
+	cout << "Kernel Sum = " << kernelSum << endl;
 	cudaMalloc((void**)&ke_dev, sizeof(float)*ke_arrlen);
 	cudaMemcpy(ke_dev, ke, ke_arrlen*sizeof(float), cudaMemcpyHostToDevice);
 	
@@ -88,8 +93,8 @@ void ConsumerSystem::init(Initializer &I){
 		consumers[i].h     = I.getScalar("h0");
 		consumers[i].vc    = 0;
 		consumers[i].vc_avg = 0;
-		if (i<nc/2) consumers[i].h = 0.01;
-		else 		consumers[i].h = 0.01;
+		if (i<nc/2) consumers[i].h = 0.1;
+		else 		consumers[i].h = 0.3;
 		
 //		cout << consumers[i].pos.x << " " << consumers[i].pos.y << ", "   
 //			 << consumers[i].pos_i.x << " " << consumers[i].pos_i.y   << endl;
@@ -111,20 +116,22 @@ void ConsumerSystem::init(Initializer &I){
 	
 	initRNG();
 	
-	// create Pointset shape to display consumers
-	cons_shape = PointSet("res", false, nc, 0, L);	// the res shader is a generic shader for colormaps
-	cons_shape.nVertices = nc;
-	cons_shape.createShaders();
-	float2 tmp[nc]; 
-	for (int i=0; i<nc; ++i) {
-		tmp[i] = cell2pos(consumers[i].pos_i, dL);
-//		cout << consumers[i].pos_i.x << " " << consumers[i].pos_i.y  << ", " << tmp[i].x << " " << tmp[i].y << endl;
+	if (graphics){
+		// create Pointset shape to display consumers
+		cons_shape = PointSet("res", false, nc, 0, L);	// the res shader is a generic shader for colormaps
+		cons_shape.nVertices = nc;
+		cons_shape.createShaders();
+		float2 tmp[nc]; 
+		for (int i=0; i<nc; ++i) {
+			tmp[i] = cell2pos(consumers[i].pos_i, dL);
+	//		cout << consumers[i].pos_i.x << " " << consumers[i].pos_i.y  << ", " << tmp[i].x << " " << tmp[i].y << endl;
+		}
+		cons_shape.createVBO(tmp, cons_shape.nVertices*sizeof(float2));	
+		cons_shape.createColorBuffer();
+		cons_shape.setDefaultColor();
+		cons_shape.palette = createPalette_ramp(nc, Colour_rgb(0,0.9,0), Colour_rgb(1,0,0));
+		printPalette(cons_shape.palette);
 	}
-	cons_shape.createVBO(tmp, cons_shape.nVertices*sizeof(float2));	
-	cons_shape.createColorBuffer();
-	cons_shape.setDefaultColor();
-	cons_shape.palette = createPalette_ramp(nc, Colour_rgb(0,0.9,0), Colour_rgb(1,0,0));
-	printPalette(cons_shape.palette);
 }
 
 
@@ -267,7 +274,7 @@ void::ConsumerSystem::calcResConsumed(float * resource_dev){
 
 __global__ void disperse_kernel(float * res, Consumer* cons, 
 								curandState * RNG_states, 
-								float L, int nc, int nx ){
+								float L, float dL, int nc, int nx ){
 	
 	int tid = blockIdx.x*blockDim.x + threadIdx.x;
 	if (tid >= nc) return;
@@ -284,11 +291,11 @@ __global__ void disperse_kernel(float * res, Consumer* cons,
 	float xdisp = b_disperse*len*cos(theta);
 	float ydisp = b_disperse*len*sin(theta);
 	
-	float2 xnew = make_float2(ixc + xdisp, iyc + ydisp );
+	float2 xnew = make_float2(ixc*dL+dL/2 + xdisp, iyc*dL+dL/2 + ydisp);
 	makePeriodic(xnew.x, 0, L);
 	makePeriodic(xnew.y, 0, L);
 	
-	cons[tid].pos_i = pos2cell(xnew, L/nx);
+	cons[tid].pos_i = pos2cell(xnew, dL);
 	cons[tid].ld  = b_disperse*len;
 	cons[tid].nd = b_disperse;
 	
@@ -299,7 +306,7 @@ void ConsumerSystem::disperse(float * resource){
 	int nt = min(256, nc); int nb = (nt-1)/nc+1; 
 	disperse_kernel <<< nb, nt >>> (resource, consumers_dev, 
 									cs_dev_XWstates, 
-									L, nc, nx);	
+									L, dL, nc, nx);	
 }
 
 
@@ -353,6 +360,8 @@ void ConsumerSystem::calcPayoff(int t){
 //			cout << vc_window[i*vc_Tw + t] << "\t";		
 //		}
 //		cout << "| " << consumers[i].vc_avg << "\n";
+
+//		cout << consumers[i].rc << " " << consumers[i].ld << "\n";
 //	}
 //	cout << "\n";
 
@@ -398,6 +407,40 @@ void ConsumerSystem::imitate_global(){
 		
 }
 
+
+
+void ConsumerSystem::writeState(int istep){
+
+	cudaMemcpy(&consumers[0], consumers_dev, sizeof(Consumer)*nc, cudaMemcpyDeviceToHost);
+	fout_h << istep << "\t";
+	fout_rc << istep << "\t";
+	fout_sd << istep << "\t";
+	for (int i=0; i<nc; ++i){
+		fout_h  << consumers[i].h << "\t";
+		fout_rc << consumers[i].rc << "\t";
+		fout_sd << consumers[i].Kdsd << "\t";
+	}
+	fout_h << "\n";
+	fout_rc << "\n";
+	fout_sd << "\n";
+}
+
+
+void ConsumerSystem::freeMemory(){
+	delete [] ke;
+	delete [] ke_all;
+	cudaFree(consumers_dev);
+	cudaFree(vc_window_dev);
+	cudaFree(ke_dev);
+	cudaFree(ke_all_dev);
+	cudaFree(cs_dev_XWstates);
+	cudaFree(cs_seeds_dev);
+	
+	if (graphics){
+		cons_shape.deleteShaders();
+		cons_shape.deleteVBO();
+	}
+}
 
 
 

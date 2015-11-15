@@ -20,6 +20,8 @@ class ResourceGrid{
 
 	float dt; 	 // time step 
 
+	bool graphics;
+	
 	float D; 	 // diffusion parameter for resource
 	float * r, *r_dev;   // growth rate
 	float * K, *K_dev;   // carrying capacity

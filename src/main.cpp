@@ -50,21 +50,18 @@ int main(int argc, char **argv){
 
 	ResourceGrid * resGrid = new ResourceGrid;
 	resGrid->init(I);
-	glRenderer->addShape(&resGrid->res_shape);
+	if (graphics) glRenderer->addShape(&resGrid->res_shape);
 
 	ConsumerSystem * csys = new ConsumerSystem;
 	csys->init(I);
 	csys->updateExploitationKernels();
-	glRenderer->addShape(&csys->cons_shape);
+	if (graphics) glRenderer->addShape(&csys->cons_shape);
 
 	// launch sim
 	int nsteps = I.getScalar("nsteps");
 	SimpleProgressBar prog(nsteps, &istep, "Diffusion");
 
 
-	ofstream fout_h("ts_h.txt");
-	ofstream fout_rc("ts_rc.txt");
-	ofstream fout_sd("ts_sd.txt");
 	prog.start();
 	while(1){	// infinite loop needed to poll anim_on signal.
 		if (graphics) glutMainLoopEvent();
@@ -75,32 +72,17 @@ int main(int argc, char **argv){
 		csys->disperse(resGrid->res_dev);
 		csys->updateExploitationKernels();
 		csys->calcPayoff(istep);
-		csys->imitate_global();
+//		csys->imitate_global();
 		
-//		usleep(50e2);	// sleep for 20 ms. This dramatically reduces CPU consumption
+		usleep(50e2);	// sleep for 20 ms. This dramatically reduces CPU consumption
 		++istep;
-		if (istep % 100 == 0){
+		if (graphics && istep % 1 == 0){
 			resGrid->graphics_updateArrays();
 			csys->graphics_updateArrays();
 		}	
 		
 		prog.update();
 
-		if (istep % 100 == 0){
-			cudaMemcpy(&csys->consumers[0], csys->consumers_dev, sizeof(Consumer)*csys->nc, cudaMemcpyDeviceToHost);
-			fout_h << istep << "\t";
-			fout_rc << istep << "\t";
-			fout_sd << istep << "\t";
-			for (int i=0; i<csys->nc; ++i){
-				fout_h  << csys->consumers[i].h << "\t";
-				fout_rc << csys->consumers[i].rc << "\t";
-				fout_sd << csys->consumers[i].Kdsd << "\t";
-			}
-			fout_h << "\n";
-			fout_rc << "\n";
-			fout_sd << "\n";
-		}
-		
 		if (istep == nsteps) {
 			break;
 		}
@@ -127,7 +109,8 @@ int main(int argc, char **argv){
 //	// --------------------
 
 	resGrid->freeMemory();
-
+	csys->freeMemory();
+	
 //	if (graphics) delete R;
 //	delete psys;
 	

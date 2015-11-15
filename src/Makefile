@@ -14,7 +14,7 @@ CUFILES  :=  $(wildcard *.cu)
 CUDA_INSTALL_PATH ?= /usr/local/cuda#-5.0
 
 # compilers
-NVCC := nvcc -g --ptxas-options=-v #,-abi=no
+NVCC := nvcc -g #--ptxas-options=-v #,-abi=no
 CXX  := g++ -g -fPIC
 LINK := g++ -fPIC
 

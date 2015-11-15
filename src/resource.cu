@@ -51,6 +51,8 @@ void ResourceGrid::init(Initializer &I){
 	dt = I.getScalar("dt");
 	L  = I.getScalar("L");
 
+	graphics = I.getScalar("graphicsQual")>0;
+
 	res = new float[nx*ny];
 	cudaMalloc((void**)&res_dev, sizeof(float)*nx*ny);
 	cudaMalloc((void**)&res_new_dev, sizeof(float)*nx*ny);
@@ -77,25 +79,33 @@ void ResourceGrid::init(Initializer &I){
 	
 	cudaMemcpy(res_dev, res, nx*ny*sizeof(float), cudaMemcpyHostToDevice);
 
-	// create resource grid color-map
-	res_shape = ColorMap("res", false, 100, nx, 0, L);
-	float2 cmap_pos[res_shape.nVertices];
-	res_shape.createGridCentres(cmap_pos); 
-	res_shape.createShaders();
-	res_shape.createVBO(cmap_pos, res_shape.nVertices*sizeof(float2));	
-	res_shape.createColorBuffer();
-	res_shape.updateColors(res, nx*ny);
+	if (graphics){
+		// create resource grid color-map
+		res_shape = ColorMap("res", false, 100, nx, 0, L);
+		float2 cmap_pos[res_shape.nVertices];
+		res_shape.createGridCentres(cmap_pos); 
+		res_shape.createShaders();
+		res_shape.createVBO(cmap_pos, res_shape.nVertices*sizeof(float2));	
+		res_shape.createColorBuffer();
+		res_shape.updateColors(res, nx*ny);
+	}
 
 }
 
 
 void ResourceGrid::freeMemory(){
 	delete [] res;
+	delete [] r;
+	delete [] K;
 	cudaFree(res_dev);
 	cudaFree(res_new_dev);
+	cudaFree(r_dev);
+	cudaFree(K_dev);
 	
-	res_shape.deleteShaders();
-	res_shape.deleteVBO();
+	if (graphics){
+		res_shape.deleteShaders();
+		res_shape.deleteVBO();
+	}
 }
 
 
