@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <string>
+#include <iomanip>
 #include <curand_kernel.h>
 using namespace std;
 
@@ -9,6 +10,7 @@ using namespace std;
 //#include "../headers/graphics.h"
 #include "../utils/cuda_vector_math.cuh"
 #include "../utils/cuda_device.h"
+#include "../utils/simple_histogram.h"
 
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -93,8 +95,8 @@ void ConsumerSystem::init(Initializer &I){
 		consumers[i].h     = I.getScalar("h0");
 		consumers[i].vc    = 0;
 		consumers[i].vc_avg = 0;
-		if (i<nc/2) consumers[i].h = 0.1;
-		else 		consumers[i].h = 0.3;
+//		if (i<nc/2) consumers[i].h = 0.1;
+//		else 		consumers[i].h = 0.3;
 		
 //		cout << consumers[i].pos.x << " " << consumers[i].pos.y << ", "   
 //			 << consumers[i].pos_i.x << " " << consumers[i].pos_i.y   << endl;
@@ -133,6 +135,77 @@ void ConsumerSystem::init(Initializer &I){
 		printPalette(cons_shape.palette);
 	}
 }
+
+
+void ConsumerSystem::initIO(Initializer &I){
+       
+	// ~~~~~~~~~~~~~~~~~ EXPT DESC ~~~~~~~~~~~~~~~~~~~~      
+	stringstream sout;
+	sout << setprecision(3);
+	sout << I.getString("exptName");
+	sout << "_T("   << I.getScalar("nsteps")/1000
+		 << ")_N("  << nc
+		 << ")_RT(" << ((b_imit_rt)? -1.0:I.getScalar("RT0"))
+		 << ")_kd(" << ((b_imit_kd)? -1.0:I.getScalar("kdsd0"))
+		 << ")_h("  << ((b_imit_h)?  -1.0:I.getScalar("h0"))
+		 << ")_rI(" << rImit
+		 << ")_L("  << L
+		 << ")_nx(" << nx
+		 << ")_b(" << b
+		 << ")_cd(" << cd
+		 << ")_ch(" << ch
+		 << ")";
+
+	string exptDesc = sout.str(); sout.clear();
+
+	cout << "experiment: " << exptDesc << endl; 
+
+	if (I.getScalar("dataOut")>0) {
+		string output_dir = I.getString("homeDir") + "/" + I.getString("outDir");
+		system(string("mkdir " + output_dir).c_str());
+
+		fout_h[0].open (string(output_dir + "/h_" + exptDesc).c_str());
+		fout_rc[0].open(string(output_dir + "/rc_" + exptDesc).c_str());
+		fout_sd[0].open(string(output_dir + "/kd_" + exptDesc).c_str());
+
+//		if (!fout_h[0].is_open()) cout << "failed to open h file." << endl;
+//		if (!fout_rc[0].is_open()) cout << "failed to open rc file." << endl;
+//		if (!fout_sd[0].is_open()) cout << "failed to open sd file." << endl;
+
+//		fout_h[1].open (string(output_dir + "/hist_h_" + exptDesc).c_str());    
+//		fout_rc[1].open(string(output_dir + "/hist_rc_" + exptDesc).c_str());   
+//		fout_sd[1].open(string(output_dir + "/hist_kd_" + exptDesc).c_str());   
+	}
+
+}
+
+
+void ConsumerSystem::closeIO(){
+	fout_h[0].close();      
+	fout_rc[0].close();     
+	fout_sd[0].close();     
+}
+
+
+void ConsumerSystem::writeState(int istep){
+
+	cudaMemcpy(&consumers[0], consumers_dev, sizeof(Consumer)*nc, cudaMemcpyDeviceToHost);
+
+	// output indivuduals
+	fout_h[0] << istep << "\t";
+	fout_rc[0] << istep << "\t";
+	fout_sd[0] << istep << "\t";
+	for (int i=0; i<nc; ++i){
+		fout_h[0]  << consumers[i].h << "\t";
+		fout_rc[0] << consumers[i].rc << "\t";
+		fout_sd[0] << consumers[i].Kdsd << "\t";
+	}
+	fout_h[0] << endl;
+	fout_rc[0] << endl;
+	fout_sd[0] << endl;
+       
+}
+
 
 
 void ConsumerSystem::graphics_updateArrays(){
@@ -303,7 +376,7 @@ __global__ void disperse_kernel(float * res, Consumer* cons,
 
 
 void ConsumerSystem::disperse(float * resource){
-	int nt = min(256, nc); int nb = (nt-1)/nc+1; 
+	int nt = min(256, nc); int nb = (nc-1)/nt+1; 
 	disperse_kernel <<< nb, nt >>> (resource, consumers_dev, 
 									cs_dev_XWstates, 
 									L, dL, nc, nx);	
@@ -338,7 +411,7 @@ __global__ void avg_payoffs_kernel(Consumer * cons, int nc, int tw){
 void ConsumerSystem::calcPayoff(int t){
 	
 	// calculate payoffs for current time step
-	int nt = min(256, nc); int nb = (nt-1)/nc+1;
+	int nt = min(256, nc); int nb = (nc-1)/nt+1;
 	calc_payoffs_kernel <<<nb, nt>>> (consumers_dev, nc, b, cd, ch); 
 	getLastCudaError("payoffs kernel");
 
@@ -347,7 +420,7 @@ void ConsumerSystem::calcPayoff(int t){
 	cudaMemcpy2D(&consumers_dev[0].vc_x, sizeof(Consumer), &vc_window_dev[win_id], sizeof(float)*vc_Tw, sizeof(float), nc, cudaMemcpyDeviceToDevice); 
 	cudaMemcpy2D(&vc_window_dev[win_id], sizeof(float)*vc_Tw, &consumers_dev[0].vc, sizeof(Consumer), sizeof(float), nc, cudaMemcpyDeviceToDevice); 
 
-	nt = min(256, nc); nb = (nt-1)/nc+1;
+	nt = min(256, nc); nb = (nc-1)/nt+1;
 	avg_payoffs_kernel <<< nb, nt >>>  (consumers_dev, nc, vc_Tw);
 	getLastCudaError("avg payoffs kernel");
 
@@ -400,7 +473,7 @@ __global__ void imitate_global_kernel(Consumer* cons, curandState * RNG_states, 
 
 void ConsumerSystem::imitate_global(){
 	
-	int nt = min(256, nc); int nb = (nt-1)/nc+1;
+	int nt = min(256, nc); int nb = (nc-1)/nt+1;
 	imitate_global_kernel <<< nb, nt >>> (consumers_dev, cs_dev_XWstates, nc, rImit, dt,
 										  b_imit_h, b_imit_rt, b_imit_kd);
 	getLastCudaError("imitate global kernel");
@@ -409,31 +482,18 @@ void ConsumerSystem::imitate_global(){
 
 
 
-void ConsumerSystem::writeState(int istep){
-
-	cudaMemcpy(&consumers[0], consumers_dev, sizeof(Consumer)*nc, cudaMemcpyDeviceToHost);
-	fout_h << istep << "\t";
-	fout_rc << istep << "\t";
-	fout_sd << istep << "\t";
-	for (int i=0; i<nc; ++i){
-		fout_h  << consumers[i].h << "\t";
-		fout_rc << consumers[i].rc << "\t";
-		fout_sd << consumers[i].Kdsd << "\t";
-	}
-	fout_h << "\n";
-	fout_rc << "\n";
-	fout_sd << "\n";
-}
 
 
 void ConsumerSystem::freeMemory(){
-	delete [] ke;
-	delete [] ke_all;
 	cudaFree(consumers_dev);
+	delete [] vc_window;
 	cudaFree(vc_window_dev);
+	delete [] ke;
 	cudaFree(ke_dev);
+	delete [] ke_all;
 	cudaFree(ke_all_dev);
 	cudaFree(cs_dev_XWstates);
+	delete [] cs_seeds_h;
 	cudaFree(cs_seeds_dev);
 	
 	if (graphics){

@@ -60,13 +60,17 @@ class ConsumerSystem{
 	curandState * cs_dev_XWstates;
 	int *cs_seeds_h, *cs_seeds_dev; 
 
+	string output_dir, expt_desc;
+	ofstream fout_h[1], fout_rc[1], fout_sd[1];
+
 	PointSet cons_shape;
 	
-	ofstream fout_h, fout_rc, fout_sd;
 
 	
 	public:
 	void init(Initializer &I);
+	void initIO(Initializer &I);
+	void closeIO();
 	void initRNG();
 	
 	void updateExploitationKernels();

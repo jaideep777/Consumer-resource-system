@@ -106,6 +106,8 @@ inline int Histogram::plot_console(){
 		cout << '\n';
 	}
 	cout.copyfmt(ios(NULL));	// reset cout state
+	
+	return 0;
 }
 
 inline vector <float> Histogram::getCounts(){
@@ -145,6 +147,8 @@ inline int Histogram::convertToPdf(){
 	for (int i=0; i<h->n; ++i){
 		h->bin[i] /= (hsum+1e-6);
 	}
+	return 0;
+	
 }
 
 

@@ -39,80 +39,78 @@ int main(int argc, char **argv){
 	I.readFile();
 	I.printVars();
 	
-	// ~~~~~~~~~~~~~~ CPU random generator (MT) ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//	curandCreateGeneratorHost(&generator_host, CURAND_RNG_PSEUDO_MTGP32);
-//	curandSetPseudoRandomGeneratorSeed(generator_host, time(NULL));	// seed by time in every expt
-
 
 	bool graphics = I.getScalar("graphicsQual")>0;
 	if (graphics) init_hyperGL(&argc, argv, I);
 	
 
 	ResourceGrid * resGrid = new ResourceGrid;
-	resGrid->init(I);
-	if (graphics) glRenderer->addShape(&resGrid->res_shape);
 
 	ConsumerSystem * csys = new ConsumerSystem;
-	csys->init(I);
-	csys->updateExploitationKernels();
-	if (graphics) glRenderer->addShape(&csys->cons_shape);
 
-	// launch sim
-	int nsteps = I.getScalar("nsteps");
-	SimpleProgressBar prog(nsteps, &istep, "Diffusion");
+	vector <float> rimitvec = I.getArray("rimitvec");
+	for (int ib=0; ib<rimitvec.size(); ++ib){
+
+		resGrid->init(I);
+		if (graphics) glRenderer->addShape(&resGrid->res_shape);
+
+		csys->init(I);
+
+		// re-init scan parameter 
+		csys->rImit = rimitvec[ib];
+
+		csys->initIO(I);
+
+		csys->updateExploitationKernels(); 
+		if (graphics) glRenderer->addShape(&csys->cons_shape);
+
+		// launch sim
+		int nsteps = I.getScalar("nsteps");
+		SimpleProgressBar prog(nsteps, &istep, "Diffusion");
 
 
-	prog.start();
-	while(1){	// infinite loop needed to poll anim_on signal.
-		if (graphics) glutMainLoopEvent();
+		prog.start();
+		while(1){       // infinite loop needed to poll anim_on signal.
+			if (graphics) glutMainLoopEvent();
+
+
+//			int i = animate();
+			csys->calcResConsumed(resGrid->res_dev);
+			resGrid->grow(csys->ke_all_dev);
+			csys->disperse(resGrid->res_dev);
+			csys->updateExploitationKernels();
+			csys->calcPayoff(istep);
+			csys->imitate_global();
+//			usleep(50e2);   // sleep for 20 ms. This dramatically reduces CPU consumption
+			++istep;
+//			if (graphics && istep % 1 == 0){
+//				  resGrid->graphics_updateArrays();
+//				  csys->graphics_updateArrays();
+//			}       
+
+			if (istep % 100 == 0){
+				csys->writeState(istep); 
+			}
 		
-//		int i = animate();
-		csys->calcResConsumed(resGrid->res_dev);
-		resGrid->grow(csys->ke_all_dev);
-		csys->disperse(resGrid->res_dev);
-		csys->updateExploitationKernels();
-		csys->calcPayoff(istep);
-//		csys->imitate_global();
-		
-		usleep(50e2);	// sleep for 20 ms. This dramatically reduces CPU consumption
-		++istep;
-		if (graphics && istep % 1 == 0){
-			resGrid->graphics_updateArrays();
-			csys->graphics_updateArrays();
-		}	
-		
-		prog.update();
+			prog.update();
 
-		if (istep == nsteps) {
-			break;
+			if (istep == nsteps) {
+				istep = 0;
+				csys->closeIO();
+				break;
+			}
 		}
+		// launch sim end.
+
+		resGrid->freeMemory();
+		csys->freeMemory();
+
 	}
-	// launch sim end.
-
-
-//	ofstream fout("res.txt"); // haha
-//	
-//	int nx = I.getScalar("nx");
-//	int ny = I.getScalar("ny");
-//	cudaMemcpy(resGrid->res, resGrid->res_dev, resGrid->nx*resGrid->ny*sizeof(float), cudaMemcpyDeviceToHost);
-//	for (int j=0; j<ny; ++j){
-//		for (int i=0; i<nx; ++i){
-//			fout << resGrid->res[ix2(i,j,resGrid->nx)] << "\t";
-//		}
-//		fout << "\n";
-//	}
-//	fout << "\n"; 
 	
-	
-//	// disconnect renderer
-//	if (graphics) R->disconnect();
-//	// --------------------
-
-	resGrid->freeMemory();
-	csys->freeMemory();
+	delete csys;
+	delete resGrid;
 	
 //	if (graphics) delete R;
-//	delete psys;
 	
 	return 0;
 }
