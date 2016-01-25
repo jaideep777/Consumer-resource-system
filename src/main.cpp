@@ -80,7 +80,7 @@ int main(int argc, char **argv){
 			csys->disperse(resGrid->res_dev);
 			csys->updateExploitationKernels();
 			csys->calcPayoff(istep);
-			csys->imitate_global();
+			csys->imitate_global_sync();
 //			usleep(50e2);   // sleep for 20 ms. This dramatically reduces CPU consumption
 			++istep;
 //			if (graphics && istep % 1 == 0){
