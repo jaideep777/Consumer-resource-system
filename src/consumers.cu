@@ -104,7 +104,9 @@ void ConsumerSystem::init(Initializer &I){
 	}
 
 	cudaMalloc((void**)&consumers_dev, nc*sizeof(Consumer));
+	cudaMalloc((void**)&consumers_child_dev, nc*sizeof(Consumer));
 	cudaMemcpy(consumers_dev, &consumers[0], nc*sizeof(Consumer), cudaMemcpyHostToDevice);
+	cudaMemcpy(consumers_child_dev, &consumers[0], nc*sizeof(Consumer), cudaMemcpyHostToDevice);
 
 	vc_Tw = I.getScalar("payoff_Tw");
 	vc_window = new float[nc*vc_Tw];
@@ -515,7 +517,7 @@ void ConsumerSystem::imitate_global_sync(){
 	int nt = min(256, nc); int nb = (nc-1)/nt+1;
 	imitate_global_sync_kernel <<< nb, nt >>> (consumers_dev, consumers_child_dev, cs_dev_XWstates, nc, rImit, dt,
 											   b_imit_h, b_imit_rt, b_imit_kd);
-	getLastCudaError("imitate global kernel");
+	getLastCudaError("imitate global sync kernel");
 	
 	cudaMemcpy(consumers_dev, consumers_child_dev, nc*sizeof(Consumer), cudaMemcpyDeviceToDevice);	
 }
