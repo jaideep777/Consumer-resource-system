@@ -470,6 +470,35 @@ __global__ void imitate_global_kernel(Consumer* cons, curandState * RNG_states, 
 
 }
 
+__global__ void imitate_global_sync_kernel(Consumer* cons, Consumer* cons_child, curandState * RNG_states, int nc, float rImit, float dt,
+									  bool b_ih, bool b_irt, bool b_ikd){
+	int tid = blockIdx.x*blockDim.x + threadIdx.x;
+	if (tid >= nc) return;
+	
+	bool b_imit = curand_uniform(&RNG_states[tid]) < rImit*dt;
+	if (b_imit){
+	
+		int id_whom = (1-curand_uniform(&RNG_states[tid]))*(nc-1);	// curand_uniform gives (0,1]. do 1-X to get [0,1)
+		float self = id_whom == tid;
+		id_whom = self*(nc-1) + (1-self)*id_whom;
+
+		float dv = cons[id_whom].vc_avg - cons[tid].vc_avg;
+		float imitation_prob = float(dv > 0);
+
+		if (curand_uniform(&RNG_states[tid]) <= imitation_prob) { 
+
+			float h_new    = cons[id_whom].h    + 0.02*curand_normal(&RNG_states[tid]);	
+			float RT_new   = cons[id_whom].RT   + 1.00*curand_normal(&RNG_states[tid]);	
+			float Kdsd_new = cons[id_whom].Kdsd + 0.20*curand_normal(&RNG_states[tid]);	
+
+			if (b_ih)  cons_child[tid].h    = clamp(h_new, 0.f, h_new);	
+			if (b_irt) cons_child[tid].RT   = clamp(RT_new, 0.f, RT_new);	
+			if (b_ikd) cons_child[tid].Kdsd = clamp(Kdsd_new, 0.f, Kdsd_new);	
+		}
+	}
+
+}
+
 
 void ConsumerSystem::imitate_global(){
 	
@@ -481,11 +510,21 @@ void ConsumerSystem::imitate_global(){
 }
 
 
+void ConsumerSystem::imitate_global_sync(){
+	
+	int nt = min(256, nc); int nb = (nc-1)/nt+1;
+	imitate_global_sync_kernel <<< nb, nt >>> (consumers_dev, consumers_child_dev, cs_dev_XWstates, nc, rImit, dt,
+											   b_imit_h, b_imit_rt, b_imit_kd);
+	getLastCudaError("imitate global kernel");
+	
+	cudaMemcpy(consumers_dev, consumers_child_dev, nc*sizeof(Consumer), cudaMemcpyDeviceToDevice);	
+}
 
 
 
 void ConsumerSystem::freeMemory(){
 	cudaFree(consumers_dev);
+	cudaFree(consumers_child_dev);
 	delete [] vc_window;
 	cudaFree(vc_window_dev);
 	delete [] ke;

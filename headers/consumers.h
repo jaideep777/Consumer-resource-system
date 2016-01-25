@@ -33,7 +33,7 @@ class ConsumerSystem{
 
 	public:
 	vector <Consumer> consumers;
-	Consumer * consumers_dev;
+	Consumer * consumers_dev, * consumers_child_dev;
 	
 	bool graphics;
 	
@@ -78,7 +78,9 @@ class ConsumerSystem{
 	void disperse(float * resource);
 	void calcPayoff(int t);
 	void calcAvgPayoff();
+
 	void imitate_global();
+	void imitate_global_sync();
 
 	void writeState(int istep);
 

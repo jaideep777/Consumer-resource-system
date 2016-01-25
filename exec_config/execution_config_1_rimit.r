@@ -8,7 +8,7 @@
 # # > DIR
 # Directories for data output
 homeDir			/home/jaideep/austria_project/gpu_codes/output		# home dir - no spaces allowed
-outDir  		rimit_scan_large_b0.02			    # output dir name
+outDir  		rimit_scan_large_b0.02_set2			    # output dir name
 exptName 	 	hom 								# expt name
  	
 
