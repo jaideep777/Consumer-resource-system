@@ -7,6 +7,7 @@
 
 #include "../headers/graphics.h"
 #include "../utils/simple_initializer.h"
+#include "../utils/simple_histogram.h"
 using namespace std;
 
 
@@ -61,7 +62,10 @@ class ConsumerSystem{
 	int *cs_seeds_h, *cs_seeds_dev; 
 
 	string output_dir, expt_desc;
-	ofstream fout_h[1], fout_rc[1], fout_sd[1];
+	ofstream fout_h[2], fout_rc[2], fout_sd[2];
+
+	vector <double> brks_h, brks_rc, brks_kd;
+	Histogram hist_h, hist_rc, hist_kd;
 
 	PointSet cons_shape;
 	

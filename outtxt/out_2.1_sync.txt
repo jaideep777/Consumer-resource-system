@@ -1,0 +1,303 @@
+Found 3 CUDA Capable devices:
+0) Tesla K20c
+    Driver Version: 6.5
+    Runtime Version: 5.5
+    Compute Capability: 3.5
+    Multiprocessors: 13
+    Max threads per multiprocessor:  2048
+    Max threads per block: 1024
+    Shared Memory per block: 48 kB
+    Maximum sizes of each dimension of a block: 1024 x 1024 x 64
+
+1) GeForce 210
+    Driver Version: 6.5
+    Runtime Version: 5.5
+    Compute Capability: 1.2
+    Multiprocessors: 2
+    Max threads per multiprocessor:  1024
+    Max threads per block: 512
+    Shared Memory per block: 16 kB
+    Maximum sizes of each dimension of a block: 512 x 512 x 64
+
+2) Tesla K20c
+    Driver Version: 6.5
+    Runtime Version: 5.5
+    Compute Capability: 3.5
+    Multiprocessors: 13
+    Max threads per multiprocessor:  2048
+    Max threads per block: 1024
+    Shared Memory per block: 48 kB
+    Maximum sizes of each dimension of a block: 1024 x 1024 x 64
+
+
+> Using device 2...
+
+-------:
+STRINGS:
+-------:
+exptName: hom
+homeDir: /home/jaideep/austria_project/gpu_codes/output
+outDir: rimit_scan_large_b0.02_sync
+-------:
+SCALARS:
+-------:
+D: 0
+K: 50
+Ke_cutoff: 6
+Ke_sd: 4
+L: 225
+RT0: 25
+b: 0.002
+b_anim_on: 0
+b_baseline: 1
+b_constRg: 1
+blockSize: 256
+cd: 0.1
+ch: 0.08
+dataOut: 1
+dispInterval: 50
+dt: 0.1
+graphicsQual: 0
+h0: 0.5
+imitate_Kd: 1
+imitate_RT: 0
+imitate_h: 1
+imitation_rate: 0.02
+kdsd0: 2
+nc: 512
+nsteps: 750000
+nx: 450
+ny: 450
+particles: 512
+payoff_Tw: 5
+r: 0.2
+-------:
+ARRAYS:
+------:
+rimitvec: 0.0339322 0.0390694 0.0449843 0.0517947 0.0596362 0.0686649 0.0790604 0.0910298 0.104811 0.120679 0.13895 0.159986 0.184207 0.212095 0.244205 0.281177 0.323746 0.372759 0.429193 0.494171 0.568987 0.655129 0.754312 0.868511 1 
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.0339)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:51.1684 min | 291.168 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.0391)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:51.4578 min | 291.458 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.045)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:49.8879 min | 289.888 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.0518)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:50.7984 min | 290.798 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.0596)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:50.2849 min | 290.285 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.0687)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:52.6471 min | 292.647 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.0791)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:51.7472 min | 291.747 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.091)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:51.0253 min | 291.025 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.105)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:52.5964 min | 292.596 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.121)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:51.7369 min | 291.737 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.139)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:51.2002 min | 291.2 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.16)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:51.1065 min | 291.107 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.184)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:51.3805 min | 291.38 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.212)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:51.3921 min | 291.392 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.244)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:51.3447 min | 291.345 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.281)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:51.342 min | 291.342 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.324)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:51.7562 min | 291.756 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.373)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:51.5188 min | 291.519 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.429)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:51.7059 min | 291.706 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.494)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:51.7327 min | 291.733 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.569)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:51.5418 min | 291.542 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.655)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:52.312 min | 292.312 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.754)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:52.0663 min | 292.066 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(0.869)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:54.4439 min | 294.444 sec.
+
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(25)_kd(-1)_h(-1)_rI(1)_L(225)_nx(450)_b(0.002)_cd(0.1)_ch(0.08)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/rimit_scan_large_b0.02_sync’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 4:52.1305 min | 292.13 sec.
+

@@ -120,6 +120,20 @@ void ConsumerSystem::init(Initializer &I){
 	
 	initRNG();
 	
+	// init histograms
+	int nbins = 100;
+	brks_h.resize(nbins); 
+	for (int i=0; i<nbins; ++i) brks_h[i] = 0 + double(i)/(nbins-1)*2.5;
+	brks_h.push_back(1000);	
+
+	brks_rc.resize(nbins); 
+	for (int i=0; i<nbins; ++i) brks_rc[i] = 0 + double(i)/(nbins-1)*600.0;
+	brks_rc.push_back(1000000);	
+
+	brks_kd.resize(nbins); 
+	for (int i=0; i<nbins; ++i) brks_kd[i] = 0 + double(i)/(nbins-1)*25.0;
+	brks_kd.push_back(1000000);	
+	
 	if (graphics){
 		// create Pointset shape to display consumers
 		cons_shape = PointSet("res", false, nc, 0, L);	// the res shader is a generic shader for colormaps
@@ -174,9 +188,9 @@ void ConsumerSystem::initIO(Initializer &I){
 //		if (!fout_rc[0].is_open()) cout << "failed to open rc file." << endl;
 //		if (!fout_sd[0].is_open()) cout << "failed to open sd file." << endl;
 
-//		fout_h[1].open (string(output_dir + "/hist_h_" + exptDesc).c_str());    
-//		fout_rc[1].open(string(output_dir + "/hist_rc_" + exptDesc).c_str());   
-//		fout_sd[1].open(string(output_dir + "/hist_kd_" + exptDesc).c_str());   
+		fout_h[1].open (string(output_dir + "/hist_h_" + exptDesc).c_str());    
+		fout_rc[1].open(string(output_dir + "/hist_rc_" + exptDesc).c_str());   
+		fout_sd[1].open(string(output_dir + "/hist_kd_" + exptDesc).c_str());   
 	}
 
 }
@@ -186,6 +200,10 @@ void ConsumerSystem::closeIO(){
 	fout_h[0].close();      
 	fout_rc[0].close();     
 	fout_sd[0].close();     
+
+	fout_h[1].close();      
+	fout_rc[1].close();     
+	fout_sd[1].close();     
 }
 
 
@@ -205,7 +223,31 @@ void ConsumerSystem::writeState(int istep){
 	fout_h[0] << endl;
 	fout_rc[0] << endl;
 	fout_sd[0] << endl;
-       
+
+	// output histograms
+	vector <float> hvec(nc), rcvec(nc), kdvec(nc);
+	for (int i=0; i<nc; ++i){
+		hvec[i]  = consumers[i].h;
+		rcvec[i] = consumers[i].rc;
+		kdvec[i] = consumers[i].Kdsd;
+	}
+	Histogram h_h(hvec,  brks_h);
+	Histogram h_rc(rcvec, brks_rc);
+	Histogram h_kd(kdvec, brks_kd);
+
+	vector <float> counts_h  = h_h.getCounts();
+	vector <float> counts_rc = h_rc.getCounts();
+	vector <float> counts_kd = h_kd.getCounts();
+	
+	for (int i=0; i<counts_h.size(); ++i){
+		fout_h[1]  << counts_h[i] << "\t";
+		fout_rc[1] << counts_rc[i] << "\t";
+		fout_sd[1] << counts_kd[i] << "\t";
+	}
+	fout_h[1] << endl;
+	fout_rc[1] << endl;
+	fout_sd[1] << endl;
+	
 }
 
 
@@ -515,6 +557,9 @@ void ConsumerSystem::imitate_global(){
 void ConsumerSystem::imitate_global_sync(){
 	
 	int nt = min(256, nc); int nb = (nc-1)/nt+1;
+
+	cudaMemcpy(consumers_child_dev, consumers_dev, nc*sizeof(Consumer), cudaMemcpyDeviceToDevice);	
+
 	imitate_global_sync_kernel <<< nb, nt >>> (consumers_dev, consumers_child_dev, cs_dev_XWstates, nc, rImit, dt,
 											   b_imit_h, b_imit_rt, b_imit_kd);
 	getLastCudaError("imitate global sync kernel");
