@@ -95,6 +95,9 @@ void ConsumerSystem::init(Initializer &I){
 		consumers[i].h     = I.getScalar("h0");
 		consumers[i].vc    = 0;
 		consumers[i].vc_avg = 0;
+		consumers[i].nn     = -1;
+		consumers[i].nn_dist= 1e20;
+		
 //		if (i<nc/2) consumers[i].h = 0.1;
 //		else 		consumers[i].h = 0.3;
 		
@@ -150,6 +153,9 @@ void ConsumerSystem::init(Initializer &I){
 		cons_shape.palette = createPalette_ramp(nc, Colour_rgb(0,0.9,0), Colour_rgb(1,0,0));
 		printPalette(cons_shape.palette);
 	}
+
+	//printConsumers();
+
 }
 
 
@@ -569,6 +575,77 @@ void ConsumerSystem::imitate_global_sync(){
 
 
 
+__global__ void find_nn_kernel(Consumer * cons, int nc, float L, float dL){
+	int tid = blockIdx.x*blockDim.x + threadIdx.x;
+	if (tid >= nc) return;
+
+	cons[tid].nn = -1;
+	cons[tid].nn_dist = 1e20;
+	for (int i=0; i<nc; ++i){
+
+		if (i==tid) continue;	// skip comparison with self
+		
+		float2 v2other = periodicDisplacement(	make_float2(cons[tid].pos_i.x*dL+dL/2, cons[tid].pos_i.y*dL+dL/2), 
+												make_float2(  cons[i].pos_i.x*dL+dL/2,   cons[i].pos_i.y*dL+dL/2), 
+												L, L );
+		float d2other = length(v2other);
+
+		float Inn = d2other < cons[tid].nn_dist;
+
+		cons[tid].nn_dist = fminf(cons[tid].nn_dist, d2other);
+		cons[tid].nn = Inn*i + (1-Inn)*cons[tid].nn;
+		
+	}		
+}
+
+
+__global__ void imitate_local_sync_kernel(Consumer* cons, Consumer* cons_child, curandState * RNG_states, int nc, float rImit, float dt,
+									  bool b_ih, bool b_irt, bool b_ikd){
+	int tid = blockIdx.x*blockDim.x + threadIdx.x;
+	if (tid >= nc) return;
+	
+	bool b_imit = curand_uniform(&RNG_states[tid]) < rImit*dt;
+	if (b_imit){
+	
+		int id_whom = cons[tid].nn;
+		
+		float dv = cons[id_whom].vc_avg - cons[tid].vc_avg;
+		float imitation_prob = float(dv > 0);
+
+		if (curand_uniform(&RNG_states[tid]) <= imitation_prob) { 
+
+			float h_new    = cons[id_whom].h    + 0.02*curand_normal(&RNG_states[tid]);	
+			float RT_new   = cons[id_whom].RT   + 1.00*curand_normal(&RNG_states[tid]);	
+			float Kdsd_new = cons[id_whom].Kdsd + 0.20*curand_normal(&RNG_states[tid]);	
+
+			if (b_ih)  cons_child[tid].h    = clamp(h_new, 0.f, h_new);	
+			if (b_irt) cons_child[tid].RT   = clamp(RT_new, 0.f, RT_new);	
+			if (b_ikd) cons_child[tid].Kdsd = clamp(Kdsd_new, 0.f, Kdsd_new);	
+		}
+	}
+
+}
+
+
+void ConsumerSystem::imitate_local_sync(){
+	
+	int nt = min(256, nc); int nb = (nc-1)/nt+1;
+
+	find_nn_kernel <<< nb, nt >>> (consumers_dev, nc, L, dL);
+	getLastCudaError("find nn kernel");
+
+	//printConsumers();
+
+	cudaMemcpy(consumers_child_dev, consumers_dev, nc*sizeof(Consumer), cudaMemcpyDeviceToDevice);	
+
+	imitate_local_sync_kernel <<< nb, nt >>> (consumers_dev, consumers_child_dev, cs_dev_XWstates, nc, rImit, dt,
+											  b_imit_h, b_imit_rt, b_imit_kd);
+	getLastCudaError("imitate global sync kernel");
+	
+	cudaMemcpy(consumers_dev, consumers_child_dev, nc*sizeof(Consumer), cudaMemcpyDeviceToDevice);	
+}
+
+
 void ConsumerSystem::freeMemory(){
 	cudaFree(consumers_dev);
 	cudaFree(consumers_child_dev);
@@ -588,6 +665,42 @@ void ConsumerSystem::freeMemory(){
 	}
 }
 
+
+
+void ConsumerSystem::printConsumers(){
+
+	cudaMemcpy(&consumers[0], consumers_dev, sizeof(Consumer)*nc, cudaMemcpyDeviceToHost);
+
+	for (int i=0; i<nc; ++i){
+		cout << consumers[i].pos_i.x*dL+dL/2 << " " << consumers[i].pos_i.y*dL+dL/2 << " " << consumers[i].nn << " " << consumers[i].nn_dist << endl;
+	}
+	cout << endl;
+
+	for (int tid=0; tid<nc; ++tid){
+	cout << tid << ": ";
+		for (int i=0; i<nc; ++i){
+
+	//		if (i==tid) continue;	// skip comparison with self
+		
+			float2 v2other = periodicDisplacement(	make_float2(consumers[tid].pos_i.x*dL+dL/2, consumers[tid].pos_i.y*dL+dL/2), 
+													make_float2(  consumers[i].pos_i.x*dL+dL/2,   consumers[i].pos_i.y*dL+dL/2), 
+													L, L );
+			
+			cout << v2other.x << " " << v2other.y << " | ";
+			float d2other = length(v2other);
+
+			cout << d2other << " ";
+	
+//			float Inn = d2other < cons[tid].nn_dist;
+
+//			cons[tid].nn_dist = fminf(cons[tid].nn_dist, d2other);
+//			cons[tid].nn = Inn*i + (1-Inn)*cons[tid].nn;
+		
+		}		
+		cout << "\n";
+	}	
+
+}
 
 
 //void ConsumerSystem::calcPayoffs(int t){

@@ -28,6 +28,8 @@ class Consumer{
 	float vc_x;
 	float vc_avg;
 	
+	int nn;
+	float nn_dist;
 };
 
 class ConsumerSystem{
@@ -86,10 +88,14 @@ class ConsumerSystem{
 	void imitate_global();
 	void imitate_global_sync();
 
+	void imitate_local_sync();
+
 	void writeState(int istep);
 
 	void graphics_updateArrays();
 	
+	void printConsumers();
+		
 	void freeMemory();
 	
 };

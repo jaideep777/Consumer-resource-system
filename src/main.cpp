@@ -49,7 +49,9 @@ int main(int argc, char **argv){
 	ConsumerSystem * csys = new ConsumerSystem;
 
 	vector <float> rimitvec = I.getArray("rimitvec");
-	for (int ib=0; ib<rimitvec.size(); ++ib){
+	vector <float>     bvec = I.getArray("bvec");
+	for (int iri=0; iri<rimitvec.size(); ++iri){
+	for (int ib=0; ib<bvec.size(); ++ib){
 
 		resGrid->init(I);
 		if (graphics) glRenderer->addShape(&resGrid->res_shape);
@@ -57,8 +59,9 @@ int main(int argc, char **argv){
 		csys->init(I);
 
 		// re-init scan parameter 
-		csys->rImit = rimitvec[ib];
-
+		csys->b = bvec[ib];
+		csys->rImit = rimitvec[iri];
+		
 		csys->initIO(I);
 
 		csys->updateExploitationKernels(); 
@@ -80,7 +83,7 @@ int main(int argc, char **argv){
 			csys->disperse(resGrid->res_dev);
 			csys->updateExploitationKernels();
 			csys->calcPayoff(istep);
-			csys->imitate_global_sync();
+			csys->imitate_local_sync();
 //			usleep(50e2);   // sleep for 20 ms. This dramatically reduces CPU consumption
 			++istep;
 //			if (graphics && istep % 1 == 0){
@@ -105,6 +108,7 @@ int main(int argc, char **argv){
 		resGrid->freeMemory();
 		csys->freeMemory();
 
+	}
 	}
 	
 	delete csys;
