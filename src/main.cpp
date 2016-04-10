@@ -7,6 +7,7 @@ using namespace std;
 //#include "../headers/graphics.h"
 #include "../headers/consumers.h"
 #include "../headers/resource.h"
+#include "../headers/turbulence.h"
 
 #include "../utils/cuda_device.h" 
 #include "../utils/simple_initializer.h" 
@@ -48,26 +49,66 @@ int main(int argc, char **argv){
 
 	ConsumerSystem * csys = new ConsumerSystem;
 
+	TurbulenceEngine *turb = new TurbulenceEngine;
+
+//	cudaMemcpy(turb->psi, turb->psi_dev, turb->nx*turb->ny*sizeof(cufftComplex), cudaMemcpyDeviceToHost);
+
+
 	vector <float> rimitvec = I.getArray("rimitvec");
 	vector <float>     bvec = I.getArray("bvec");
+	vector <float>   tmuvec = I.getArray("tmuvec");
+	vector <float>    chvec = I.getArray("chvec");
 	for (int iri=0; iri<rimitvec.size(); ++iri){
 	for (int ib=0; ib<bvec.size(); ++ib){
+	for (int imu=0; imu<tmuvec.size(); ++imu){
+	for (int ich=0; ich<chvec.size(); ++ich){
 
+		// **** init resGrid
 		resGrid->init(I);
-		if (graphics) glRenderer->addShape(&resGrid->res_shape);
 
+		// **** if hetero case, init turbulence engine
+		if (I.getString("exptName") == "het"){
+			// generate spatial heterogenity using turbulence engine
+			turb->init(I);
+			turb->mu = tmuvec[imu];
+			turb->generateSpectrum();
+			turb->generateNoise_gpu();
+			turb->calcEquilPsi();
+			for (int t=0; t<1000; ++t){
+				turb->generateNoise_gpu();
+				turb->modifyPsi_gpu();
+			}
+			turb->transformPsi();
+			turb->normalize_psi();
+
+			// set r from psi
+			//cudaMemcpy(turb->psi, turb->psi_dev, turb->nx*turb->ny*sizeof(cufftComplex), cudaMemcpyDeviceToHost);
+			//ofstream fout("psi.txt");
+			//turb->printMap("psi", fout);
+			for (int i=0; i<turb->nx*turb->ny; ++i) resGrid->r[i] += 0.15*turb->psi[i].x;
+			cudaMemcpy(resGrid->r_dev, resGrid->r, resGrid->nx*resGrid->ny*sizeof(float), cudaMemcpyHostToDevice);	
+		}				
+		cudaMemcpy(resGrid->r, resGrid->r_dev, resGrid->nx*resGrid->ny*sizeof(float), cudaMemcpyDeviceToHost);	
+		printSummary(resGrid->r, resGrid->nx*resGrid->ny, "r");
+
+
+		if (graphics) glRenderer->addShape(&resGrid->res_shape);
+		
+		// **** init consumer sys
 		csys->init(I);
 
 		// re-init scan parameter 
 		csys->b = bvec[ib];
+		csys->ch = chvec[ich];
 		csys->rImit = rimitvec[iri];
+		csys->tmu = turb->mu;
 		
 		csys->initIO(I);
 
 		csys->updateExploitationKernels(); 
 		if (graphics) glRenderer->addShape(&csys->cons_shape);
 
-		// launch sim
+		// **** launch sim
 		int nsteps = I.getScalar("nsteps");
 		SimpleProgressBar prog(nsteps, &istep, "Diffusion");
 
@@ -75,7 +116,6 @@ int main(int argc, char **argv){
 		prog.start();
 		while(1){       // infinite loop needed to poll anim_on signal.
 			if (graphics) glutMainLoopEvent();
-
 
 //			int i = animate();
 			csys->calcResConsumed(resGrid->res_dev);
@@ -107,12 +147,15 @@ int main(int argc, char **argv){
 
 		resGrid->freeMemory();
 		csys->freeMemory();
-
+		if (I.getString("exptName") == "het") turb->freeMemory();
+	}
+	}
 	}
 	}
 	
-	delete csys;
-	delete resGrid;
+//	delete csys;
+//	delete resGrid;
+//	delete turb;
 	
 //	if (graphics) delete R;
 	
@@ -158,4 +201,5 @@ int main(int argc, char **argv){
 //		}
 //			
 //	}}}}}//}
+
 

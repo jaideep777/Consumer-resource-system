@@ -175,8 +175,9 @@ void ConsumerSystem::initIO(Initializer &I){
 		 << ")_nx(" << nx
 		 << ")_b(" << b
 		 << ")_cd(" << cd
-		 << ")_ch(" << ch
-		 << ")";
+		 << ")_ch(" << ch;
+	if (I.getString("exptName") == "het") sout << ")_tmu(" << tmu;
+	sout << ")";
 
 	string exptDesc = sout.str(); sout.clear();
 
@@ -598,6 +599,16 @@ __global__ void find_nn_kernel(Consumer * cons, int nc, float L, float dL){
 	}		
 }
 
+
+__global__ void pairwise_distance_kernel(Consumer * cons, float * pd, int nc, float L, float dL){
+	int tx = threadIdx.x, ty = threadIdx.y;
+	int bx = blockIdx.x, by = blockIdx.y;
+	
+	int o = by*16*nc + ty*nc + bx*16 + tx;
+	int i = 16*by + ty;
+	int j = 16*bx + tx;
+	pd[0] = 
+}
 
 __global__ void imitate_local_sync_kernel(Consumer* cons, Consumer* cons_child, curandState * RNG_states, int nc, float rImit, float dt,
 									  bool b_ih, bool b_irt, bool b_ikd){
