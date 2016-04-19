@@ -123,7 +123,7 @@ int main(int argc, char **argv){
 			csys->disperse(resGrid->res_dev);
 			csys->updateExploitationKernels();
 			csys->calcPayoff(istep);
-			csys->imitate_local_sync();
+			csys->imitate_by_kernel_sync();
 //			usleep(50e2);   // sleep for 20 ms. This dramatically reduces CPU consumption
 			++istep;
 //			if (graphics && istep % 1 == 0){
@@ -131,8 +131,8 @@ int main(int argc, char **argv){
 //				  csys->graphics_updateArrays();
 //			}       
 
-			if (istep % 100 == 0){
-				csys->writeState(istep); 
+			if (istep % csys->out_Tw == 0){
+				csys->writeState(istep, resGrid);
 			}
 		
 			prog.update();

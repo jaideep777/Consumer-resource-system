@@ -27,6 +27,8 @@ class ResourceGrid{
 	float * K, *K_dev;   // carrying capacity
 	float *res, * res_dev, *res_new_dev;  // resource
 	
+	float totalRes;
+	
 	void init(Initializer &I);
 	
 	void update();
@@ -34,6 +36,8 @@ class ResourceGrid{
 //	void printMap(string mapname);
 	void diffuse();
 	void grow(float * ke_all_dev);
+	
+	float sumResource();
 	
 	void freeMemory();
 	

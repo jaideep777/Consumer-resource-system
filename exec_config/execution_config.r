@@ -8,7 +8,7 @@
 # # > DIR
 # Directories for data output
 homeDir			/home/jaideep/austria_project/gpu_codes/output		# home dir - no spaces allowed
-outDir  		LI_test			    # output dir name
+outDir  		KI_test			    # output dir name
 exptName 	 	hom 								# expt name
 	
 
@@ -41,7 +41,7 @@ L 				225			# the size of the entire space (x & y), when body size = 1 --# > det
 # > PARTICLES
 # movement parameters
 dt  			0.1			# time step (for movement)
-h0				0.5
+h0				0.1
 RT0				15
 kdsd0			2
 
@@ -49,7 +49,10 @@ nc				512
 Ke_sd			4
 Ke_cutoff		6
 
+Ki_sd			10 
+
 payoff_Tw		20
+out_Tw 			100
 
 # > SELECTION
 # payoff
@@ -69,7 +72,7 @@ imitate_Kd		1
 dataOut  		1			# output all values in files?
 
 # > SIM
-nsteps			750000
+nsteps			250000
 
 
 # Altruism params
@@ -87,14 +90,18 @@ nsteps			750000
 # c_offset = 0.12 0.16 0.22 0.3 0.41 0.56 0.77 1.05 1.43 1.96 2.68 3.66 5 6.84 9.36 12.8 -1
 # bvec		0.0002 0.002 0.02 0.2 -1
 
-bvec	 0.002 -1 
+bvec	 0.0002 0.002 0.02 -1 
 # 0.0067864435 0.0078138799 0.0089968653
 # 0.0103589494 0.0119272466 0.0137329769 0.0158120864 0.0182059636 0.0209622627 0.0241358528
 # 0.0277899099 0.0319971744 0.0368413994 0.0424190178 0.0488410619 0.0562353740 0.0647491509
 # 0.0745518744 0.0858386852 0.0988342672 0.1137973206 0.1310257114 0.1508624013 0.1737022748
 # 0.2000000000 -1
 
-rimitvec 0.02 -1
+rimitvec 0.02 0.1 -1
+
+chvec 0.08 -1
+
+tmuvec  1 -1
 
 # 0.001000000  0.001325711  0.001757511 
 # 0.002329952  0.003088844  0.004094915 

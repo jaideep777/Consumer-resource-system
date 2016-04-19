@@ -3,6 +3,9 @@
 #include <cstdlib>
 #include <string>
 #include <curand_kernel.h>
+#include <thrust/reduce.h>
+#include <thrust/device_ptr.h>
+
 using namespace std;
 
 #include "../headers/resource.h"
@@ -90,6 +93,8 @@ void ResourceGrid::init(Initializer &I){
 		res_shape.updateColors(res, nx*ny);
 	}
 
+	cout << "total resource = " << sumResource() << endl;
+
 }
 
 
@@ -165,6 +170,14 @@ void ResourceGrid::grow(float * ke_all_dev){
 	int nt = 256; int nb = (nx*ny-1)/nt + 1;
 	resource_growth_kernel <<<nb, nt>>> (res_dev, r_dev, ke_all_dev, K_dev, dt, nx, ny);
 }
+
+
+float ResourceGrid::sumResource(){
+	thrust::device_ptr <float> arr_dev(res_dev);
+	totalRes = thrust::reduce(arr_dev, arr_dev+nx*ny);
+	return totalRes;
+}
+
 
 
 //void ResourceGrid::update(){

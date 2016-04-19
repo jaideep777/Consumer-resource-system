@@ -4,9 +4,11 @@
 #include <string>
 #include <iomanip>
 #include <curand_kernel.h>
+
 using namespace std;
 
 #include "../headers/consumers.h"
+#include "../headers/resource.h"
 //#include "../headers/graphics.h"
 #include "../utils/cuda_vector_math.cuh"
 #include "../utils/cuda_device.h"
@@ -64,6 +66,7 @@ void ConsumerSystem::init(Initializer &I){
 	ke_sd = I.getScalar("Ke_sd");
 	cout << "ke_nmax = " << ke_nmax << endl;
 
+	ki_sd = I.getScalar("Ki_sd");
 	
 	// calculate and allocate exploitation kernels
 	int ke_arrlen = (2*ke_nmax+1)*(2*ke_nmax+1);  // ke goes from [-ke_nmax, ke_nmax]
@@ -95,8 +98,9 @@ void ConsumerSystem::init(Initializer &I){
 		consumers[i].h     = I.getScalar("h0");
 		consumers[i].vc    = 0;
 		consumers[i].vc_avg = 0;
-		consumers[i].nn     = -1;
-		consumers[i].nn_dist= 1e20;
+
+		consumers[i].ld_cumm = 0;
+		consumers[i].nd_cumm = 0;
 		
 //		if (i<nc/2) consumers[i].h = 0.1;
 //		else 		consumers[i].h = 0.3;
@@ -111,17 +115,31 @@ void ConsumerSystem::init(Initializer &I){
 	cudaMemcpy(consumers_dev, &consumers[0], nc*sizeof(Consumer), cudaMemcpyHostToDevice);
 	cudaMemcpy(consumers_child_dev, &consumers[0], nc*sizeof(Consumer), cudaMemcpyHostToDevice);
 
+	// payoff window
 	vc_Tw = I.getScalar("payoff_Tw");
 	vc_window = new float[nc*vc_Tw];
 	for (int i=0; i<nc*vc_Tw; ++i) vc_window[i] = 0;
 	cudaMalloc((void**)&vc_window_dev, sizeof(float)*nc*vc_Tw);
 	cudaMemcpy(vc_window_dev, vc_window, nc*vc_Tw*sizeof(float), cudaMemcpyHostToDevice);
 
+	// output interval
+	out_Tw = I.getScalar("out_Tw");
+
+	// RNG
 	cs_seeds_h = new int[nc];
 	cudaMalloc((void**)&cs_seeds_dev, nc*sizeof(int));
 	cudaMalloc((void**)&cs_dev_XWstates, nc*sizeof(curandState));
 	
 	initRNG();
+	
+	// imitation stuff
+	cudaMalloc((void**)&pd_dev, nc*nc*sizeof(float));
+	cudaMalloc((void**)&cumm_prob_dev, nc*(nc+1)*sizeof(float));
+	//cudaMalloc((void**)&wsum_dev, nc*sizeof(float));
+	
+	// array of zeros
+	nc_zeros = new float[nc];
+	for (int i=0; i<nc; ++i) nc_zeros[i] = 0; // !!
 	
 	// init histograms
 	int nbins = 100;
@@ -136,6 +154,14 @@ void ConsumerSystem::init(Initializer &I){
 	brks_kd.resize(nbins); 
 	for (int i=0; i<nbins; ++i) brks_kd[i] = 0 + double(i)/(nbins-1)*25.0;
 	brks_kd.push_back(1000000);	
+
+	brks_ldc.resize(nbins); 
+	for (int i=0; i<nbins; ++i) brks_ldc[i] = 0 + double(i)/(nbins-1)*50.0;
+	brks_ldc.push_back(1000000);	
+
+	brks_ndc.resize(nbins); 
+	for (int i=0; i<nbins; ++i) brks_ndc[i] = 0 + double(i)/(nbins-1)*1.0;
+	brks_ndc.push_back(1000000);	
 	
 	if (graphics){
 		// create Pointset shape to display consumers
@@ -171,6 +197,7 @@ void ConsumerSystem::initIO(Initializer &I){
 		 << ")_kd(" << ((b_imit_kd)? -1.0:I.getScalar("kdsd0"))
 		 << ")_h("  << ((b_imit_h)?  -1.0:I.getScalar("h0"))
 		 << ")_rI(" << rImit
+		 << ")_kI(" << ki_sd
 		 << ")_L("  << L
 		 << ")_nx(" << nx
 		 << ")_b(" << b
@@ -190,6 +217,8 @@ void ConsumerSystem::initIO(Initializer &I){
 		fout_h[0].open (string(output_dir + "/h_" + exptDesc).c_str());
 		fout_rc[0].open(string(output_dir + "/rc_" + exptDesc).c_str());
 		fout_sd[0].open(string(output_dir + "/kd_" + exptDesc).c_str());
+		fout_ldc[0].open(string(output_dir + "/ldc_" + exptDesc).c_str());
+		fout_ndc[0].open(string(output_dir + "/ndc_" + exptDesc).c_str());
 
 //		if (!fout_h[0].is_open()) cout << "failed to open h file." << endl;
 //		if (!fout_rc[0].is_open()) cout << "failed to open rc file." << endl;
@@ -198,6 +227,11 @@ void ConsumerSystem::initIO(Initializer &I){
 		fout_h[1].open (string(output_dir + "/hist_h_" + exptDesc).c_str());    
 		fout_rc[1].open(string(output_dir + "/hist_rc_" + exptDesc).c_str());   
 		fout_sd[1].open(string(output_dir + "/hist_kd_" + exptDesc).c_str());   
+		fout_ldc[1].open(string(output_dir + "/hist_ldc_" + exptDesc).c_str());
+		fout_ndc[1].open(string(output_dir + "/hist_ndc_" + exptDesc).c_str());
+
+		fout_r.open(string(output_dir + "/r_total_" + exptDesc).c_str());
+//		fout_wsum.open(string(output_dir + "/wsum_" + exptDesc).c_str());
 	}
 
 }
@@ -207,14 +241,21 @@ void ConsumerSystem::closeIO(){
 	fout_h[0].close();      
 	fout_rc[0].close();     
 	fout_sd[0].close();     
+	fout_ldc[0].close();     
+	fout_ndc[0].close();     
 
 	fout_h[1].close();      
 	fout_rc[1].close();     
 	fout_sd[1].close();     
+	fout_ldc[1].close();     
+	fout_ndc[1].close();     
+
+	fout_r.close();
+//	fout_wsum.close();
 }
 
 
-void ConsumerSystem::writeState(int istep){
+void ConsumerSystem::writeState(int istep, ResourceGrid * resgrid){
 
 	cudaMemcpy(&consumers[0], consumers_dev, sizeof(Consumer)*nc, cudaMemcpyDeviceToHost);
 
@@ -222,39 +263,67 @@ void ConsumerSystem::writeState(int istep){
 	fout_h[0] << istep << "\t";
 	fout_rc[0] << istep << "\t";
 	fout_sd[0] << istep << "\t";
+	fout_ldc[0] << istep << "\t";
+	fout_ndc[0] << istep << "\t";
+//	fout_wsum << istep << "\t";
 	for (int i=0; i<nc; ++i){
 		fout_h[0]  << consumers[i].h << "\t";
 		fout_rc[0] << consumers[i].rc << "\t";
 		fout_sd[0] << consumers[i].Kdsd << "\t";
+		fout_ldc[0] << consumers[i].ld_cumm << "\t";
+		fout_ndc[0] << consumers[i].nd_cumm << "\t";
+//		fout_wsum << consumers[i].wsum << "\t";
 	}
 	fout_h[0] << endl;
 	fout_rc[0] << endl;
 	fout_sd[0] << endl;
+	fout_ldc[0] << endl;
+	fout_ndc[0] << endl;
+//	fout_wsum << endl;
 
 	// output histograms
-	vector <float> hvec(nc), rcvec(nc), kdvec(nc);
+	vector <float> hvec(nc), rcvec(nc), kdvec(nc), ldcvec(nc), ndcvec(nc);
 	for (int i=0; i<nc; ++i){
 		hvec[i]  = consumers[i].h;
 		rcvec[i] = consumers[i].rc;
 		kdvec[i] = consumers[i].Kdsd;
+		ldcvec[i] = consumers[i].ld_cumm/out_Tw;
+		ndcvec[i] = consumers[i].nd_cumm/out_Tw;
 	}
 	Histogram h_h(hvec,  brks_h);
 	Histogram h_rc(rcvec, brks_rc);
 	Histogram h_kd(kdvec, brks_kd);
+	Histogram h_ldc(ldcvec, brks_ldc);
+	Histogram h_ndc(ndcvec, brks_ndc);
 
 	vector <float> counts_h  = h_h.getCounts();
 	vector <float> counts_rc = h_rc.getCounts();
 	vector <float> counts_kd = h_kd.getCounts();
+	vector <float> counts_ldc = h_ldc.getCounts();
+	vector <float> counts_ndc = h_ndc.getCounts();
 	
 	for (int i=0; i<counts_h.size(); ++i){
 		fout_h[1]  << counts_h[i] << "\t";
 		fout_rc[1] << counts_rc[i] << "\t";
 		fout_sd[1] << counts_kd[i] << "\t";
+		fout_ldc[1] << counts_ldc[i] << "\t";
+		fout_ndc[1] << counts_ndc[i] << "\t";
 	}
 	fout_h[1] << endl;
 	fout_rc[1] << endl;
 	fout_sd[1] << endl;
+	fout_ldc[1] << endl;
+	fout_ndc[1] << endl;
 	
+	// output total resource remaining
+	float totRes = resgrid->sumResource();
+	fout_r << totRes << endl;
+
+	// reset cummulative values ld and nd
+	cudaMemcpy2D(&consumers_dev[0].ld_cumm, sizeof(Consumer), nc_zeros, sizeof(float), sizeof(float), nc, cudaMemcpyHostToDevice); 
+	cudaMemcpy2D(&consumers_dev[0].nd_cumm, sizeof(Consumer), nc_zeros, sizeof(float), sizeof(float), nc, cudaMemcpyHostToDevice); 
+	
+
 }
 
 
@@ -423,6 +492,8 @@ __global__ void disperse_kernel(float * res, Consumer* cons,
 	cons[tid].ld  = b_disperse*len;
 	cons[tid].nd = b_disperse;
 	
+	cons[tid].ld_cumm += b_disperse*len;
+	cons[tid].nd_cumm += b_disperse;
 }
 
 
@@ -492,6 +563,174 @@ void ConsumerSystem::calcPayoff(int t){
 }
 
 
+/*------------------------------------------------------------------------------
+
+	periodic pairwise distances on GPU
+	returns f(x) where x is pairwise distance, and f is gaussian with sd ki
+
+------------------------------------------------------------------------------*/
+
+__global__ void pairwise_distance_kernel(Consumer * cons, float * pd, int nc, float ki, float L, float dL){
+	int tx = threadIdx.x, ty = threadIdx.y;
+	int bx = blockIdx.x, by = blockIdx.y;
+	
+	int o = by*16*nc + ty*nc + bx*16 + tx;
+	int i = 16*by + ty;
+	int j = 16*bx + tx;
+//	float x = length(periodicDisplacement(cons[i].pos_i*dL+dL/2, cons[j].pos_i*dL+dL/2, L, L));
+
+	float2 v2other = periodicDisplacement(	make_float2(cons[i].pos_i.x*dL+dL/2, cons[i].pos_i.y*dL+dL/2), 
+											make_float2(cons[j].pos_i.x*dL+dL/2, cons[j].pos_i.y*dL+dL/2), 
+											L, L );
+	float x = length(v2other);
+
+	float prob = expf(-x*x/2/ki/ki);
+	pd[o] = prob;
+	
+	atomicAdd(&cons[by*16+ty].wsum, prob); 
+	
+}
+
+
+/*------------------------------------------------------------------------------
+
+	Roulette sampling on GPU
+
+------------------------------------------------------------------------------*/
+__global__ void sample_roulette_kernel(int nc, float* prob, float* cumm_prob_all, Consumer * cons, curandState* p_rngStates){
+	int tid = blockIdx.x*blockDim.x + threadIdx.x;
+	if (tid >= nc) return;
+	
+	float * cumm_prob = &cumm_prob_all[tid*(nc+1)];	// cumm_prob_all row #tid
+
+	// create ranges array 
+	cumm_prob[0] = 0;
+	for (int i=0; i<nc; ++i) cumm_prob[i+1] = cumm_prob[i] + prob[tid*nc + i]*float(i!=tid);
+
+	// generate range selector
+	float a = 1-curand_uniform(&p_rngStates[tid]);  // a is range selector. Must be in [0,1)
+	a *= cumm_prob[nc];				// transform a into [0, sum(weights) )
+
+	// get least upper bound
+	int r = bin_search_lub(a, cumm_prob, nc+1); 
+
+	// we want r-1 because upper bound is the right edge of the range for the desired element
+	cons[tid].imit_whom = r-1;
+	
+}
+
+
+/*------------------------------------------------------------------------------
+
+	Rejection sampling on GPU
+
+------------------------------------------------------------------------------*/
+__global__ void sample_reject_kernel(int nc, float* pd, Consumer * cons, int *iters, curandState* p_rngStates){
+	int tid = blockIdx.x*blockDim.x + threadIdx.x;
+	if (tid >= nc) return;
+	
+	bool accept = false;
+	int r = -1;
+	int niter=0;
+	while(!accept){
+		// choose a random individual other than self
+		int chosen_one = (1-curand_uniform(&p_rngStates[tid]))*(nc-1);
+		int self = (chosen_one == tid);
+		chosen_one = self*(nc-1) + (1-self)*chosen_one;
+
+		// get probability of choosing for imitation from imitation kernel
+		float prob = pd[tid*nc + chosen_one];
+		
+		// if rnd is < prob, accept.
+		if (curand_uniform(&p_rngStates[tid]) < prob){
+			r = chosen_one;
+			accept=true;
+		}
+		
+		// if iters exceed limit, just choose self.. i.e. no imitation
+		++niter;
+		if (niter > 5000){
+			r = tid;
+			break;
+		}
+	}
+	cons[tid].imit_whom = r;	// the id of the individual that consumer tid chooses to imitate
+//	iters[tid] = niter; // number of iterations required for choosing
+			
+}
+
+__global__ void imitate_sync_kernel(Consumer* cons, Consumer* cons_child, curandState * RNG_states, int nc, float rImit, float dt,
+									  bool b_ih, bool b_irt, bool b_ikd){
+	int tid = blockIdx.x*blockDim.x + threadIdx.x;
+	if (tid >= nc) return;
+	
+	float wsum = cons[tid].wsum;
+	float imit_feasibility = 1; //wsum*wsum/ ((float(nc)/8)*(float(nc)/8) + wsum*wsum);
+
+	bool b_imit = curand_uniform(&RNG_states[tid]) < rImit*dt;	
+	bool b_imit2 = curand_uniform(&RNG_states[tid]) < imit_feasibility;	
+	if (b_imit && b_imit2){
+	
+		int id_whom = cons[tid].imit_whom;
+		
+		float dv = cons[id_whom].vc_avg - cons[tid].vc_avg;
+		float imitation_prob = float(dv > 0);	// no imitation for 0 payoff difference
+
+		if (curand_uniform(&RNG_states[tid]) <= imitation_prob) { 
+
+			float h_new    = cons[id_whom].h    + 0.02*curand_normal(&RNG_states[tid]);	
+			float RT_new   = cons[id_whom].RT   + 1.00*curand_normal(&RNG_states[tid]);	
+			float Kdsd_new = cons[id_whom].Kdsd + 0.20*curand_normal(&RNG_states[tid]);	
+
+			if (b_ih)  cons_child[tid].h    = clamp(h_new, 0.f, h_new);	
+			if (b_irt) cons_child[tid].RT   = clamp(RT_new, 0.f, RT_new);	
+			if (b_ikd) cons_child[tid].Kdsd = clamp(Kdsd_new, 0.f, Kdsd_new);	
+		}
+	}
+
+}
+
+
+void ConsumerSystem::imitate_by_kernel_sync(){
+	
+	// calculate pairwise distances
+	dim3 nt(16,16);
+	dim3 nb((nc-1)/16+1, (nc-1)/16+1); 
+
+	cudaMemcpy2D(&consumers_dev[0].wsum, sizeof(Consumer), nc_zeros, sizeof(float), sizeof(float), nc, cudaMemcpyHostToDevice); 
+	//cudaMemcpy(wsum_dev, nc_zeros, nc*sizeof(float), cudaMemcpyHostToDevice);	// reset wsum to zero
+	pairwise_distance_kernel <<<nb, nt >>> (consumers_dev, pd_dev, nc, ki_sd, L, dL);
+	getLastCudaError("pd_kernel");
+
+	// calculate whom to imitate
+	if (ki_sd < 15){	// use roulette sampling
+		sample_roulette_kernel <<<(nc-1)/64+1, 64 >>> (nc, pd_dev, cumm_prob_dev, consumers_dev, cs_dev_XWstates);
+		getLastCudaError("sample_roulette kernel");
+	}
+	else{				// use rejection sampling
+		sample_reject_kernel <<<(nc-1)/64+1, 64 >>> (nc, pd_dev, consumers_dev, NULL, cs_dev_XWstates);
+		getLastCudaError("sample_reject kernel");
+	}
+
+	// imitate
+	cudaMemcpy(consumers_child_dev, consumers_dev, nc*sizeof(Consumer), cudaMemcpyDeviceToDevice);	
+	imitate_sync_kernel <<< nb, nt >>> (consumers_dev, consumers_child_dev, cs_dev_XWstates, nc, rImit, dt,
+										b_imit_h, b_imit_rt, b_imit_kd);
+	getLastCudaError("imitate sync kernel");
+	cudaMemcpy(consumers_dev, consumers_child_dev, nc*sizeof(Consumer), cudaMemcpyDeviceToDevice);	
+		
+}
+
+
+
+
+
+
+
+
+
+
+/*
 __global__ void imitate_global_kernel(Consumer* cons, curandState * RNG_states, int nc, float rImit, float dt,
 									  bool b_ih, bool b_irt, bool b_ikd){
 	int tid = blockIdx.x*blockDim.x + threadIdx.x;
@@ -600,15 +839,6 @@ __global__ void find_nn_kernel(Consumer * cons, int nc, float L, float dL){
 }
 
 
-__global__ void pairwise_distance_kernel(Consumer * cons, float * pd, int nc, float L, float dL){
-	int tx = threadIdx.x, ty = threadIdx.y;
-	int bx = blockIdx.x, by = blockIdx.y;
-	
-	int o = by*16*nc + ty*nc + bx*16 + tx;
-	int i = 16*by + ty;
-	int j = 16*bx + tx;
-	pd[0] = 
-}
 
 __global__ void imitate_local_sync_kernel(Consumer* cons, Consumer* cons_child, curandState * RNG_states, int nc, float rImit, float dt,
 									  bool b_ih, bool b_irt, bool b_ikd){
@@ -655,7 +885,7 @@ void ConsumerSystem::imitate_local_sync(){
 	
 	cudaMemcpy(consumers_dev, consumers_child_dev, nc*sizeof(Consumer), cudaMemcpyDeviceToDevice);	
 }
-
+*/
 
 void ConsumerSystem::freeMemory(){
 	cudaFree(consumers_dev);
@@ -683,7 +913,7 @@ void ConsumerSystem::printConsumers(){
 	cudaMemcpy(&consumers[0], consumers_dev, sizeof(Consumer)*nc, cudaMemcpyDeviceToHost);
 
 	for (int i=0; i<nc; ++i){
-		cout << consumers[i].pos_i.x*dL+dL/2 << " " << consumers[i].pos_i.y*dL+dL/2 << " " << consumers[i].nn << " " << consumers[i].nn_dist << endl;
+		cout << consumers[i].pos_i.x*dL+dL/2 << " " << consumers[i].pos_i.y*dL+dL/2 << " " << endl;
 	}
 	cout << endl;
 

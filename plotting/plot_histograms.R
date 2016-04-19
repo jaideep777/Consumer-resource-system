@@ -1,15 +1,15 @@
 homdir = "/home/jaideep/austria_project/gpu_codes/output"
-outdir = "LI_rimit_scan_b0.001_sync_RT25"
+outdir = "GI_lowhet_b_scan_RT15_rI0.1" 
 
 bvec = exp(seq(log(0.0002), log(0.2), length.out=50))
-bvec = exp(seq(log(0.001), log(1), length.out=50))
-bvec = exp(seq(log(1), log(10), length.out=17))
-bvec = bvec[-1]
-bvec = bvec[seq(1,50,by=2)]
+#bvec[1] = bvec[2]
+#bvec = exp(seq(log(0.001), log(1), length.out=50))
+#bvec = exp(seq(log(1), log(10), length.out=17))
+#bvec = bvec[-1]
+#bvec = bvec[seq(1,50,by=2)]
 # bvec = exp(seq(log(0.0002), log(0.2), length.out=50))
 npar = length(bvec)
 nbins = 100
-brks <- c(seq(0,600,length.out = nbins), 1000)
 b_scan = matrix(data = 0, nrow = npar, ncol=nbins)
 b_mean = numeric(npar)
 
@@ -17,17 +17,18 @@ times = 1:7500
 
 cols = rgb(colorRamp(c("black","red","yellow","white"), space = "rgb", interpolate = "spline")(0:75/75)/255)
 
+brks <- c(seq(0,600,length.out = nbins), 1000)
 for (ib in 1:length(bvec)){
   expt = "hom"
   nsteps = 750000
   N = 512
-  RT = 25
+  RT = 15
   kd = 8 
   h = 0.2
-  rI = bvec[ib] #0.02
+  rI = .1 #bvec[ib] #0.02
   L  = 225
   nx = 450
-  b =  0.001 #bvec[ib] # 0.0022 # 
+  b =  bvec[ib] # 0.0022 # 
   cd = 0.1
   ch = 0.08
   
@@ -59,7 +60,7 @@ for (ib in 1:length(bvec)){
 #  dev.off()
 }
 # image(x = times, y= c(brks[1:nbins],brks[nbins]+0.01), log(hall+1), col = cols)
-image(x = 1:50, y= c(brks[1:nbins],brks[nbins]+0.01), log(b_scan+3), col = cols, xaxt="n", xlab="Imitation Rate", ylab = "evolved kd")
+image(x = 1:50, y= c(brks[1:nbins],brks[nbins]+0.01), log(b_scan+3), col = cols, xaxt="n", xlab="Benefit of harvesting", ylab = "evolved rc")
 axis(side=1, at=as.integer(seq(1,length(bvec), length.out=5)), labels=format(bvec, digits=2)[as.integer(seq(1,length(bvec), length.out=5))])
 
 

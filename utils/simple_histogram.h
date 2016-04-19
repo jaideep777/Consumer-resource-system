@@ -46,6 +46,11 @@ inline Histogram::Histogram(vector <float> &data, int nbins, float range_min, fl
 	if (range_min > 9e19) range_min = arrayMin(&data[0], data.size()); //cout << "min = " << data_min << '\n';
 	if (range_max > 9e19) range_max = arrayMax(&data[0], data.size()); //cout << "min = " << data_min << '\n';
 
+	if (range_min == range_max) {
+		range_min -= 1e-3;
+		range_max += 1e-3;
+	}
+
 	gsl_histogram_set_ranges_uniform (h, range_min, range_max);
 
 	// create histogram
