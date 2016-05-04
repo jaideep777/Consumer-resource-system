@@ -1,9 +1,9 @@
 homdir = "/home/jaideep/austria_project/gpu_codes/output"
-outdir = "KI_ki10" 
+outdir = "KI_ki300_ch0.2" 
 
 bvec = exp(seq(log(0.0002), log(0.2), length.out=50))
 bvec = bvec[(1:50)%%2 != 0]
-bvec = bvec[1:20]
+#bvec = bvec[1:20]
 #bvec[1] = bvec[2]
 #bvec = exp(seq(log(0.001), log(1), length.out=50))
 #bvec = exp(seq(log(1), log(10), length.out=17))
@@ -32,8 +32,8 @@ for (ib in 1:length(bvec)){
   nx = 450
   b =  bvec[ib] # 0.0022 # 
   cd = 0.1
-  ch = 0.08
-  kI = 10
+  ch = 2
+  kI = 300
   
   b_imit_h = T
   b_imit_kd = T
@@ -63,7 +63,7 @@ for (ib in 1:length(bvec)){
 #  dev.off()
 }
 # image(x = times, y= c(brks[1:nbins],brks[nbins]+0.01), log(hall+1), col = cols)
-image(x = 1:20, y= c(brks[1:nbins],brks[nbins]+0.01), log(b_scan+3), col = cols, xaxt="n", xlab="Benefit of harvesting", ylab = "evolved rc")
+image(x = 1:25, y= c(brks[1:nbins],brks[nbins]+0.001), log(b_scan+3), col = cols, xaxt="n", xlab="Benefit of harvesting", ylab = "evolved rc")
 axis(side=1, at=as.integer(seq(1,length(bvec), length.out=5)), labels=format(bvec, digits=2)[as.integer(seq(1,length(bvec), length.out=5))])
 
 
@@ -71,9 +71,57 @@ hall_avg = colMeans(hall[5001:7500,])
 plot(hall_avg, type="l")
 
 
+#### R total ####
+r_scan = numeric(length(bvec))
+for (ib in 1:length(bvec)){
+  expt = "hom"
+  nsteps = 750000
+  N = 512
+  RT = 15
+  kd = 2 
+  h = 0.5
+  rI = .02 #bvec[ib] #0.02
+  L  = 225
+  nx = 450
+  b =  bvec[ib] # 0.0022 # 
+  cd = 0.1
+  ch = 0.2
+  kI = 300
+  
+  b_imit_h = T
+  b_imit_kd = T
+  b_imit_RT = F
+  
+  cat(" ", ib)
+  
+  if (b_imit_h) h=-1
+  if (b_imit_kd) kd=-1
+  if (b_imit_RT) RT=-1
+  fname = sprintf("%s/%s/r_total_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%g)",
+                  homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  )
+  
+  dat <- read.delim(fname, header=F)
+  
+  r_avg = mean(dat$V1[5001:7500])
+  
+  r_scan[ib] = r_avg
+  #  b_mean[ib]  = mean(hmean[5001:7500])
+  
+  cat("\n")
+  
+}
+points(r_scan/1e7*500, type="l", lwd=1, col="white")
 
 
 
+
+
+
+
+dat=read.delim("/home/jaideep/austria_project/gpu_codes/Consumer-resource-system/src/res200.txt", header=F)
+dat=dat[,-451]
+image(as.matrix(dat))
+which(is.na(dat))
 ########################################################################
 ########################################################################
 

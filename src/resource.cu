@@ -162,13 +162,14 @@ __global__ void resource_growth_kernel(float * res, float *r, float *Ke_all, flo
 	if (tid >= nx*ny) return;
 
 	float R = res[tid];
-	res[tid] += (r[tid]*R*(1-R/K[tid]) - Ke_all[tid]*R)*dt;
-
+	R += ( r[tid]*R*(1-R/K[tid]) - Ke_all[tid]*R )*dt;  // resource is extracted after growth
+	res[tid] = fmaxf(1e-6, R);	// resource should not go negative
 }
 
 void ResourceGrid::grow(float * ke_all_dev){
 	int nt = 256; int nb = (nx*ny-1)/nt + 1;
 	resource_growth_kernel <<<nb, nt>>> (res_dev, r_dev, ke_all_dev, K_dev, dt, nx, ny);
+	getLastCudaError("resource growth kernel");
 }
 
 

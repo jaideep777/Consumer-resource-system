@@ -324,6 +324,35 @@ void ConsumerSystem::writeState(int istep, ResourceGrid * resgrid){
 	cudaMemcpy2D(&consumers_dev[0].nd_cumm, sizeof(Consumer), nc_zeros, sizeof(float), sizeof(float), nc, cudaMemcpyHostToDevice); 
 	
 
+/*	// DEBUG: Output Ke_all and res at step 200
+	if (istep == 20000){
+		cudaMemcpy(resgrid->res, resgrid->res_dev, nx*ny*sizeof(float), cudaMemcpyDeviceToHost);
+		cudaMemcpy(ke_all, ke_all_dev, nx*ny*sizeof(float), cudaMemcpyDeviceToHost);
+
+		ofstream fout;
+		
+		fout.open("ke200.txt");
+		for (int i=0; i<nx; ++i){
+			for (int j=0; j<ny; ++j){
+				fout << ke_all[i*nx + j] << "\t";
+			}
+			fout << endl;
+		}
+		fout << endl;
+		fout.close();
+		
+		fout.open("res200.txt");
+		for (int i=0; i<nx; ++i){
+			for (int j=0; j<ny; ++j){
+				fout << resgrid->res[i*nx + j] << "\t";
+			}
+			fout << endl;
+		}
+		fout << endl;
+
+	}
+*/
+
 }
 
 
@@ -395,6 +424,7 @@ void::ConsumerSystem::updateExploitationKernels(){
 //	cudaMemcpy(ke_all_dev, ke_all, nx*ny*sizeof(float), cudaMemcpyHostToDevice); // reset ke_all_dev to zeros
 	int nt = 256; int nb = (nx*ny-1)/nt + 1;
 	resetKeAll_kernel <<< nb, nt>>> (ke_all_dev, nx, ny);
+	getLastCudaError("reset ke_all kernel");
 
 	nt = (2*ke_nmax+1)*(2*ke_nmax+1); nb = nc; 
 	calc_exploitation_kernels_kernel <<< nb, nt >>> (ke_all_dev, consumers_dev, nc, ke_dev, ke_nmax, nx);
@@ -451,6 +481,7 @@ void::ConsumerSystem::calcResConsumed(float * resource_dev){
 	
 	int nt = min(256, nc); int nb = (nc-1)/nt+1; 
 	resetRc_kernel <<<nb, nt >>> (consumers_dev, nc);
+	getLastCudaError("reset_rc kernel");
 	
 	nb = (2*ke_nmax+1)*(2*ke_nmax+1); nt = nc; 
 	calc_resource_consumed_kernel <<< nb, nt >>> (resource_dev, consumers_dev, nc, ke_dev, ke_nmax, nx, dt);
@@ -502,6 +533,7 @@ void ConsumerSystem::disperse(float * resource){
 	disperse_kernel <<< nb, nt >>> (resource, consumers_dev, 
 									cs_dev_XWstates, 
 									L, dL, nc, nx);	
+	getLastCudaError("disperse kernel");								
 }
 
 
@@ -714,7 +746,7 @@ void ConsumerSystem::imitate_by_kernel_sync(){
 
 	// imitate
 	cudaMemcpy(consumers_child_dev, consumers_dev, nc*sizeof(Consumer), cudaMemcpyDeviceToDevice);	
-	imitate_sync_kernel <<< nb, nt >>> (consumers_dev, consumers_child_dev, cs_dev_XWstates, nc, rImit, dt,
+	imitate_sync_kernel <<< (nc-1)/64+1, 64 >>> (consumers_dev, consumers_child_dev, cs_dev_XWstates, nc, rImit, dt,
 										b_imit_h, b_imit_rt, b_imit_kd);
 	getLastCudaError("imitate sync kernel");
 	cudaMemcpy(consumers_dev, consumers_child_dev, nc*sizeof(Consumer), cudaMemcpyDeviceToDevice);	
