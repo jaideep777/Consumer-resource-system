@@ -1,0 +1,2688 @@
+Found 3 CUDA Capable devices:
+0) Tesla K20c
+    Driver Version: 6.5
+    Runtime Version: 5.5
+    Compute Capability: 3.5
+    Multiprocessors: 13
+    Max threads per multiprocessor:  2048
+    Max threads per block: 1024
+    Shared Memory per block: 48 kB
+    Maximum sizes of each dimension of a block: 1024 x 1024 x 64
+
+1) GeForce 210
+    Driver Version: 6.5
+    Runtime Version: 5.5
+    Compute Capability: 1.2
+    Multiprocessors: 2
+    Max threads per multiprocessor:  1024
+    Max threads per block: 512
+    Shared Memory per block: 16 kB
+    Maximum sizes of each dimension of a block: 512 x 512 x 64
+
+2) Tesla K20c
+    Driver Version: 6.5
+    Runtime Version: 5.5
+    Compute Capability: 3.5
+    Multiprocessors: 13
+    Max threads per multiprocessor:  2048
+    Max threads per block: 1024
+    Shared Memory per block: 48 kB
+    Maximum sizes of each dimension of a block: 1024 x 1024 x 64
+
+
+> Using device 2...
+
+-------:
+STRINGS:
+-------:
+exptName: het
+homeDir: /home/jaideep/austria_project/gpu_codes/output
+outDir: map_muxkI_b0.0014_rI0.1
+-------:
+SCALARS:
+-------:
+D: 0
+K: 50
+Ke_cutoff: 6
+Ke_sd: 4
+Ki_sd: 10
+L: 225
+RT0: 15
+b: 0.002
+b_anim_on: 0
+b_baseline: 1
+b_constRg: 1
+blockSize: 256
+cd: 0.1
+ch: 0.08
+dataOut: 1
+dispInterval: 50
+dt: 0.1
+dt_t: 0.1
+graphicsQual: 0
+h0: 0.1
+imitate_Kd: 1
+imitate_RT: 0
+imitate_h: 1
+imitation_rate: 0.02
+kdsd0: 2
+lambda0_t: 400
+mu_t: 0.1
+nc: 512
+nsteps: 750000
+nu_t: 0.005
+nx: 450
+ny: 450
+out_Tw: 100
+particles: 512
+payoff_Tw: 20
+r: 0.2
+xi_t: 0.05
+-------:
+ARRAYS:
+------:
+bvec: 0.00143937 
+chvec: 0.08 
+kivec: 12.1153 26.1016 56.2341 121.153 261.016 562.341 383.119 825.404 
+rimitvec: 0.1 
+tmuvec: 0.01 0.0121153 0.014678 0.0177828 0.0215444 0.0261016 0.0316228 0.0383119 0.0464159 0.0562341 0.0681292 0.0825404 0.1 0.121153 0.14678 0.177828 0.215443 0.261016 0.316228 0.383119 0.464159 0.562341 0.681292 0.825404 1 
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-1083.72 120.211 1467.31
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.01)
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:57.7919 min | 1257.79 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-1063.12 120.212 1425.15
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:23.0208 min | 563.021 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-1096.71 120.212 1419.62
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:35.7737 min | 455.774 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-999.852 120.21 1451.32
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:17.7369 min | 437.737 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-1033.82 120.21 1323.47
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.8379 min | 433.838 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-1044.14 120.211 1454.52
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.3372 min | 432.337 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-1142.92 120.21 1502.59
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.4189 min | 434.419 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-1031.81 120.21 1371.79
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.0517 min | 433.052 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-1003.51 120.21 1352.62
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0121)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:55.8683 min | 1255.87 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-986.9 120.21 1293.7
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0121)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:21.512 min | 561.512 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-1044.68 120.21 1234.41
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0121)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:36.9299 min | 456.93 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-1036.45 120.21 1274.21
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0121)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:19.1521 min | 439.152 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-1008.69 120.211 1270.87
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0121)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.9335 min | 433.934 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-975.693 120.211 1342.48
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0121)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.5268 min | 433.527 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-1043.7 120.211 1442.81
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0121)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.1568 min | 434.157 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-1015.3 120.211 1376.16
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0121)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.7346 min | 432.735 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-930.609 120.209 1336.24
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:54.1274 min | 1254.13 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-949.916 120.211 1258.78
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:21.6692 min | 561.669 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-984.298 120.211 1278.35
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:35.0357 min | 455.036 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-1031.32 120.211 1335.78
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:17.5041 min | 437.504 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-1029.17 120.211 1416.89
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.0708 min | 434.071 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-1064.02 120.21 1426.63
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.6779 min | 432.678 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-1038.73 120.21 1294.02
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.5598 min | 433.56 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-960.544 120.212 1306.88
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.2816 min | 432.282 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-924.054 120.21 1229.54
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0178)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:55.3367 min | 1255.34 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-874.612 120.21 1302.4
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0178)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:21.7034 min | 561.703 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-895.632 120.21 1317.66
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0178)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:35.1027 min | 455.103 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-928.007 120.21 1379.04
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0178)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:19.4576 min | 439.458 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-901.542 120.211 1245.5
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0178)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.5555 min | 433.555 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-904.988 120.212 1344.26
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0178)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.3654 min | 432.365 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-883.087 120.21 1237.42
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0178)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.0645 min | 434.065 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-904.9 120.212 1253.56
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0178)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.0784 min | 434.078 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-821.359 120.21 1240.86
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:54.778 min | 1254.78 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-877.734 120.211 1153.36
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:26.0958 min | 566.096 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-920.223 120.21 1179.22
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:35.1458 min | 455.146 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-874.527 120.211 1264.65
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:17.5882 min | 437.588 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-922.52 120.212 1108.44
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.8735 min | 434.874 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-837.789 120.211 1231.85
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.9316 min | 432.932 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-882.419 120.211 1221.4
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.8644 min | 432.864 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-871.794 120.212 1234.11
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.276 min | 433.276 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-819.255 120.21 1143.01
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0261)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:54.499 min | 1254.5 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-841.1 120.211 1191.46
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0261)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:22.1227 min | 562.123 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-866.51 120.211 1216.76
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0261)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:36.1783 min | 456.178 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-771.105 120.211 1205.43
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0261)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:18.05 min | 438.05 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-827.753 120.211 1165.5
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0261)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.5355 min | 434.535 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-821.359 120.212 1130.45
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0261)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.1748 min | 432.175 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-795.142 120.21 1168.58
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0261)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.2504 min | 433.25 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-795.438 120.211 1143.64
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0261)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.2483 min | 433.248 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-790.233 120.211 1134.65
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:56.5831 min | 1256.58 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-757.244 120.211 1163.11
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:21.3224 min | 561.322 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-810.532 120.211 1129.35
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:35.5199 min | 455.52 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-733.984 120.212 1119.97
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:18.2195 min | 438.22 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-765.171 120.211 1122.89
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.8585 min | 433.858 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-760.799 120.21 1088.43
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.7143 min | 432.714 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-779.956 120.212 1076.3
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.2866 min | 434.287 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-760.737 120.211 1085.05
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.056 min | 433.056 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-728.708 120.212 1033.54
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0383)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:51.4734 min | 1251.47 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-680.152 120.213 1070.02
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0383)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:21.752 min | 561.752 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-688.197 120.211 1067.86
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0383)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:35.6623 min | 455.662 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-749.451 120.209 1006.71
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0383)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:17.5599 min | 437.56 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-711.638 120.21 1066.67
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0383)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.8069 min | 433.807 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-689.099 120.211 1111.94
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0383)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.7274 min | 432.727 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-719.354 120.211 1138.45
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0383)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.9022 min | 432.902 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-742.262 120.212 1076.92
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0383)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.4824 min | 432.482 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-732.01 120.213 1017.43
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:59.8944 min | 1259.89 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-681.363 120.212 1131.39
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:22.8771 min | 562.877 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-677.143 120.211 1019.72
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:36.077 min | 456.077 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-660.341 120.21 1016.4
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:19.6351 min | 439.635 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-673.392 120.211 1101.96
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.6622 min | 434.662 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-662.572 120.211 1010.21
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.9145 min | 433.914 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-647.215 120.212 1018.45
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.0941 min | 433.094 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-688.811 120.211 1054.38
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.401 min | 432.401 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-586.729 120.211 964.879
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0562)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:52.2721 min | 1252.27 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-629.072 120.211 998.105
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0562)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:22.7205 min | 562.721 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-636.254 120.211 1017.84
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0562)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:36.0978 min | 456.098 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-599.561 120.211 1008.08
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0562)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:17.7674 min | 437.767 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-627.48 120.211 951.282
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0562)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.9082 min | 434.908 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-640.125 120.213 984.738
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0562)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.9557 min | 432.956 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-636.688 120.211 949.722
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0562)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.411 min | 434.411 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-638.675 120.211 1000.92
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0562)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.7112 min | 432.711 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-578.742 120.21 883.817
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:56.3671 min | 1256.37 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-528.645 120.21 949.128
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:22.5419 min | 562.542 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-528.994 120.21 961.207
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:35.0747 min | 455.075 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-533.602 120.21 924.561
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:18.9086 min | 438.909 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-536.113 120.21 956.159
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.7765 min | 434.776 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-630.44 120.211 842.196
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.6267 min | 432.627 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-537.822 120.211 959.372
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.8102 min | 432.81 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-537.56 120.212 923.339
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.6281 min | 432.628 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-480.592 120.212 959.026
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0825)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:53.608 min | 1253.61 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-527.834 120.213 880.387
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0825)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:21.4958 min | 561.496 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-510.994 120.21 843.68
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0825)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:35.4966 min | 455.497 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-538.22 120.21 956.849
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0825)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:17.1248 min | 437.125 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-492.535 120.211 947.069
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0825)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.8353 min | 433.835 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-499.743 120.211 877.741
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0825)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.5714 min | 432.571 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-522.141 120.212 973.632
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0825)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.6686 min | 433.669 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-514.46 120.21 867.31
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.0825)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.146 min | 432.146 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-487.914 120.211 855.009
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.1)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:53.6073 min | 1253.61 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-464.773 120.211 836.23
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.1)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:22.1375 min | 562.138 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-452.515 120.211 818.728
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.1)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:35.2122 min | 455.212 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-511.041 120.212 828.602
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.1)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:17.6224 min | 437.622 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-444.058 120.211 867.86
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.1)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.5638 min | 435.564 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-492.646 120.21 872.719
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.1)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.9208 min | 432.921 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-508.901 120.21 912.082
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.1)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.2885 min | 434.288 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-466.585 120.21 901.697
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.1)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.4252 min | 432.425 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-437.904 120.21 702.966
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.121)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:55.4257 min | 1255.43 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-410.083 120.211 729.261
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.121)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:22.0881 min | 562.088 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-424.675 120.21 795.116
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.121)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:37.0568 min | 457.057 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-433.821 120.212 878.401
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.121)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:18.3294 min | 438.329 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-497.334 120.211 789.937
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.121)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.4333 min | 434.433 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-449.574 120.21 806.792
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.121)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.6064 min | 432.606 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-442.242 120.212 814.799
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.121)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.9284 min | 433.928 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-365.696 120.212 782.429
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.121)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.3494 min | 433.349 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-326.789 120.211 699.543
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:54.8856 min | 1254.89 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-369.297 120.212 710.106
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:22.8074 min | 562.807 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-379.659 120.211 695.123
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:35.2809 min | 455.281 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-430.261 120.211 707.74
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:18.3311 min | 438.331 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-368.598 120.209 657.715
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.1578 min | 434.158 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-387.861 120.211 702.03
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.3753 min | 435.375 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-375.863 120.211 650.14
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.9309 min | 432.931 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-346.758 120.211 679.06
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.5643 min | 432.564 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-300.698 120.212 613.225
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.178)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:54.7234 min | 1254.72 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-323.329 120.21 630.611
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.178)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:22.0297 min | 562.03 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-355.29 120.211 641.389
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.178)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:35.4052 min | 455.405 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-330.609 120.211 654.462
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.178)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:18.2633 min | 438.263 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-339.66 120.211 697.027
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.178)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.8506 min | 434.851 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-334.158 120.211 642.863
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.178)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.6821 min | 432.682 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-381.331 120.211 677.333
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.178)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.5999 min | 433.6 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-294.426 120.211 648.841
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.178)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.1347 min | 433.135 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-330.414 120.211 610.023
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:50.6038 min | 1250.6 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-314.603 120.212 588.217
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:22.4261 min | 562.426 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-330.49 120.212 618.827
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:35.0036 min | 455.004 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-280.572 120.21 544.055
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:19.045 min | 439.045 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-285.128 120.211 546.812
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.4353 min | 433.435 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-256.552 120.212 651.191
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.0924 min | 434.092 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-288.817 120.21 528.353
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.8573 min | 433.857 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-318.055 120.209 593.694
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.5348 min | 432.535 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-272.136 120.21 524.603
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.261)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:53.5554 min | 1253.56 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-309.132 120.211 554.76
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.261)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:24.0992 min | 564.099 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-254.076 120.21 556.739
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.261)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:36.7095 min | 456.71 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-226.688 120.212 547.938
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.261)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:18.005 min | 438.005 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-195.112 120.21 534.339
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.261)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.5805 min | 433.581 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-212.444 120.211 552.126
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.261)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.1083 min | 433.108 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-224.501 120.211 541.056
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.261)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.7501 min | 432.75 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-247.447 120.211 525.208
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.261)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.1721 min | 436.172 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-198.975 120.211 493.37
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:56.3036 min | 1256.3 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-211.743 120.21 478.03
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:37.2522 min | 577.252 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-289.025 120.21 590.193
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:37.0007 min | 457.001 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-176.713 120.21 487.727
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:21.044 min | 441.044 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-195.197 120.211 476.844
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.4802 min | 435.48 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-203.23 120.211 501.799
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.0894 min | 433.089 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-169.344 120.21 554.764
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.7887 min | 433.789 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-213.956 120.211 475.3
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.3489 min | 432.349 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-123.397 120.211 427.965
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.383)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:52.5229 min | 1252.52 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-154.837 120.211 450.68
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.383)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:28.6656 min | 568.666 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-161.051 120.211 462.928
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.383)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:37.386 min | 457.386 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-180.05 120.211 494.543
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.383)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:18.9218 min | 438.922 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-194.884 120.21 492.738
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.383)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.9483 min | 435.948 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-179.326 120.212 474.884
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.383)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.2705 min | 434.271 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-196.219 120.211 448.841
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.383)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.8031 min | 434.803 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-154.928 120.21 422.826
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.383)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.7261 min | 433.726 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-166.277 120.211 424.417
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:56.83 min | 1256.83 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-160.257 120.21 431.633
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:49.1572 min | 589.157 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-113.011 120.211 433.545
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:35.1923 min | 455.192 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-201.495 120.211 459.76
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:17.6355 min | 437.635 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-186.024 120.211 433.567
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.7344 min | 433.734 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-90.1665 120.213 379.583
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:11.7635 min | 431.763 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-119.903 120.211 480.725
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.3477 min | 434.348 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-113.878 120.211 406.101
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.8432 min | 432.843 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-105.17 120.212 396.857
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.562)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:55.2384 min | 1255.24 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-72.5446 120.209 367.178
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.562)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:49.5179 min | 589.518 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-100.681 120.211 389.87
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.562)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:36.2169 min | 456.217 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-85.3573 120.212 391.166
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.562)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:18.0338 min | 438.034 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-102.669 120.21 399.09
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.562)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.8446 min | 434.845 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-164.036 120.211 421.398
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.562)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.9927 min | 432.993 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-90.5978 120.212 359.875
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.562)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.6883 min | 434.688 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-95.5813 120.212 405.539
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.562)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.8188 min | 432.819 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-52.2961 120.211 368.395
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:47.4155 min | 1247.42 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-38.5611 120.211 324.907
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 10:1.57117 min | 601.571 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-79.6804 120.211 358.792
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:36.7747 min | 456.775 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-89.3343 120.212 321.774
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:18.5459 min | 438.546 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-57.4503 120.211 338.221
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.8029 min | 434.803 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-57.7459 120.212 360.822
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.1858 min | 433.186 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-104.92 120.211 320.664
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.951 min | 433.951 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-67.3432 120.211 381.622
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.2793 min | 435.279 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-24.1577 120.212 300.594
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.825)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:52.6863 min | 1252.69 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-24.0804 120.21 325.396
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.825)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 10:10.098 min | 610.098 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-25.2296 120.21 313.384
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.825)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:37.0465 min | 457.047 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-43.3 120.211 330.414
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.825)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:17.9665 min | 437.966 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-0.411819 120.211 290.67
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.825)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.0938 min | 434.094 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-75.6867 120.21 330.209
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.825)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.3061 min | 432.306 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-51.335 120.212 273.648
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.825)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.1 min | 433.1 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-39.1714 120.21 320.263
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(0.825)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.2404 min | 432.24 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-40.436 120.211 287.634
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(12.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(1)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 20:50.1615 min | 1250.16 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-37.0077 120.211 279.297
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(26.1)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(1)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:54.188 min | 594.188 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-25.3339 120.21 266.199
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(56.2)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(1)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:35.2303 min | 455.23 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-17.9659 120.211 290.81
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(121)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(1)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:17.1434 min | 437.143 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-28.8359 120.211 324.562
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(261)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(1)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.7969 min | 434.797 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-5.56244 120.212 282.851
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(562)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(1)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.651 min | 432.651 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-5.09483 120.211 261.262
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(383)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(1)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.3593 min | 433.359 sec.
+
+total resource = 1.0125e+07
+creating FFT plan config...
+Generating spectrum...
+-14.5384 120.212 275.062
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: het_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.1)_kI(825)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.08)_tmu(1)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_muxkI_b0.0014_rI0.1’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.3676 min | 432.368 sec.
+

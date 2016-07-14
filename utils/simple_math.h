@@ -191,11 +191,12 @@ inline int DEVICE_NAME bin_search_lub(float val, float * arr, int arrlen){
 	}
 	r = lo;
 
-	// increment r until lowest number > a is reached
-	while(arr[r] <= val){
+	// increment r until lowest number > a is reached (or r is arrlen-1)
+	while(arr[r] <= val && r < arrlen-1){
 		++r;
 	}
-
+	if (r < 1) r=1;
+	
 	return r;
 } 
 

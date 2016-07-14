@@ -58,10 +58,12 @@ int main(int argc, char **argv){
 	vector <float>     bvec = I.getArray("bvec");
 	vector <float>   tmuvec = I.getArray("tmuvec");
 	vector <float>    chvec = I.getArray("chvec");
+	vector <float>    kivec = I.getArray("kivec");
 	for (int iri=0; iri<rimitvec.size(); ++iri){
 	for (int ib=0; ib<bvec.size(); ++ib){
 	for (int imu=0; imu<tmuvec.size(); ++imu){
 	for (int ich=0; ich<chvec.size(); ++ich){
+	for (int iki=0; iki<kivec.size(); ++iki){
 
 		// **** init resGrid
 		resGrid->init(I);
@@ -102,6 +104,7 @@ int main(int argc, char **argv){
 		csys->ch = chvec[ich];
 		csys->rImit = rimitvec[iri];
 		csys->tmu = turb->mu;
+		csys->ki_sd = kivec[iki];
 		
 		csys->initIO(I);
 
@@ -148,6 +151,7 @@ int main(int argc, char **argv){
 		resGrid->freeMemory();
 		csys->freeMemory();
 		if (I.getString("exptName") == "het") turb->freeMemory();
+	}
 	}
 	}
 	}

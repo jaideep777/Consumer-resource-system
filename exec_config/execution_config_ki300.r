@@ -100,7 +100,7 @@ bvec
 
 rimitvec 0.02  -1
 
-chvec 0.08 2 -1
+chvec 0.2 -1
 
 tmuvec  1 -1
 

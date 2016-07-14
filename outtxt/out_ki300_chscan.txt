@@ -1,0 +1,322 @@
+Found 2 CUDA Capable devices:
+0) Tesla C2075
+    Driver Version: 7.5
+    Runtime Version: 5.5
+    Compute Capability: 2.0
+    Multiprocessors: 14
+    Max threads per multiprocessor:  1536
+    Max threads per block: 1024
+    Shared Memory per block: 48 kB
+    Maximum sizes of each dimension of a block: 1024 x 1024 x 64
+
+1) Tesla C2075
+    Driver Version: 7.5
+    Runtime Version: 5.5
+    Compute Capability: 2.0
+    Multiprocessors: 14
+    Max threads per multiprocessor:  1536
+    Max threads per block: 1024
+    Shared Memory per block: 48 kB
+    Maximum sizes of each dimension of a block: 1024 x 1024 x 64
+
+
+> Using device 1...
+
+-------:
+STRINGS:
+-------:
+exptName: hom
+homeDir: /home/jaideep/austria_project/gpu_codes/output
+outDir: KI_ki300_chscan
+-------:
+SCALARS:
+-------:
+D: 0
+K: 50
+Ke_cutoff: 6
+Ke_sd: 4
+Ki_sd: 300
+L: 225
+RT0: 15
+b: 0.002
+b_anim_on: 0
+b_baseline: 1
+b_constRg: 1
+blockSize: 256
+cd: 0.1
+ch: 0.08
+dataOut: 1
+dispInterval: 50
+dt: 0.1
+graphicsQual: 0
+h0: 0.1
+imitate_Kd: 1
+imitate_RT: 0
+imitate_h: 1
+imitation_rate: 0.02
+kdsd0: 2
+nc: 512
+nsteps: 750000
+nx: 450
+ny: 450
+out_Tw: 100
+particles: 512
+payoff_Tw: 20
+r: 0.2
+-------:
+ARRAYS:
+------:
+bvec: 0.005 
+chvec: 0.001 0.0014678 0.00215444 0.00316228 0.00464159 0.00681292 0.01 0.014678 0.0215443 0.0316228 0.0464159 0.0681292 0.1 0.14678 0.215443 0.316228 0.464159 0.681292 1 1.4678 2.15443 3.16228 4.64159 6.81292 10 
+rimitvec: 0.02 
+tmuvec: 1 
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(0.001)
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:33.14 min | 1473.14 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:33.2216 min | 1473.22 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:33.1943 min | 1473.19 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:33.4434 min | 1473.44 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:32.0079 min | 1472.01 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:32.3737 min | 1472.37 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:33.3784 min | 1473.38 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:32.3846 min | 1472.38 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(0.0215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:34.8389 min | 1474.84 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(0.0316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:33.8787 min | 1473.88 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(0.0464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:32.5597 min | 1472.56 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(0.0681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:33.2771 min | 1473.28 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(0.1)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:33.5424 min | 1473.54 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(0.147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:33.1117 min | 1473.11 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(0.215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:32.7922 min | 1472.79 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(0.316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:32.8396 min | 1472.84 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(0.464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:32.8041 min | 1472.8 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(0.681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:33.0299 min | 1473.03 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(1)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:33.3073 min | 1473.31 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(1.47)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:33.536 min | 1473.54 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(2.15)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:34.2623 min | 1474.26 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(3.16)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:33.699 min | 1473.7 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(4.64)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:32.2822 min | 1472.28 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(6.81)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:32.8381 min | 1472.84 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(300)_L(225)_nx(450)_b(0.005)_cd(0.1)_ch(10)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/KI_ki300_chscan’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 24:29.559 min | 1469.56 sec.
+

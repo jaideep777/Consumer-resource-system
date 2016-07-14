@@ -1,5 +1,5 @@
 homdir = "/home/jaideep/austria_project/gpu_codes/output"
-outdir = "KI_ki300_ch0.2" 
+outdir = "KI_ki300" 
 
 bvec = exp(seq(log(0.0002), log(0.2), length.out=50))
 bvec = bvec[(1:50)%%2 != 0]
@@ -85,7 +85,7 @@ for (ib in 1:length(bvec)){
   nx = 450
   b =  bvec[ib] # 0.0022 # 
   cd = 0.1
-  ch = 0.2
+  ch = 2
   kI = 300
   
   b_imit_h = T

@@ -1,0 +1,2083 @@
+Found 3 CUDA Capable devices:
+0) Tesla K20c
+    Driver Version: 6.5
+    Runtime Version: 5.5
+    Compute Capability: 3.5
+    Multiprocessors: 13
+    Max threads per multiprocessor:  2048
+    Max threads per block: 1024
+    Shared Memory per block: 48 kB
+    Maximum sizes of each dimension of a block: 1024 x 1024 x 64
+
+1) GeForce 210
+    Driver Version: 6.5
+    Runtime Version: 5.5
+    Compute Capability: 1.2
+    Multiprocessors: 2
+    Max threads per multiprocessor:  1024
+    Max threads per block: 512
+    Shared Memory per block: 16 kB
+    Maximum sizes of each dimension of a block: 512 x 512 x 64
+
+2) Tesla K20c
+    Driver Version: 6.5
+    Runtime Version: 5.5
+    Compute Capability: 3.5
+    Multiprocessors: 13
+    Max threads per multiprocessor:  2048
+    Max threads per block: 1024
+    Shared Memory per block: 48 kB
+    Maximum sizes of each dimension of a block: 1024 x 1024 x 64
+
+
+> Using device 2...
+
+-------:
+STRINGS:
+-------:
+exptName: hom
+homeDir: /home/jaideep/austria_project/gpu_codes/output
+outDir: map_bxch
+-------:
+SCALARS:
+-------:
+D: 0
+K: 50
+Ke_cutoff: 6
+Ke_sd: 4
+Ki_sd: 10
+L: 225
+RT0: 15
+b: 0.002
+b_anim_on: 0
+b_baseline: 1
+b_constRg: 1
+blockSize: 256
+cd: 0.1
+ch: 0.08
+dataOut: 1
+dispInterval: 50
+dt: 0.1
+graphicsQual: 0
+h0: 0.1
+imitate_Kd: 1
+imitate_RT: 0
+imitate_h: 1
+imitation_rate: 0.02
+kdsd0: 2
+nc: 512
+nsteps: 750000
+nx: 450
+ny: 450
+out_Tw: 100
+particles: 512
+payoff_Tw: 20
+r: 0.2
+-------:
+ARRAYS:
+------:
+bvec: 0.0002 0.000265142 0.000351502 0.00046599 0.000617769 0.000818983 0.00108574 0.00143937 0.00190819 0.00252971 0.00335367 0.00444599 0.0058941 0.00781388 0.0103589 0.013733 0.018206 0.0241359 0.0319972 0.042419 0.0562354 0.0745519 0.0988343 0.131026 0.173702 
+chvec: 0.001 0.0014678 0.00215444 0.00316228 0.00464159 0.00681292 0.01 0.014678 
+kivec: 1000 
+rimitvec: 0.02 
+tmuvec: 1 
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0002)_cd(0.1)_ch(0.001)
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.4346 min | 436.435 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0002)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.407 min | 436.407 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0002)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.0957 min | 435.096 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0002)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.5287 min | 436.529 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0002)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.6534 min | 434.653 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0002)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.6103 min | 434.61 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0002)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.829 min | 434.829 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0002)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.5497 min | 434.55 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000265)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.4831 min | 435.483 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000265)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.5913 min | 434.591 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000265)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.7372 min | 435.737 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000265)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.3101 min | 435.31 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000265)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.6981 min | 435.698 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000265)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.7675 min | 434.768 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000265)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.6852 min | 435.685 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000265)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.8199 min | 434.82 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000352)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.6448 min | 434.645 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000352)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.3847 min | 435.385 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000352)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.1658 min | 434.166 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000352)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.8441 min | 434.844 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000352)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.0229 min | 436.023 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000352)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.9131 min | 433.913 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000352)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.6134 min | 433.613 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000352)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.6713 min | 433.671 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000466)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.0069 min | 435.007 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000466)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.1986 min | 434.199 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000466)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.4221 min | 434.422 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000466)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.1433 min | 434.143 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000466)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.8299 min | 434.83 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000466)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.961 min | 434.961 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000466)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.2297 min | 434.23 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000466)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.678 min | 435.678 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000618)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.7492 min | 435.749 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000618)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.1034 min | 435.103 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000618)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.7928 min | 436.793 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000618)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.5184 min | 436.518 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000618)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:19.2322 min | 439.232 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000618)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 9:52.9392 min | 592.939 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000618)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.0835 min | 434.084 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000618)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.4023 min | 436.402 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000819)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.839 min | 432.839 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000819)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.4283 min | 436.428 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000819)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.9323 min | 436.932 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000819)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.5802 min | 434.58 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000819)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.097 min | 436.097 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000819)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.3794 min | 435.379 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000819)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.031 min | 435.031 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.000819)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.2343 min | 436.234 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00109)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.325 min | 434.325 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00109)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.8672 min | 433.867 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00109)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:17.2225 min | 437.223 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00109)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.4738 min | 433.474 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00109)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.1355 min | 434.136 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00109)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.5289 min | 433.529 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00109)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.2145 min | 433.215 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00109)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.4042 min | 433.404 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.0187 min | 433.019 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.868 min | 430.868 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.99887 min | 429.999 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.3292 min | 430.329 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.986 min | 430.986 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:11.4748 min | 431.475 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:11.4036 min | 431.404 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00144)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:11.2 min | 431.2 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00191)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.4744 min | 430.474 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00191)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.6806 min | 430.681 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00191)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.5069 min | 429.507 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00191)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.0653 min | 430.065 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00191)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.3785 min | 430.378 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00191)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.5669 min | 430.567 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00191)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.0802 min | 430.08 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00191)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:11.2439 min | 431.244 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00253)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.3803 min | 432.38 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00253)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.45038 min | 429.45 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00253)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.2618 min | 430.262 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00253)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.0728 min | 430.073 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00253)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:11.6776 min | 431.678 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00253)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:11.1367 min | 431.137 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00253)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:11.2959 min | 431.296 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00253)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.1289 min | 432.129 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00335)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.6418 min | 430.642 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00335)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:8.8494 min | 428.849 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00335)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.72702 min | 429.727 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00335)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.0695 min | 430.069 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00335)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.36591 min | 429.366 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00335)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:11.4351 min | 431.435 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00335)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:11.1001 min | 431.1 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00335)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.40753 min | 429.408 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00445)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.6225 min | 429.622 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00445)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.63202 min | 429.632 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00445)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.35202 min | 429.352 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00445)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.46365 min | 429.464 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00445)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:8.96039 min | 428.96 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00445)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:8.97421 min | 428.974 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00445)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.42966 min | 429.43 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00445)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.6877 min | 430.688 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00589)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:11.6779 min | 431.678 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00589)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.34164 min | 429.342 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00589)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:11.1643 min | 431.164 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00589)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.032 min | 433.032 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00589)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.1981 min | 430.198 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00589)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.5057 min | 430.506 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00589)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.5711 min | 430.571 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00589)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.8983 min | 432.898 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00781)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.0274 min | 429.027 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00781)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.91266 min | 429.913 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00781)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.33115 min | 429.331 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00781)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.0487 min | 430.049 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00781)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.44302 min | 429.443 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00781)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:8.91888 min | 428.919 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00781)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.18649 min | 429.186 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.00781)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:8.88031 min | 428.88 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0104)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.1115 min | 432.111 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0104)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.09579 min | 429.096 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0104)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:8.78101 min | 428.781 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0104)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:8.48734 min | 428.487 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0104)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.86429 min | 429.864 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0104)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.172 min | 429.172 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0104)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.35126 min | 429.351 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0104)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.12308 min | 429.123 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0137)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.19119 min | 429.191 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0137)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.1604 min | 429.16 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0137)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:11.9521 min | 431.952 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0137)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.4535 min | 432.453 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0137)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.17612 min | 429.176 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0137)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.5657 min | 429.566 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0137)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.67603 min | 429.676 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0137)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:8.39496 min | 428.395 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0182)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.16928 min | 429.169 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0182)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.4476 min | 429.448 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0182)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.57419 min | 429.574 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0182)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:8.72366 min | 428.724 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0182)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.29089 min | 429.291 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0182)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.67148 min | 429.671 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0182)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.612 min | 430.612 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0182)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.078 min | 430.078 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0241)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.29346 min | 429.293 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0241)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:8.89822 min | 428.898 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0241)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.77435 min | 429.774 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0241)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.8344 min | 432.834 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0241)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.8181 min | 433.818 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0241)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.0378 min | 433.038 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0241)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.5335 min | 432.534 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0241)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.59045 min | 429.59 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.032)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.6659 min | 430.666 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.032)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.00873 min | 429.009 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.032)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:11.0224 min | 431.022 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.032)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:10.5844 min | 430.584 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.032)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:11.4873 min | 431.487 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.032)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:9.42297 min | 429.423 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.032)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:11.1034 min | 431.103 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.032)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.6332 min | 434.633 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0424)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.2505 min | 435.25 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0424)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.8416 min | 433.842 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0424)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.89 min | 433.89 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0424)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.6957 min | 434.696 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0424)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.7895 min | 433.789 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0424)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.3695 min | 436.37 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0424)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.1607 min | 436.161 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0424)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.7626 min | 434.763 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0562)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.6573 min | 435.657 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0562)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:20.5296 min | 440.53 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0562)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.4643 min | 435.464 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0562)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.0126 min | 434.013 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0562)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.0378 min | 433.038 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0562)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:15.7277 min | 435.728 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0562)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.9447 min | 436.945 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0562)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.3227 min | 436.323 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0746)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:20.2148 min | 440.215 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0746)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:21.6583 min | 441.658 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0746)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:20.9528 min | 440.953 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0746)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.522 min | 433.522 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0746)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:14.705 min | 434.705 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0746)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.4783 min | 432.478 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0746)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.7236 min | 433.724 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0746)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.5995 min | 432.6 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0988)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.6034 min | 432.603 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0988)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.1658 min | 433.166 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0988)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.1859 min | 432.186 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0988)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:11.0794 min | 431.079 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0988)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.9028 min | 432.903 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0988)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:11.6093 min | 431.609 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0988)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.6026 min | 433.603 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.0988)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:12.0883 min | 432.088 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.131)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:13.0485 min | 433.048 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.131)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:19.0486 min | 439.049 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.131)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:18.4559 min | 438.456 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.131)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:17.5154 min | 437.515 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.131)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:18.9148 min | 438.915 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.131)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.1226 min | 436.123 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.131)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:19.4753 min | 439.475 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.131)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:18.7849 min | 438.785 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.174)_cd(0.1)_ch(0.001)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:17.9865 min | 437.986 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.174)_cd(0.1)_ch(0.00147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:18.1162 min | 438.116 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.174)_cd(0.1)_ch(0.00215)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.0229 min | 436.023 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.174)_cd(0.1)_ch(0.00316)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.8434 min | 436.843 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.174)_cd(0.1)_ch(0.00464)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:16.8319 min | 436.832 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.174)_cd(0.1)_ch(0.00681)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:18.0034 min | 438.003 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.174)_cd(0.1)_ch(0.01)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:17.0928 min | 437.093 sec.
+
+total resource = 1.0125e+07
+ke_nmax = 12
+Kernel Sum = 100.375
+experiment: hom_T(750)_N(512)_RT(15)_kd(-1)_h(-1)_rI(0.02)_kI(1e+03)_L(225)_nx(450)_b(0.174)_cd(0.1)_ch(0.0147)
+mkdir: cannot create directory ‘/home/jaideep/austria_project/gpu_codes/output/map_bxch’: File exists
+
+> Launch: Diffusion
+   > ________________________________________ v
+   > ........................................ |  t = 7:19.6889 min | 439.689 sec.
+

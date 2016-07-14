@@ -24,7 +24,7 @@ LIB_PATH := -L$(CUDA_INSTALL_PATH)/lib64 -L/usr/local/lib
 GLLIB_PATH := -L/usr/lib/nvidia-331
 
 # flags
-ARCH := sm_30
+ARCH := sm_20
 COMMONFLAGS = -m64 
 NVCCFLAGS += $(COMMONFLAGS) -arch=$(ARCH) 
 CXXFLAGS += $(COMMONFLAGS) $(CXXWARN_FLAGS) 
