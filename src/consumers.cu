@@ -102,8 +102,8 @@ void ConsumerSystem::init(Initializer &I){
 		consumers[i].ld_cumm = 0;
 		consumers[i].nd_cumm = 0;
 		
-//		if (i<nc/2) consumers[i].h = 0.1;
-//		else 		consumers[i].h = 0.3;
+		if (i<nc/2) consumers[i].h = h0_m;
+		else 		consumers[i].h = h0_k;
 		
 //		cout << consumers[i].pos.x << " " << consumers[i].pos.y << ", "   
 //			 << consumers[i].pos_i.x << " " << consumers[i].pos_i.y   << endl;
@@ -186,7 +186,7 @@ void ConsumerSystem::init(Initializer &I){
 
 
 void ConsumerSystem::initIO(Initializer &I){
-       
+
 	// ~~~~~~~~~~~~~~~~~ EXPT DESC ~~~~~~~~~~~~~~~~~~~~      
 	stringstream sout;
 	sout << setprecision(3);
@@ -202,7 +202,9 @@ void ConsumerSystem::initIO(Initializer &I){
 		 << ")_nx(" << nx
 		 << ")_b(" << b
 		 << ")_cd(" << cd
-		 << ")_ch(" << ch;
+		 << ")_ch(" << ch
+		 << ")_h0m(" << h0_m
+		 << ")_h0k(" << h0_k;
 	if (I.getString("exptName") == "het") sout << ")_tmu(" << tmu;
 	sout << ")";
 
@@ -710,9 +712,9 @@ __global__ void imitate_sync_kernel(Consumer* cons, Consumer* cons_child, curand
 
 		if (curand_uniform(&RNG_states[tid]) <= imitation_prob) { 
 
-			float h_new    = cons[id_whom].h    + 0.02*curand_normal(&RNG_states[tid]);	
-			float RT_new   = cons[id_whom].RT   + 1.00*curand_normal(&RNG_states[tid]);	
-			float Kdsd_new = cons[id_whom].Kdsd + 0.20*curand_normal(&RNG_states[tid]);	
+			float h_new    = cons[id_whom].h    ;//+ 0.02*curand_normal(&RNG_states[tid]);	
+			float RT_new   = cons[id_whom].RT   ;//+ 1.00*curand_normal(&RNG_states[tid]);	
+			float Kdsd_new = cons[id_whom].Kdsd ;//+ 0.20*curand_normal(&RNG_states[tid]);	
 
 			if (b_ih)  cons_child[tid].h    = clamp(h_new, 0.f, h_new);	
 			if (b_irt) cons_child[tid].RT   = clamp(RT_new, 0.f, RT_new);	

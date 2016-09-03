@@ -12,6 +12,7 @@ using namespace std;
 #include "../utils/cuda_device.h" 
 #include "../utils/simple_initializer.h" 
 #include "../utils/simple_math.h"
+#include "../utils/simple_io.h"
 
 curandGenerator_t generator_host;
 
@@ -65,6 +66,9 @@ int main(int argc, char **argv){
 	for (int ich=0; ich<chvec.size(); ++ich){
 	for (int iki=0; iki<kivec.size(); ++iki){
 
+//	for (int i=0; i<=10; ++i){
+//	for (int j=0; j<i; ++j){
+	
 		// **** init resGrid
 		resGrid->init(I);
 
@@ -84,9 +88,10 @@ int main(int argc, char **argv){
 			turb->normalize_psi();
 
 			// set r from psi
-			//cudaMemcpy(turb->psi, turb->psi_dev, turb->nx*turb->ny*sizeof(cufftComplex), cudaMemcpyDeviceToHost);
-			//ofstream fout("psi.txt");
-			//turb->printMap("psi", fout);
+			cudaMemcpy(turb->psi, turb->psi_dev, turb->nx*turb->ny*sizeof(cufftComplex), cudaMemcpyDeviceToHost);
+			cudaMemcpy(turb->Psi, turb->Psi_dev, turb->nx*turb->ny*sizeof(cufftComplex), cudaMemcpyDeviceToHost);
+			ofstream fout(string("psi_mu"+as_string(turb->mu)+".txt").c_str());
+			turb->printMap("psi", fout);
 			for (int i=0; i<turb->nx*turb->ny; ++i) resGrid->r[i] += 0.15*turb->psi[i].x;
 			cudaMemcpy(resGrid->r_dev, resGrid->r, resGrid->nx*resGrid->ny*sizeof(float), cudaMemcpyHostToDevice);	
 		}				
@@ -97,6 +102,9 @@ int main(int argc, char **argv){
 		if (graphics) glRenderer->addShape(&resGrid->res_shape);
 		
 		// **** init consumer sys
+//		csys->h0_m = .1+j*(2.5-.1)/10;
+//		csys->h0_k = .1+i*(2.5-.1)/10;;
+
 		csys->init(I);
 
 		// re-init scan parameter 
@@ -151,6 +159,10 @@ int main(int argc, char **argv){
 		resGrid->freeMemory();
 		csys->freeMemory();
 		if (I.getString("exptName") == "het") turb->freeMemory();
+
+//	}
+//	}
+
 	}
 	}
 	}

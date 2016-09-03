@@ -8,7 +8,7 @@
 # # > DIR
 # Directories for data output
 homeDir			/home/jaideep/austria_project/gpu_codes/output		# home dir - no spaces allowed
-outDir  		map_rIxkI_b0.002		    # output dir name
+outDir  		coexist_b0.002		    # output dir name
 exptName 	 	hom 								# expt name
 		
 
@@ -99,20 +99,16 @@ dt_t 			0.1
 bvec	0.002 -1 
 
 rimitvec 
- 0.001000000 0.001333521 0.001778279 0.002371374 0.003162278 0.004216965 0.005623413 0.007498942
- 0.010000000 0.013335214 0.017782794 0.023713737 0.031622777 0.042169650 0.056234133 0.074989421
- 0.100000000 0.133352143 0.177827941 0.237137371 0.316227766 0.421696503 0.562341325 0.749894209
- 1.000000000
+	0.02
 	-1
 
 chvec   0.08
 	-1
 
-tmuvec
-1
+tmuvec  1
 -1
 
-kivec  
+kivec  300
  -1
 
 # 17.78279	38.31187	82.54042	177.82794	

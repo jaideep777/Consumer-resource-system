@@ -79,6 +79,8 @@ class ConsumerSystem{
 	
 	float tmu; // heterogeneity parameter, included here for ease of access
 	
+	float h0_m, h0_k;	// starting harvesting rates of milkers and killers
+	
 	curandState * cs_dev_XWstates;
 	int *cs_seeds_h, *cs_seeds_dev; 
 
