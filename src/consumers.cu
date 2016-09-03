@@ -59,6 +59,10 @@ void ConsumerSystem::init(Initializer &I){
 	b_imit_kd = I.getScalar("imitate_Kd");
 	rImit = I.getScalar("imitation_rate");
 	
+	mu_h = I.getScalar("mu_h");
+	mu_RT = I.getScalar("mu_RT");
+	mu_kd = I.getScalar("mu_kd");
+	
 	graphics = I.getScalar("graphicsQual")>0;
 	
 	ke_lmax = I.getScalar("Ke_cutoff");		// bound for exploitation kernel in length units
@@ -692,11 +696,12 @@ __global__ void sample_reject_kernel(int nc, float* pd, Consumer * cons, int *it
 }
 
 __global__ void imitate_sync_kernel(Consumer* cons, Consumer* cons_child, curandState * RNG_states, int nc, float rImit, float dt,
-									  bool b_ih, bool b_irt, bool b_ikd){
+									  bool b_ih, bool b_irt, bool b_ikd,
+									  float mu_h, float mu_RT, float mu_kd){
 	int tid = blockIdx.x*blockDim.x + threadIdx.x;
 	if (tid >= nc) return;
 	
-	float wsum = cons[tid].wsum;
+//	float wsum = cons[tid].wsum;
 	float imit_feasibility = 1; //wsum*wsum/ ((float(nc)/8)*(float(nc)/8) + wsum*wsum);
 
 	bool b_imit = curand_uniform(&RNG_states[tid]) < rImit*dt;	
@@ -710,9 +715,9 @@ __global__ void imitate_sync_kernel(Consumer* cons, Consumer* cons_child, curand
 
 		if (curand_uniform(&RNG_states[tid]) <= imitation_prob) { 
 
-			float h_new    = cons[id_whom].h    + 0.02*curand_normal(&RNG_states[tid]);	
-			float RT_new   = cons[id_whom].RT   + 1.00*curand_normal(&RNG_states[tid]);	
-			float Kdsd_new = cons[id_whom].Kdsd + 0.20*curand_normal(&RNG_states[tid]);	
+			float h_new    = cons[id_whom].h    + mu_h*curand_normal(&RNG_states[tid]);	
+			float RT_new   = cons[id_whom].RT   + mu_RT*curand_normal(&RNG_states[tid]);	
+			float Kdsd_new = cons[id_whom].Kdsd + mu_kd*curand_normal(&RNG_states[tid]);	
 
 			if (b_ih)  cons_child[tid].h    = clamp(h_new, 0.f, h_new);	
 			if (b_irt) cons_child[tid].RT   = clamp(RT_new, 0.f, RT_new);	
@@ -747,7 +752,8 @@ void ConsumerSystem::imitate_by_kernel_sync(){
 	// imitate
 	cudaMemcpy(consumers_child_dev, consumers_dev, nc*sizeof(Consumer), cudaMemcpyDeviceToDevice);	
 	imitate_sync_kernel <<< (nc-1)/64+1, 64 >>> (consumers_dev, consumers_child_dev, cs_dev_XWstates, nc, rImit, dt,
-										b_imit_h, b_imit_rt, b_imit_kd);
+										b_imit_h, b_imit_rt, b_imit_kd,
+										mu_h, mu_RT, mu_kd);
 	getLastCudaError("imitate sync kernel");
 	cudaMemcpy(consumers_dev, consumers_child_dev, nc*sizeof(Consumer), cudaMemcpyDeviceToDevice);	
 		
