@@ -14,13 +14,13 @@ find_peaks <- function (x, m = 3){
 
 
 homdir = "/home/jaideep/austria_project/gpu_codes/output"
-outdir = "map_muxkI_b0.0014_rI0.1" 
+outdir = "map_rIxkI_b0.002" 
 
 # bvec = exp(seq(log(0.0002), log(0.2), length.out=50))
 # bvec = bvec[(1:50)%%2 != 0]
 kivec = exp(seq(log(10), log(1000), length.out=25))[-3]
-#rivec = exp(seq(log(0.001), log(1), length.out=25))
-muvec = exp(seq(log(0.01), log(1), length.out=25))
+rivec = exp(seq(log(0.001), log(1), length.out=25))
+#muvec = exp(seq(log(0.01), log(1), length.out=25))
 #bvec = bvec[1:20]
 #bvec[1] = bvec[2]
 #bvec = exp(seq(log(0.001), log(1), length.out=50))
@@ -51,20 +51,20 @@ for (ir in 1:npar){
   
   
   for (ib in 1:npar){
-    expt = "het"
+    expt = "hom"
     nsteps = 750000
     N = 512
     RT = 15
     kd = 2 
     h = 0.5
-    rI = 0.1 #rivec[ir] #0.02
+    rI = rivec[ir] #0.02
     L  = 225
     nx = 450
-    b =  0.00144 #bvec[ib] # 0.004 # 0.0022 # 
+    b =  0.002 #bvec[ib] # 0.004 # 0.0022 # 
     cd = 0.1
     ch = 0.08 #rivec[ir] #0.08
     kI = kivec[ib] #1000
-    mu = muvec[ir]
+    mu = 1 #muvec[ir]
     
     b_imit_h = T
     b_imit_kd = T
@@ -77,10 +77,10 @@ for (ir in 1:npar){
     if (b_imit_RT) RT=-1
   
     # h
-    fname = sprintf("%s/%s/hist_h_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)_tmu(%.3g)",
-                    homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  , mu)
-#     fname = sprintf("%s/%s/hist_h_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)",
-#                     homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch )
+#     fname = sprintf("%s/%s/hist_h_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)_tmu(%.3g)",
+#                     homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  , mu)
+    fname = sprintf("%s/%s/hist_h_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)",
+                    homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch )
     dat <- read.delim(fname, header=F)
     dat <- dat[,-length(dat[1,])]
     hall = as.matrix(dat)
@@ -89,10 +89,10 @@ for (ir in 1:npar){
     #  b_mean[ib]  = mean(hmean[5001:7500])
     
     # kd
-    fname = sprintf("%s/%s/hist_kd_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)_tmu(%.3g)",
-                    homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  , mu)
-#     fname = sprintf("%s/%s/hist_kd_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)",
-#                     homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  )
+#     fname = sprintf("%s/%s/hist_kd_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)_tmu(%.3g)",
+#                     homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  , mu)
+    fname = sprintf("%s/%s/hist_kd_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)",
+                    homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  )
     dat <- read.delim(fname, header=F)
     dat <- dat[,-length(dat[1,])]
     hall = as.matrix(dat)
@@ -101,10 +101,10 @@ for (ir in 1:npar){
     
     
     # rc
-    fname = sprintf("%s/%s/hist_rc_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)_tmu(%.3g)",
-                    homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  , mu)
-#     fname = sprintf("%s/%s/hist_rc_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)",
-#                     homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  )
+#     fname = sprintf("%s/%s/hist_rc_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)_tmu(%.3g)",
+#                     homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  , mu)
+    fname = sprintf("%s/%s/hist_rc_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)",
+                    homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  )
     dat <- read.delim(fname, header=F)
     dat <- dat[,-length(dat[1,])]
     hall = as.matrix(dat)
@@ -112,10 +112,10 @@ for (ir in 1:npar){
     rc_scan[ib,] = hall_avg
     
     # rtotal
-    fname = sprintf("%s/%s/r_total_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)_tmu(%.3g)",
-                    homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  , mu)
-#     fname = sprintf("%s/%s/r_total_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)",
-#                     homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  )
+#     fname = sprintf("%s/%s/r_total_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)_tmu(%.3g)",
+#                     homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  , mu)
+    fname = sprintf("%s/%s/r_total_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)",
+                    homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  )
     dat <- read.delim(fname, header=F)
     r_avg = mean(dat$V1[5001:7500])
     r_scan[ib] = r_avg
@@ -144,7 +144,7 @@ for (ir in 1:npar){
   diff_h = diff_h*2.5/100
   
   hdiffmat[ir,] = diff_h
-  rcmat[ir,] = r_scan/1.0125e+07
+  rcmat[ir,] = r_scan
   cat("\n")
 }
 
@@ -168,9 +168,9 @@ par(mfrow=c(1,1))
 # filled.contour(t(hdiffmat), xlab="", yab="", xaxt="no", yaxt="no", col = rgb(colorRamp(c("black","red","yellow","white"), space = "rgb", interpolate = "spline")(0:25/25)/255))
 image(t(rcmat), xlab="", ylab="", xaxt="no", yaxt="no", col=cols)
 axis(side=1, at=seq(1,length(kivec), length.out=5)/25, labels=format(kivec, digits=1, scientific = F)[as.integer(seq(1,length(kivec), length.out=5))], cex.axis=1.2)
-axis(side=2, at=seq(1,length(muvec), length.out=5)/25, labels=format(muvec, digits=1, scientific = F)[as.integer(seq(1,length(muvec), length.out=5))], cex.axis=1.2)
+axis(side=2, at=seq(1,length(rivec), length.out=5)/25, labels=format(rivec, digits=1, scientific = F)[as.integer(seq(1,length(rivec), length.out=5))], cex.axis=1.2)
 mtext("Imitation kernel size", side = 1, line = 3, outer = F, cex=1.2)
-mtext("Spatial heterogneity", side = 2, line = 3, outer = F, cex=1.2)
+mtext("Imitation rate", side = 2, line = 3, outer = F, cex=1.2)
 
 image(as.matrix(seq(min(rcmat), max(rcmat), length.out=10)), y=1, x=as.matrix(seq(min(rcmat), max(rcmat), length.out=10)), col=cols)
 image(as.matrix(seq(min(hdiffmat), max(hdiffmat), length.out=10)), y=1, x=as.matrix(seq(min(hdiffmat), max(hdiffmat), length.out=10)), col=cols)

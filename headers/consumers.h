@@ -76,6 +76,7 @@ class ConsumerSystem{
 	
 	bool b_imit_h, b_imit_rt, b_imit_kd;
 	float rImit;
+	float mu_h, mu_RT, mu_kd;	// mutation size in h, rt, kd
 	
 	float tmu; // heterogeneity parameter, included here for ease of access
 	

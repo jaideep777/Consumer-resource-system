@@ -90,9 +90,11 @@ int main(int argc, char **argv){
 			for (int i=0; i<turb->nx*turb->ny; ++i) resGrid->r[i] += 0.15*turb->psi[i].x;
 			cudaMemcpy(resGrid->r_dev, resGrid->r, resGrid->nx*resGrid->ny*sizeof(float), cudaMemcpyHostToDevice);	
 		}				
-//		cudaMemcpy(resGrid->r, resGrid->r_dev, resGrid->nx*resGrid->ny*sizeof(float), cudaMemcpyDeviceToHost);	
-//		printSummary(resGrid->r, resGrid->nx*resGrid->ny, "r");
-
+		//cudaMemcpy(resGrid->r, resGrid->r_dev, resGrid->nx*resGrid->ny*sizeof(float), cudaMemcpyDeviceToHost);	
+		//printSummary(resGrid->r, resGrid->nx*resGrid->ny, "r");
+		
+				
+		//ofstream fout_psi("/r_mu()")
 
 		if (graphics) glRenderer->addShape(&resGrid->res_shape);
 		

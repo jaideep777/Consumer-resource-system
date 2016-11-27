@@ -208,7 +208,11 @@ void ConsumerSystem::initIO(Initializer &I){
 		 << ")_cd(" << cd
 		 << ")_ch(" << ch;
 	if (I.getString("exptName") == "het") sout << ")_tmu(" << tmu;
-	sout << ")";
+	sout << ")_muh(" << mu_h
+		 << ")_murt(" << mu_RT
+		 << ")_mukd(" << mu_kd
+		 << ")_twv(" << vc_Tw
+		 << ")";
 
 	string exptDesc = sout.str(); sout.clear();
 
@@ -554,7 +558,7 @@ __global__ void calc_payoffs_kernel(Consumer * cons, int nc, float b, float cd, 
 	int tid = blockIdx.x*blockDim.x + threadIdx.x;
 	if (tid >= nc) return;
 	
-	cons[tid].vc = b*cons[tid].rc - cd*cons[tid].ld - ch*cons[tid].h*cons[tid].h;
+	cons[tid].vc = b*cons[tid].rc - cd*cons[tid].ld - ch*cons[tid].h*cons[tid].h - 0.001*cons[tid].Kdsd;
 }
 
 __global__ void avg_payoffs_kernel(Consumer * cons, int nc, int tw){

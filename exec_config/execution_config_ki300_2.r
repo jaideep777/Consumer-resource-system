@@ -8,7 +8,7 @@
 # # > DIR
 # Directories for data output
 homeDir			/home/jaideep/austria_project/gpu_codes/output		# home dir - no spaces allowed
-outDir  		KI_ki300_costofKd_b0.001		    # output dir name
+outDir  		KI_ki300_costofKd_0.0005		    # output dir name
 exptName 	 	hom 								# expt name
 	
 
@@ -94,11 +94,7 @@ nsteps			750000
 # bvec		0.0002 0.002 0.02 0.2 -1
 
 bvec	 
- 0.0002	0.0002651423	0.0003515021	0.0004659904	0.0006177687	
- 0.000818983	0.0010857351	0.0014393713	0.001908191	0.0025297104	
- 0.0033536659	0.004445993	  0.0058941034	0.0078138799	0.0103589494
- 0.0137329769	0.0182059636	0.0241358528	0.0319971744	0.0424190178
- 0.056235374	0.0745518744	0.0988342672	0.1310257114	0.1737022748	
+	0.0002 0.001 0.006 0.03 0.2
 -1
 
 rimitvec  .02  -1

@@ -32,5 +32,10 @@
 .Trashes
 *~
 
+# log files
+outtxt/*
+
+
+
 
 
