@@ -62,6 +62,7 @@ void ConsumerSystem::init(Initializer &I){
 	mu_h = I.getScalar("mu_h");
 	mu_RT = I.getScalar("mu_RT");
 	mu_kd = I.getScalar("mu_kd");
+	imresv = I.getScalar("imresv");
 	
 	graphics = I.getScalar("graphicsQual")>0;
 	
@@ -212,6 +213,7 @@ void ConsumerSystem::initIO(Initializer &I){
 		 << ")_murt(" << mu_RT
 		 << ")_mukd(" << mu_kd
 		 << ")_twv(" << vc_Tw
+		 << ")_irv(" << imresv
 		 << ")";
 
 	string exptDesc = sout.str(); sout.clear();
@@ -701,7 +703,7 @@ __global__ void sample_reject_kernel(int nc, float* pd, Consumer * cons, int *it
 
 __global__ void imitate_sync_kernel(Consumer* cons, Consumer* cons_child, curandState * RNG_states, int nc, float rImit, float dt,
 									  bool b_ih, bool b_irt, bool b_ikd,
-									  float mu_h, float mu_RT, float mu_kd){
+									  float mu_h, float mu_RT, float mu_kd, float imresv){
 	int tid = blockIdx.x*blockDim.x + threadIdx.x;
 	if (tid >= nc) return;
 	
@@ -715,7 +717,8 @@ __global__ void imitate_sync_kernel(Consumer* cons, Consumer* cons_child, curand
 		int id_whom = cons[tid].imit_whom;
 		
 		float dv = cons[id_whom].vc_avg - cons[tid].vc_avg;
-		float imitation_prob = float(dv > 0);	// no imitation for 0 payoff difference
+		//float imitation_prob = float(dv > 0);	// no imitation for 0 payoff difference
+		float imitation_prob = 1/(1+exp(-imresv*(dv)));	
 
 		if (curand_uniform(&RNG_states[tid]) <= imitation_prob) { 
 
@@ -757,7 +760,7 @@ void ConsumerSystem::imitate_by_kernel_sync(){
 	cudaMemcpy(consumers_child_dev, consumers_dev, nc*sizeof(Consumer), cudaMemcpyDeviceToDevice);	
 	imitate_sync_kernel <<< (nc-1)/64+1, 64 >>> (consumers_dev, consumers_child_dev, cs_dev_XWstates, nc, rImit, dt,
 										b_imit_h, b_imit_rt, b_imit_kd,
-										mu_h, mu_RT, mu_kd);
+										mu_h, mu_RT, mu_kd, imresv);
 	getLastCudaError("imitate sync kernel");
 	cudaMemcpy(consumers_dev, consumers_child_dev, nc*sizeof(Consumer), cudaMemcpyDeviceToDevice);	
 		

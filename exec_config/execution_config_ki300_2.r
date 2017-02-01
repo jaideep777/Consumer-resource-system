@@ -8,7 +8,7 @@
 # # > DIR
 # Directories for data output
 homeDir			/home/jaideep/austria_project/gpu_codes/output		# home dir - no spaces allowed
-outDir  		KI_ki300_costofKd_0.0005		    # output dir name
+outDir  		smooth_imit_response_full		    # output dir name
 exptName 	 	hom 								# expt name
 	
 
@@ -69,6 +69,7 @@ imitate_Kd		1
 mu_h			0.02
 mu_RT			1
 mu_kd			0.2
+imresv			100
 
 # > OUTPUT
 # output
@@ -94,17 +95,22 @@ nsteps			750000
 # bvec		0.0002 0.002 0.02 0.2 -1
 
 bvec	 
-	0.0002 0.001 0.006 0.03 0.2
+	0.00589
 -1
 
 rimitvec  .02  -1
 
-chvec 0.08 -1
+chvec 0.0681 -1
 
 tmuvec  1 -1
 
-kivec  300
+kivec  1000
  -1
+
+irvvec 
+31.622777   42.169650   56.234133   74.989421  100.000000  133.352143
+177.827941  237.137371  316.227766  421.696503  562.341325  749.894209
+-1
 
 # 0.001 0.006 0.03 0.2
 

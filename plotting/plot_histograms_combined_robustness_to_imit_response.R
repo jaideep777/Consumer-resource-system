@@ -1,20 +1,5 @@
-find_peaks <- function (x, m = 3){
-  x = c(rep(0,m), x, rep(0,m))
-  shape <- diff(sign(diff(x, na.pad = FALSE)))
-  pks <- sapply(which(shape < 0), FUN = function(i){
-    z <- i - m + 1
-    z <- ifelse(z > 0, z, 1)
-    w <- i + m + 1
-    w <- ifelse(w < length(x), w, length(x))
-    if(all(x[c(z : i, (i + 2) : w)] <= x[i + 1])) return(i + 1) else return(numeric(0))
-  })
-  pks <- unlist(pks)
-  pks-m
-}
-
-
-homedir = "/home/jaideep/austria_project/gpu_codes/output"
-outdir = "map_bxch" 
+homdir = "/home/jaideep/austria_project/gpu_codes/output"
+outdir = "smooth_imit_response_full" 
   
 irvvec = exp(seq(log(1), log(1000), length.out=25))
 bvec = exp(seq(log(0.0002), log(0.2), length.out=50))
@@ -36,24 +21,13 @@ cols = rgb(colorRamp(c("black","red","yellow","white"), space = "rgb", interpola
 h_scan = matrix(data = 0, nrow = npar, ncol=nbins)
 kd_scan = matrix(data = 0, nrow = npar, ncol=nbins)
 rc_scan = matrix(data = 0, nrow = npar, ncol=nbins)
-ldc_scan = matrix(data = 0, nrow = npar, ncol=nbins)
 r_scan = numeric(length(bvec))
+
+b_mean = numeric(npar)
 
 brks_h <- c(seq(0,2.5,length.out = nbins), 1000)
 brks_kd <- c(seq(0,25,length.out = nbins), 1000)
 brks_rc <- c(seq(0,600,length.out = nbins), 1000)
-brks_ldc <- c(seq(0,50,length.out = nbins), 1000)
-
-mids_h = brks_h[1:nbins]
-mids_rc = (brks_rc[1:nbins]+brks_rc[1:nbins+1])/2
-mids_ldc = brks_ldc[1:nbins] #(brks_ldc[1:nbins]+brks_ldc[1:nbins+1])/2
-mids_kd = brks_kd[1:nbins]
-
-weights_h = matrix(data = rep(mids_h, npar), nrow=npar, byrow=T)
-weights_rc = matrix(data = rep(mids_rc, npar), nrow=npar, byrow=T)
-weights_ldc = matrix(data = rep(mids_ldc, npar), nrow=npar, byrow=T)
-weights_kd = matrix(data = rep(mids_kd, npar), nrow=npar, byrow=T)
-
 
 #c(1,7,13,19,25)
 for (ib in 1:length(bvec)){
@@ -66,11 +40,12 @@ for (ib in 1:length(bvec)){
   rI = .02 #bvec[ib] #0.02
   L  = 225
   nx = 450
-  b = bvec[ib] # 0.004 # 0.0022 # as.numeric(sprintf("%.1g",bvec)[ib])
+  b = 0.00589 #bvec[ib] # 0.004 # 0.0022 # as.numeric(sprintf("%.1g",bvec)[ib])
   cd = 0.1
   ch = 0.0681
   kI = 1000
   mu = .01
+  irv = irvvec[ib]
   
   b_imit_h = T
   b_imit_kd = T
@@ -82,49 +57,62 @@ for (ib in 1:length(bvec)){
   if (b_imit_kd) kd=-1
   if (b_imit_RT) RT=-1
 
-  expt_params = sprintf("%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)", #_muh(0.02)_murt(1)_mukd(0.2)_twv(20)", )
-                          expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  )
-
-  if (expt == "het") expt_params = paste(expt_params, sprintf("_tmu(%.3g)", mu), sep="")
-
-  
   # h
-  fname = paste(homedir,"/",outdir,"/","hist_h_", expt_params, sep="")
+  if (expt == "hom"){
+    fname = sprintf("%s/%s/hist_h_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)_muh(0.02)_murt(1)_mukd(0.2)_twv(20)_irv(%.3g)",
+                    homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  , irv)
+  } else{
+    fname = sprintf("%s/%s/hist_h_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)_tmu(%.3g)",
+                    homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  , mu)
+  }
   dat <- read.delim(fname, header=F)
   dat <- dat[,-length(dat[1,])]
-  dist_ts = as.matrix(dat)
-  dist_avg = colMeans(dist_ts[5001:7500,])
-  h_scan[ib,] = dist_avg
-
+  hall = as.matrix(dat)
+  hall_avg = colMeans(hall[5001:7500,])
+  h_scan[ib,] = hall_avg
+  #  b_mean[ib]  = mean(hmean[5001:7500])
+  
   # kd
-  fname = paste(homedir,"/",outdir,"/","hist_kd_", expt_params, sep="")
+  if (expt == "hom"){
+    fname = sprintf("%s/%s/hist_kd_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)_muh(0.02)_murt(1)_mukd(0.2)_twv(20)_irv(%.3g)",
+                    homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch   , irv)
+  } else{
+    fname = sprintf("%s/%s/hist_kd_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)_tmu(%.3g)",
+                    homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  , mu)
+  }
   dat <- read.delim(fname, header=F)
   dat <- dat[,-length(dat[1,])]
-  dist_ts = as.matrix(dat)
-  dist_avg = colMeans(dist_ts[5001:7500,])
-  kd_scan[ib,] = dist_avg
+  hall = as.matrix(dat)
+  hall_avg = colMeans(hall[5001:7500,])
+  kd_scan[ib,] = hall_avg
+  
   
   # rc
-  fname = paste(homedir,"/",outdir,"/","hist_rc_", expt_params, sep="")
+  if (expt == "hom"){
+    fname = sprintf("%s/%s/hist_rc_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)_muh(0.02)_murt(1)_mukd(0.2)_twv(20)_irv(%.3g)",
+                    homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch   , irv)
+  } else{
+    fname = sprintf("%s/%s/hist_rc_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)_tmu(%.3g)",
+                    homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  , mu)
+  }
   dat <- read.delim(fname, header=F)
   dat <- dat[,-length(dat[1,])]
-  dist_ts = as.matrix(dat)
-  dist_avg = colMeans(dist_ts[5001:7500,])
-  rc_scan[ib,] = dist_avg
+  hall = as.matrix(dat)
+  hall_avg = colMeans(hall[5001:7500,])
+  rc_scan[ib,] = hall_avg
   
-  # ldc
-  fname = paste(homedir,"/",outdir,"/","hist_ldc_", expt_params, sep="")
-  dat <- read.delim(fname, header=F)
-  dat <- dat[,-length(dat[1,])]
-  dist_ts = as.matrix(dat)
-  dist_avg = colMeans(dist_ts[5001:7500,])
-  ldc_scan[ib,] = dist_avg
-  
-  # r_total
-  fname = paste(homedir,"/",outdir,"/","r_total_", expt_params, sep="")
+  # rtotal
+  if (expt == "hom"){
+    fname = sprintf("%s/%s/r_total_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)_muh(0.02)_murt(1)_mukd(0.2)_twv(20)_irv(%.3g)",
+                    homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch   , irv)
+  } else{
+    fname = sprintf("%s/%s/r_total_%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)_tmu(%.3g)",
+                    homdir,outdir,  expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  , mu)
+  }
   dat <- read.delim(fname, header=F)
   r_avg = mean(dat$V1[5001:7500])
   r_scan[ib] = r_avg
+  
   
   cat(".")
   
@@ -132,43 +120,12 @@ for (ib in 1:length(bvec)){
 #   image(x = times, y= c(brks[1:nbins],brks[nbins]+0.01), (hall+1), col = cols, xlab="time")
 #  dev.off()
 }
+cat("\n")
 # image(x = times, y= c(brks[1:nbins],brks[nbins]+0.01), log(hall+1), col = cols)
 
-h_hi = numeric(npar)
-h_lo = numeric(npar)
-kd_hi = numeric(npar)
-kd_lo = numeric(npar)
-ldc_hi = numeric(npar)
-ldc_lo = numeric(npar)
-
-for (i in 1:npar){
-  pks = find_peaks(x=ldc_scan[i,], m=1)
-  if (length(pks) == 1) pks = c(pks,pks)
-  pks = sort(pks)[1:2]
-  ldc_hi[i] = brks_ldc[pks[2]]
-  ldc_lo[i] = brks_ldc[pks[1]]
-
-  pks = find_peaks(x=kd_scan[i,], m=3)
-  if (length(pks) == 1) pks = c(pks,pks)
-  pks = sort(pks)[1:2]
-  kd_hi[i] = brks_kd[pks[2]]
-  kd_lo[i] = brks_kd[pks[1]]
-
-  pks = find_peaks(x=h_scan[i,], m=5)
-  if (length(pks) == 1) pks = c(pks,pks)
-  pks = sort(pks)[1:2]
-  h_hi[i] = brks_h[pks[2]]
-  h_lo[i] = brks_h[pks[1]]
-  
-}
-
-avg_h = rowSums(weights_h*h_scan)/N
-avg_rc = rowSums(weights_rc*rc_scan)/N
-avg_ldc = rowSums(weights_ldc*ldc_scan)/N
-avg_kd = rowSums(weights_kd*kd_scan)/N
-
-cat("\n")
-
+mids_rc = (brks_rc[1:nbins]+brks_rc[1:nbins+1])/2
+weights = matrix(data = rep(mids_rc, npar), nrow=npar, byrow=T)
+avg_rc = rowSums(weights*rc_scan)/N
 
 cols = colorRampPalette(colors = c("white", "black"))(100)
 
@@ -176,35 +133,22 @@ vert_cut = 1
 op=par(mfrow=c(3,1), mar = c(1,8,1,1), oma=c(4,0.,1,1.5)+0.1, mgp=c(1,1,0), cex.axis=1.8)
 image(x = 1:25, y= c(brks_h[1:nbins],brks_h[nbins]+0.001)[1:(nbins*vert_cut)], log(h_scan[,1:(nbins*vert_cut)]+3), col = cols, xaxt="n", xlab="", ylab = "", cex.axis=1.8)
 title(ylab="Evolved \nharvesting\n rate", line=3, cex.lab=1.8)
-points(h_hi, type="l", col="red")
-points(h_lo, type="l", col="green")
-points(avg_h, type="l", col="blue")
 
-# vert_cut=0.5
-# image(x = 1:25, y= c(brks_kd[1:nbins],brks_kd[nbins]+0.001)[1:(nbins*vert_cut)], log(kd_scan[,1:(nbins*vert_cut)]+3), col = cols, xaxt="n", xlab="", ylab = "", cex.axis=1.8)
-# title(ylab="Evolved \ndispersal\n distance", line=3, cex.lab=1.8)
-# points(kd_hi, type="l", col="red")
-# points(kd_lo, type="l", col="green")
-# points(avg_kd, type="l", col="blue")
-
-vert_cut=0.2
-image(x = 1:25, y= c(brks_ldc[1:nbins],brks_ldc[nbins]+0.001)[1:(nbins*vert_cut)], log(ldc_scan[,1:(nbins*vert_cut)]+3), col = cols, xaxt="n", xlab="", ylab = "", cex.axis=1.8)
-title(ylab="Evolved \nactual\n dispersal", line=3, cex.lab=1.8)
-points(avg_ldc, type="l", lwd=1, col="red")
-points(ldc_hi, type="l", col="red")
-points(ldc_lo, type="l", col="green")
-points(avg_ldc, type="l", col="blue")
+vert_cut=0.5
+image(x = 1:25, y= c(brks_kd[1:nbins],brks_kd[nbins]+0.001)[1:(nbins*vert_cut)], log(kd_scan[,1:(nbins*vert_cut)]+3), col = cols, xaxt="n", xlab="", ylab = "", cex.axis=1.8)
+title(ylab="Evolved \ndispersal\n distance", line=3, cex.lab=1.8)
 
 vert_cut=0.5
 image(x = 1:25, y= c(brks_rc[1:nbins],brks_rc[nbins]+0.001)[1:(nbins*vert_cut)], log(rc_scan[,1:(nbins*vert_cut)]+3), col = cols, xaxt="n", xlab="", ylab = "", cex.axis=1.8)
 title(ylab="Evolved \nresource\n consumed", xlab="Benefit of harvesting", line=3, cex.lab=1.8)
-points(avg_rc, type="l", col="blue")
-points(r_scan/1.0125e7*300, type="l", lwd=1, col="green")
+
+# points(r_scan/1.0125e7*600, type="l", lwd=1, col="red")
+points(avg_rc, type="l", lwd=1, col="red")
 
 axis(side=1, at=as.integer(seq(1,length(bvec), length.out=5)), labels=sprintf("%4.1g",irvvec)[as.integer(seq(1,length(bvec), length.out=5))], cex.axis=1.8)
 mtext("Slope of imitation response function", side = 1, line = 3, outer = F, cex=1.4)
 
-# abline(h=avg_rc[1]/100*600, lty=2, col="cyan4")
+abline(h=avg_rc[1]/100*600, lty=2, col="cyan4")
 
 # find_peaks <- function (x, m = 3){
 #   x = c(rep(0,m), x, rep(0,m))
