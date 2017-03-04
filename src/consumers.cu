@@ -213,7 +213,7 @@ void ConsumerSystem::initIO(Initializer &I){
 		 << ")_murt(" << mu_RT
 		 << ")_mukd(" << mu_kd
 		 << ")_twv(" << vc_Tw
-		 << ")_irv(" << imresv
+//		 << ")_irv(" << imresv
 		 << ")";
 
 	string exptDesc = sout.str(); sout.clear();
@@ -560,7 +560,7 @@ __global__ void calc_payoffs_kernel(Consumer * cons, int nc, float b, float cd, 
 	int tid = blockIdx.x*blockDim.x + threadIdx.x;
 	if (tid >= nc) return;
 	
-	cons[tid].vc = b*cons[tid].rc - cd*cons[tid].ld - ch*cons[tid].h*cons[tid].h - 0.001*cons[tid].Kdsd;
+	cons[tid].vc = b*cons[tid].rc - cd*cons[tid].ld - ch*cons[tid].h*cons[tid].h; // - 0.001*cons[tid].Kdsd;
 }
 
 __global__ void avg_payoffs_kernel(Consumer * cons, int nc, int tw){
@@ -717,8 +717,8 @@ __global__ void imitate_sync_kernel(Consumer* cons, Consumer* cons_child, curand
 		int id_whom = cons[tid].imit_whom;
 		
 		float dv = cons[id_whom].vc_avg - cons[tid].vc_avg;
-		//float imitation_prob = float(dv > 0);	// no imitation for 0 payoff difference
-		float imitation_prob = 1/(1+exp(-imresv*(dv)));	
+		float imitation_prob = float(dv > 0);	// no imitation for 0 payoff difference
+		//float imitation_prob = 1/(1+exp(-imresv*(dv)));	
 
 		if (curand_uniform(&RNG_states[tid]) <= imitation_prob) { 
 
@@ -730,6 +730,16 @@ __global__ void imitate_sync_kernel(Consumer* cons, Consumer* cons_child, curand
 			if (b_irt) cons_child[tid].RT   = clamp(RT_new, 0.f, RT_new);	
 			if (b_ikd) cons_child[tid].Kdsd = clamp(Kdsd_new, 0.f, Kdsd_new);	
 		}
+	}
+	
+	// random exploration
+	if (curand_uniform(&RNG_states[tid]) < 0.0000*dt){
+
+		float h_new    = curand_uniform(&RNG_states[tid])*2.5;
+		float Kdsd_new = curand_uniform(&RNG_states[tid])*10;
+
+		if (b_ih)  cons_child[tid].h    = clamp(h_new, 0.f, h_new);	
+		if (b_ikd) cons_child[tid].Kdsd = clamp(Kdsd_new, 0.f, Kdsd_new);	
 	}
 
 }

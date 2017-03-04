@@ -14,13 +14,14 @@ find_peaks <- function (x, m = 3){
 
 
 homedir = "/home/jaideep/austria_project/gpu_codes/output"
-outdir = "map_bxch" 
+outdir = "smooth_imit_response_full" 
   
 irvvec = exp(seq(log(1), log(1000), length.out=25))
 bvec = exp(seq(log(0.0002), log(0.2), length.out=50))
 bvec = bvec[(1:50)%%2 != 0]
 kivec = exp(seq(log(10), log(1000), length.out=25))
-rivec = exp(seq(log(0.001), log(10), length.out=25))
+rivec = exp(seq(log(0.001), log(1), length.out=25))
+irvvec = exp(seq(log(1), log(1000), length.out=25))
 #bvec = bvec[1:20]
 #bvec[1] = bvec[2]
 #bvec = exp(seq(log(0.001), log(1), length.out=50))
@@ -63,14 +64,15 @@ for (ib in 1:length(bvec)){
   RT = 15
   kd = 2 
   h = 0.5
-  rI = .02 #bvec[ib] #0.02
+  rI = 0.02 #0.100000000  #.02 #bvec[ib] #0.02
   L  = 225
   nx = 450
-  b = bvec[ib] # 0.004 # 0.0022 # as.numeric(sprintf("%.1g",bvec)[ib])
+  b = 0.00589 #bvec[ib] # 0.004 # 0.0022 # as.numeric(sprintf("%.1g",bvec)[ib])
   cd = 0.1
   ch = 0.0681
-  kI = 1000
+  kI = 1000 #kivec[ib]
   mu = .01
+  irv = irvvec[ib]
   
   b_imit_h = T
   b_imit_kd = T
@@ -82,8 +84,8 @@ for (ib in 1:length(bvec)){
   if (b_imit_kd) kd=-1
   if (b_imit_RT) RT=-1
 
-  expt_params = sprintf("%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)", #_muh(0.02)_murt(1)_mukd(0.2)_twv(20)", )
-                          expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  )
+  expt_params = sprintf("%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)_muh(0.02)_murt(1)_mukd(0.2)_twv(20)_irv(%.3g)", 
+                          expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  , irv)
 
   if (expt == "het") expt_params = paste(expt_params, sprintf("_tmu(%.3g)", mu), sep="")
 
@@ -92,38 +94,40 @@ for (ib in 1:length(bvec)){
   fname = paste(homedir,"/",outdir,"/","hist_h_", expt_params, sep="")
   dat <- read.delim(fname, header=F)
   dat <- dat[,-length(dat[1,])]
-  dist_ts = as.matrix(dat)
-  dist_avg = colMeans(dist_ts[5001:7500,])
-  h_scan[ib,] = dist_avg
+  dist_ts_h = as.matrix(dat)
+  dist_avg_h = colMeans(dist_ts_h[5001:7500,])
 
   # kd
   fname = paste(homedir,"/",outdir,"/","hist_kd_", expt_params, sep="")
   dat <- read.delim(fname, header=F)
   dat <- dat[,-length(dat[1,])]
-  dist_ts = as.matrix(dat)
-  dist_avg = colMeans(dist_ts[5001:7500,])
-  kd_scan[ib,] = dist_avg
+  dist_ts_kd = as.matrix(dat)
+  dist_avg_kd = colMeans(dist_ts_kd[5001:7500,])
   
   # rc
   fname = paste(homedir,"/",outdir,"/","hist_rc_", expt_params, sep="")
   dat <- read.delim(fname, header=F)
   dat <- dat[,-length(dat[1,])]
-  dist_ts = as.matrix(dat)
-  dist_avg = colMeans(dist_ts[5001:7500,])
-  rc_scan[ib,] = dist_avg
+  dist_ts_rc = as.matrix(dat)
+  dist_avg_rc = colMeans(dist_ts_rc[5001:7500,])
   
   # ldc
   fname = paste(homedir,"/",outdir,"/","hist_ldc_", expt_params, sep="")
   dat <- read.delim(fname, header=F)
   dat <- dat[,-length(dat[1,])]
-  dist_ts = as.matrix(dat)
-  dist_avg = colMeans(dist_ts[5001:7500,])
-  ldc_scan[ib,] = dist_avg
+  dist_ts_ldc = as.matrix(dat)
+  dist_avg_ldc = colMeans(dist_ts_ldc[5001:7500,])
   
   # r_total
   fname = paste(homedir,"/",outdir,"/","r_total_", expt_params, sep="")
   dat <- read.delim(fname, header=F)
   r_avg = mean(dat$V1[5001:7500])
+
+  # Set in matrices
+  h_scan[ib,] = dist_avg_h
+  kd_scan[ib,] = dist_avg_kd
+  rc_scan[ib,] = dist_avg_rc
+  ldc_scan[ib,] = dist_avg_ldc
   r_scan[ib] = r_avg
   
   cat(".")
@@ -172,38 +176,42 @@ cat("\n")
 
 cols = colorRampPalette(colors = c("white", "black"))(100)
 
+png(filename = "~/plot.png", height = 600*3, width=500*3, res = 300)
+
+seq(25,1,by=-1)
+
 vert_cut = 1
-op=par(mfrow=c(3,1), mar = c(1,8,1,1), oma=c(4,0.,1,1.5)+0.1, mgp=c(1,1,0), cex.axis=1.8)
-image(x = 1:25, y= c(brks_h[1:nbins],brks_h[nbins]+0.001)[1:(nbins*vert_cut)], log(h_scan[,1:(nbins*vert_cut)]+3), col = cols, xaxt="n", xlab="", ylab = "", cex.axis=1.8)
-title(ylab="Evolved \nharvesting\n rate", line=3, cex.lab=1.8)
-points(h_hi, type="l", col="red")
-points(h_lo, type="l", col="green")
-points(avg_h, type="l", col="blue")
+op=par(mfrow=c(4,1), mar = c(1,8,1,1), oma=c(4,0.,1,1.5)+0.1, mgp=c(1,1,0), cex.axis=1.8)
+image(x = 1:25, y= c(brks_h[1:nbins],brks_h[nbins]+0.001)[1:(nbins*vert_cut)]/.2, log(h_scan[seq(25,1,by=-1),1:(nbins*vert_cut)]+3), col = cols, xaxt="n", xlab="", ylab = "", cex.axis=1.8)
+title(ylab="Evolved\nharvesting\nrate", line=3, cex.lab=1.8)
+# points(h_hi/.2, type="l", col="red")
+# points(h_lo/.2, type="l", col="green")
+# points(avg_h/.2, type="l", col="blue")
 
-# vert_cut=0.5
-# image(x = 1:25, y= c(brks_kd[1:nbins],brks_kd[nbins]+0.001)[1:(nbins*vert_cut)], log(kd_scan[,1:(nbins*vert_cut)]+3), col = cols, xaxt="n", xlab="", ylab = "", cex.axis=1.8)
-# title(ylab="Evolved \ndispersal\n distance", line=3, cex.lab=1.8)
-# points(kd_hi, type="l", col="red")
-# points(kd_lo, type="l", col="green")
-# points(avg_kd, type="l", col="blue")
+vert_cut=0.4
+image(x = 1:25, y= c(brks_kd[1:nbins],brks_kd[nbins]+0.001)[1:(nbins*vert_cut)]/4, log(kd_scan[seq(25,1,by=-1),1:(nbins*vert_cut)]+3), col = cols, xaxt="n", xlab="", ylab = "", cex.axis=1.8)
+title(ylab="Evolved\ndispersal\nkernel size", line=3, cex.lab=1.8)
+# points(kd_hi/4, type="l", col="red")
+# points(kd_lo/4, type="l", col="green")
+# points(avg_kd/4, type="l", col="blue")
 
-vert_cut=0.2
-image(x = 1:25, y= c(brks_ldc[1:nbins],brks_ldc[nbins]+0.001)[1:(nbins*vert_cut)], log(ldc_scan[,1:(nbins*vert_cut)]+3), col = cols, xaxt="n", xlab="", ylab = "", cex.axis=1.8)
-title(ylab="Evolved \nactual\n dispersal", line=3, cex.lab=1.8)
-points(avg_ldc, type="l", lwd=1, col="red")
-points(ldc_hi, type="l", col="red")
-points(ldc_lo, type="l", col="green")
-points(avg_ldc, type="l", col="blue")
+vert_cut=0.15
+image(x = 1:25, y= c(brks_ldc[1:nbins],brks_ldc[nbins]+0.001)[1:(nbins*vert_cut)]/.2/4, log(ldc_scan[seq(25,1,by=-1),1:(nbins*vert_cut)]+3), col = cols, xaxt="n", xlab="", ylab = "", cex.axis=1.8)
+title(ylab="Evolved\ndispersal\ndistance", line=3, cex.lab=1.8)
+# points(avg_ldc/.8, type="l", lwd=1, col="blue")
+# points(ldc_hi/.8, type="l", col="red")
+# points(ldc_lo/.8, type="l", col="green")
 
 vert_cut=0.5
-image(x = 1:25, y= c(brks_rc[1:nbins],brks_rc[nbins]+0.001)[1:(nbins*vert_cut)], log(rc_scan[,1:(nbins*vert_cut)]+3), col = cols, xaxt="n", xlab="", ylab = "", cex.axis=1.8)
-title(ylab="Evolved \nresource\n consumed", xlab="Benefit of harvesting", line=3, cex.lab=1.8)
-points(avg_rc, type="l", col="blue")
-points(r_scan/1.0125e7*300, type="l", lwd=1, col="green")
+image(x = 1:25, y= c(brks_rc[1:nbins],brks_rc[nbins]+0.001)[1:(nbins*vert_cut)]/89, log(rc_scan[seq(25,1,by=-1),1:(nbins*vert_cut)]+3), col = cols, xaxt="n", xlab="", ylab = "", cex.axis=1.8)
+title(ylab="Evolved\nresource\nextraction rate", xlab="Benefit of harvesting", line=3, cex.lab=1.8)
+points(avg_rc[seq(25,1,by=-1)]/89, type="l", col="blue")
+# points(r_scan/1.0125e7*300, type="l", lwd=1, col="green")
 
-axis(side=1, at=as.integer(seq(1,length(bvec), length.out=5)), labels=sprintf("%4.1g",irvvec)[as.integer(seq(1,length(bvec), length.out=5))], cex.axis=1.8)
-mtext("Slope of imitation response function", side = 1, line = 3, outer = F, cex=1.4)
+axis(side=1, at=as.integer(seq(1,length(kivec), length.out=5)), labels=sprintf("%.1g",bvec/.1)[as.integer(seq(1,npar, length.out=5))], cex.axis=1.8)
+mtext("Benefit of harvesting", side = 1, line = 3, outer = F, cex=1.4)
 
+dev.off()
 # abline(h=avg_rc[1]/100*600, lty=2, col="cyan4")
 
 # find_peaks <- function (x, m = 3){

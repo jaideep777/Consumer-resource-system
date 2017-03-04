@@ -3,7 +3,7 @@ outdir = "msy_26x26"
 
 # bvec = exp(seq(log(0.0002), log(0.2), length.out=50))
 # bvec = bvec[(1:50)%%2 != 0]
-kivec = exp(seq(log(10), log(1000), length.out=25))[-3]
+kivec = exp(seq(log(10), log(1000), length.out=25))
 rivec = exp(seq(log(0.001), log(1), length.out=25))
 #muvec = exp(seq(log(0.01), log(1), length.out=25))
 #bvec = bvec[1:20]
@@ -75,29 +75,32 @@ for (ir in 1:npar){
   cat("\n")
 }
 
+png(width = 690*3,height = 450*3, filename = "~/msy.png", res = 300)
+
 cols = colorRampPalette(colors = c("black", "red", "yellow", "white"))(100)
 colbr_rc = seq(0,100,length.out=101)
-colbr_r = seq(0,50,length.out=101)
+colbr_r = seq(0,1,length.out=101)
 
 layout(rbind(c(1,2),c(1,2),c(1,2),c(1,2),c(3,4)))
 par(mar=c(4,6,1,1), oma=c(5,1,1,1), cex.axis=1.8)
 image(t(rcmat), xlab="", ylab="", xaxt="no", yaxt="no", col = cols, breaks = colbr_rc)
-axis(side=1, at=seq(0,1, length.out=5), labels=sprintf("%.4g", hvec)[as.integer(seq(1,length(hvec), length.out=5))])
-axis(side=2, at=seq(0,1, length.out=5), labels=sprintf("%.4g", kdvec)[as.integer(seq(1,length(kdvec), length.out=5))])
+axis(side=1, at=seq(0,1, length.out=5), labels=sprintf("%.4g", hvec/.2)[as.integer(seq(1,length(hvec), length.out=5))])
+axis(side=2, at=seq(0,1, length.out=5), labels=sprintf("%.4g", kdvec/4)[as.integer(seq(1,length(kdvec), length.out=5))])
 mtext("Harvesting rate", side = 1, line = 3, outer = F, cex=1.3)
-mtext("Dispersal distance", side = 2, line = 3, outer = F, cex=1.3)
+mtext("Dispersal kernel size", side = 2, line = 3, outer = F, cex=1.3)
 # mtext("Spatial correlation length of \nresource growth rate", side = 2, line = 3, outer = F, cex=1.2)
 
-image(t(rmat), xlab="", ylab="", xaxt="no", yaxt="no", col = cols, breaks = colbr_r)
-axis(side=1, at=seq(0,1, length.out=5), labels=sprintf("%.4g", hvec)[as.integer(seq(1,length(hvec), length.out=5))])
-axis(side=2, at=seq(0,1, length.out=5), labels=sprintf("%.4g", kdvec)[as.integer(seq(1,length(kdvec), length.out=5))])
+image(t(rmat/50), xlab="", ylab="", xaxt="no", yaxt="no", col = cols, breaks = colbr_r)
+axis(side=1, at=seq(0,1, length.out=5), labels=sprintf("%.4g", hvec/.2)[as.integer(seq(1,length(hvec), length.out=5))])
+axis(side=2, at=seq(0,1, length.out=5), labels=sprintf("%.4g", kdvec/4)[as.integer(seq(1,length(kdvec), length.out=5))])
 mtext("Harvesting rate", side = 1, line = 3, outer = F, cex=1.3)
-mtext("Dispersal distance", side = 2, line = 3, outer = F, cex=1.3)
+mtext("Dispersal kernel size", side = 2, line = 3, outer = F, cex=1.3)
 # mtext("Spatial correlation length of \nresource growth rate", side = 2, line = 3, outer = F, cex=1.2)
 
-image(as.matrix(colbr_rc), y=1, x=as.matrix(colbr_rc), col=cols, yaxt="n", xlab="", ylab="")
-mtext("Average resource\n consumed", side = 1, line = 5, outer = F, cex=1.3)
+image(as.matrix(colbr_rc), y=1, x=as.matrix(colbr_rc*5*100/10048), col=cols, yaxt="n", xlab="", ylab="")
+mtext("Average resource\nextraction rate", side = 1, line = 5, outer = F, cex=1.3)
 image(as.matrix(colbr_r), y=1, x=as.matrix(colbr_r), col=cols, yaxt="n", xlab="", ylab="")
-mtext("Average resource\n left", side = 1, line = 5, outer = F, cex=1.3)
+mtext("Average resource left\nin environment", side = 1, line = 5, outer = F, cex=1.3)
 
 
+dev.off()

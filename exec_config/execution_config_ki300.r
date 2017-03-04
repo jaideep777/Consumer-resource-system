@@ -8,7 +8,7 @@
 # # > DIR
 # Directories for data output
 homeDir			/home/jaideep/austria_project/gpu_codes/output		# home dir - no spaces allowed
-outDir  		smooth_imit_response_full		    # output dir name
+outDir  		random_exploration_rr0		    # output dir name
 exptName 	 	hom 								# expt name
 	
 
@@ -108,9 +108,14 @@ kivec  1000
  -1
 
 irvvec 
-1.000000    1.333521    1.778279    2.371374    3.162278    4.216965  
-5.623413    7.498942   10.000000   13.335214   17.782794   23.713737
--1
+0 -1
+
+
+
+
+# 1.000000    1.333521    1.778279    2.371374    3.162278    4.216965  
+# 5.623413    7.498942   10.000000   13.335214   17.782794   23.713737
+# -1
 
 
 # 0.001 0.006 0.03 0.2
