@@ -538,12 +538,16 @@ __global__ void disperse_kernel(float * res, Consumer* cons,
 }
 
 
-void ConsumerSystem::disperse(float * resource){
+void ConsumerSystem::disperse(ResourceGrid * resourceGrid){
 	int nt = min(256, nc); int nb = (nc-1)/nt+1; 
-	disperse_kernel <<< nb, nt >>> (resource, consumers_dev, 
+	disperse_kernel <<< nb, nt >>> (resourceGrid->res_dev, consumers_dev, 
 									cs_dev_XWstates, 
 									L, dL, nc, nx);	
-	getLastCudaError("disperse kernel");								
+	getLastCudaError("disperse kernel");
+	
+	// update resource growth rates based on new consumer positions
+	cudaMemcpy(resourceGrid->r_dev, resourceGrid->r, nx*ny*sizeof(float), cudaMemcpyHostToDevice);	
+								
 }
 
 

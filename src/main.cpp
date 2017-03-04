@@ -128,7 +128,7 @@ int main(int argc, char **argv){
 //			int i = animate();
 			csys->calcResConsumed(resGrid->res_dev);
 			resGrid->grow(csys->ke_all_dev);
-			csys->disperse(resGrid->res_dev);
+			csys->disperse(resGrid);
 			csys->updateExploitationKernels();
 			csys->calcPayoff(istep);
 			csys->imitate_by_kernel_sync();
