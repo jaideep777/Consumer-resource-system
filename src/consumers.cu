@@ -545,9 +545,6 @@ void ConsumerSystem::disperse(ResourceGrid * resourceGrid){
 									L, dL, nc, nx);	
 	getLastCudaError("disperse kernel");
 	
-	// update resource growth rates based on new consumer positions
-	cudaMemcpy(resourceGrid->r_dev, resourceGrid->r, nx*ny*sizeof(float), cudaMemcpyHostToDevice);	
-								
 }
 
 
@@ -564,7 +561,9 @@ __global__ void calc_payoffs_kernel(Consumer * cons, int nc, float b, float cd, 
 	int tid = blockIdx.x*blockDim.x + threadIdx.x;
 	if (tid >= nc) return;
 	
-	cons[tid].vc = b*cons[tid].rc - cd*cons[tid].ld - ch*cons[tid].h*cons[tid].h; // - 0.001*cons[tid].Kdsd;
+	float Imilker = cons[tid].Kdsd < 0.2;
+	float rc_agri = Imilker*150;
+	cons[tid].vc = b*(cons[tid].rc+rc_agri) - cd*cons[tid].ld - ch*cons[tid].h*cons[tid].h - 0.001*cons[tid].Kdsd;
 }
 
 __global__ void avg_payoffs_kernel(Consumer * cons, int nc, int tw){
@@ -736,15 +735,15 @@ __global__ void imitate_sync_kernel(Consumer* cons, Consumer* cons_child, curand
 		}
 	}
 	
-	// random exploration
-	if (curand_uniform(&RNG_states[tid]) < 0.0000*dt){
-
-		float h_new    = curand_uniform(&RNG_states[tid])*2.5;
-		float Kdsd_new = curand_uniform(&RNG_states[tid])*10;
-
-		if (b_ih)  cons_child[tid].h    = clamp(h_new, 0.f, h_new);	
-		if (b_ikd) cons_child[tid].Kdsd = clamp(Kdsd_new, 0.f, Kdsd_new);	
-	}
+//	// random exploration
+//	if (curand_uniform(&RNG_states[tid]) < 0.0000*dt){
+//
+//		float h_new    = curand_uniform(&RNG_states[tid])*2.5;
+//		float Kdsd_new = curand_uniform(&RNG_states[tid])*10;
+//
+//		if (b_ih)  cons_child[tid].h    = clamp(h_new, 0.f, h_new);	
+//		if (b_ikd) cons_child[tid].Kdsd = clamp(Kdsd_new, 0.f, Kdsd_new);	
+//	}
 
 }
 
