@@ -99,8 +99,8 @@ class ConsumerSystem{
 	void initRNG();
 	
 	void updateExploitationKernels();
-	void calcResConsumed(float * resource_grid);
-	void disperse(float * resource);
+	void calcResConsumed(float * resource_dev);
+	void disperse(ResourceGrid * resourceGrid);
 	void calcPayoff(int t);
 	void calcAvgPayoff();
 

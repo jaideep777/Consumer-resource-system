@@ -14,7 +14,7 @@ find_peaks <- function (x, m = 3){
 
 
 homedir = "/home/jaideep/austria_project/gpu_codes/output"
-outdir = "smooth_imit_response_full" 
+outdir = "x_intensive_milkers_trial_agri_150" 
   
 irvvec = exp(seq(log(1), log(1000), length.out=25))
 bvec = exp(seq(log(0.0002), log(0.2), length.out=50))
@@ -57,7 +57,7 @@ weights_kd = matrix(data = rep(mids_kd, npar), nrow=npar, byrow=T)
 
 
 #c(1,7,13,19,25)
-for (ib in 1:length(bvec)){
+for (ib in c(1,7,13,23)){
   expt = "hom"
   nsteps = 750000
   N = 512
@@ -67,12 +67,12 @@ for (ib in 1:length(bvec)){
   rI = 0.02 #0.100000000  #.02 #bvec[ib] #0.02
   L  = 225
   nx = 450
-  b = 0.00589 #bvec[ib] # 0.004 # 0.0022 # as.numeric(sprintf("%.1g",bvec)[ib])
+  b = bvec[ib] # 0.004 # 0.0022 # as.numeric(sprintf("%.1g",bvec)[ib])
   cd = 0.1
   ch = 0.0681
   kI = 1000 #kivec[ib]
   mu = .01
-  irv = irvvec[ib]
+  irv = 0 #irvvec[ib]
   
   b_imit_h = T
   b_imit_kd = T
@@ -84,8 +84,8 @@ for (ib in 1:length(bvec)){
   if (b_imit_kd) kd=-1
   if (b_imit_RT) RT=-1
 
-  expt_params = sprintf("%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)_muh(0.02)_murt(1)_mukd(0.2)_twv(20)_irv(%.3g)", 
-                          expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  , irv)
+  expt_params = sprintf("%s_T(%.3g)_N(%g)_RT(%g)_kd(%g)_h(%g)_rI(%.3g)_kI(%.3g)_L(%g)_nx(%g)_b(%.3g)_cd(%g)_ch(%.3g)_muh(0.02)_murt(1)_mukd(0.2)_twv(20)", #_irv(%.3g)", 
+                          expt, nsteps/1000,  N, RT, kd, h,     rI,   kI, L,      nx,   b,    cd,    ch  )#, irv)
 
   if (expt == "het") expt_params = paste(expt_params, sprintf("_tmu(%.3g)", mu), sep="")
 
@@ -178,7 +178,7 @@ cols = colorRampPalette(colors = c("white", "black"))(100)
 
 png(filename = "~/plot.png", height = 600*3, width=500*3, res = 300)
 
-seq(25,1,by=-1)
+seq(npar,1,by=-1)
 
 vert_cut = 1
 op=par(mfrow=c(4,1), mar = c(1,8,1,1), oma=c(4,0.,1,1.5)+0.1, mgp=c(1,1,0), cex.axis=1.8)
