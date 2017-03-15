@@ -60,12 +60,14 @@ int main(int argc, char **argv){
 	vector <float>    chvec = I.getArray("chvec");
 	vector <float>    kivec = I.getArray("kivec");
 	vector <float>    irvvec = I.getArray("irvvec");
+	vector <float>    drvvec = I.getArray("drvvec");
 	for (int iri=0; iri<rimitvec.size(); ++iri){
 	for (int ib=0; ib<bvec.size(); ++ib){
 	for (int imu=0; imu<tmuvec.size(); ++imu){
 	for (int ich=0; ich<chvec.size(); ++ich){
 	for (int iki=0; iki<kivec.size(); ++iki){
 	for (int iirv=0; iirv<irvvec.size(); ++iirv){
+	for (int idrv=0; idrv<drvvec.size(); ++idrv){
 
 		// **** init resGrid
 		resGrid->init(I);
@@ -110,6 +112,7 @@ int main(int argc, char **argv){
 		csys->tmu = turb->mu;
 		csys->ki_sd = kivec[iki];
 		csys->imresv = irvvec[iirv];
+		csys->dresv = drvvec[idrv];
 		
 		csys->initIO(I);
 
@@ -156,6 +159,7 @@ int main(int argc, char **argv){
 		resGrid->freeMemory();
 		csys->freeMemory();
 		if (I.getString("exptName") == "het") turb->freeMemory();
+	}
 	}
 	}
 	}

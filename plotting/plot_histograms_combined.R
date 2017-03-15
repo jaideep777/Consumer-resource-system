@@ -14,7 +14,7 @@ find_peaks <- function (x, m = 3){
 
 
 homedir = "/home/jaideep/austria_project/gpu_codes/output"
-outdir = "x_intensive_milkers_trial_agri_150" 
+outdir = "milkers_agri_300" 
   
 irvvec = exp(seq(log(1), log(1000), length.out=25))
 bvec = exp(seq(log(0.0002), log(0.2), length.out=50))
@@ -57,7 +57,7 @@ weights_kd = matrix(data = rep(mids_kd, npar), nrow=npar, byrow=T)
 
 
 #c(1,7,13,19,25)
-for (ib in c(1,7,13,23)){
+for (ib in 1:npar){
   expt = "hom"
   nsteps = 750000
   N = 512
@@ -138,33 +138,33 @@ for (ib in c(1,7,13,23)){
 }
 # image(x = times, y= c(brks[1:nbins],brks[nbins]+0.01), log(hall+1), col = cols)
 
-h_hi = numeric(npar)
-h_lo = numeric(npar)
-kd_hi = numeric(npar)
-kd_lo = numeric(npar)
-ldc_hi = numeric(npar)
-ldc_lo = numeric(npar)
-
-for (i in 1:npar){
-  pks = find_peaks(x=ldc_scan[i,], m=1)
-  if (length(pks) == 1) pks = c(pks,pks)
-  pks = sort(pks)[1:2]
-  ldc_hi[i] = brks_ldc[pks[2]]
-  ldc_lo[i] = brks_ldc[pks[1]]
-
-  pks = find_peaks(x=kd_scan[i,], m=3)
-  if (length(pks) == 1) pks = c(pks,pks)
-  pks = sort(pks)[1:2]
-  kd_hi[i] = brks_kd[pks[2]]
-  kd_lo[i] = brks_kd[pks[1]]
-
-  pks = find_peaks(x=h_scan[i,], m=5)
-  if (length(pks) == 1) pks = c(pks,pks)
-  pks = sort(pks)[1:2]
-  h_hi[i] = brks_h[pks[2]]
-  h_lo[i] = brks_h[pks[1]]
-  
-}
+# h_hi = numeric(npar)
+# h_lo = numeric(npar)
+# kd_hi = numeric(npar)
+# kd_lo = numeric(npar)
+# ldc_hi = numeric(npar)
+# ldc_lo = numeric(npar)
+# 
+# for (i in 1:npar){
+#   pks = find_peaks(x=ldc_scan[i,], m=1)
+#   if (length(pks) == 1) pks = c(pks,pks)
+#   pks = sort(pks)[1:2]
+#   ldc_hi[i] = brks_ldc[pks[2]]
+#   ldc_lo[i] = brks_ldc[pks[1]]
+# 
+#   pks = find_peaks(x=kd_scan[i,], m=3)
+#   if (length(pks) == 1) pks = c(pks,pks)
+#   pks = sort(pks)[1:2]
+#   kd_hi[i] = brks_kd[pks[2]]
+#   kd_lo[i] = brks_kd[pks[1]]
+# 
+#   pks = find_peaks(x=h_scan[i,], m=5)
+#   if (length(pks) == 1) pks = c(pks,pks)
+#   pks = sort(pks)[1:2]
+#   h_hi[i] = brks_h[pks[2]]
+#   h_lo[i] = brks_h[pks[1]]
+#   
+# }
 
 avg_h = rowSums(weights_h*h_scan)/N
 avg_rc = rowSums(weights_rc*rc_scan)/N
@@ -176,7 +176,7 @@ cat("\n")
 
 cols = colorRampPalette(colors = c("white", "black"))(100)
 
-png(filename = "~/plot.png", height = 600*3, width=500*3, res = 300)
+# png(filename = "~/plot.png", height = 600*3, width=500*3, res = 300)
 
 seq(npar,1,by=-1)
 
@@ -188,30 +188,30 @@ title(ylab="Evolved\nharvesting\nrate", line=3, cex.lab=1.8)
 # points(h_lo/.2, type="l", col="green")
 # points(avg_h/.2, type="l", col="blue")
 
-vert_cut=0.4
+vert_cut=1#0.4
 image(x = 1:25, y= c(brks_kd[1:nbins],brks_kd[nbins]+0.001)[1:(nbins*vert_cut)]/4, log(kd_scan[seq(25,1,by=-1),1:(nbins*vert_cut)]+3), col = cols, xaxt="n", xlab="", ylab = "", cex.axis=1.8)
 title(ylab="Evolved\ndispersal\nkernel size", line=3, cex.lab=1.8)
 # points(kd_hi/4, type="l", col="red")
 # points(kd_lo/4, type="l", col="green")
 # points(avg_kd/4, type="l", col="blue")
 
-vert_cut=0.15
+vert_cut=1#0.15
 image(x = 1:25, y= c(brks_ldc[1:nbins],brks_ldc[nbins]+0.001)[1:(nbins*vert_cut)]/.2/4, log(ldc_scan[seq(25,1,by=-1),1:(nbins*vert_cut)]+3), col = cols, xaxt="n", xlab="", ylab = "", cex.axis=1.8)
 title(ylab="Evolved\ndispersal\ndistance", line=3, cex.lab=1.8)
 # points(avg_ldc/.8, type="l", lwd=1, col="blue")
 # points(ldc_hi/.8, type="l", col="red")
 # points(ldc_lo/.8, type="l", col="green")
 
-vert_cut=0.5
+vert_cut=1#0.5
 image(x = 1:25, y= c(brks_rc[1:nbins],brks_rc[nbins]+0.001)[1:(nbins*vert_cut)]/89, log(rc_scan[seq(25,1,by=-1),1:(nbins*vert_cut)]+3), col = cols, xaxt="n", xlab="", ylab = "", cex.axis=1.8)
 title(ylab="Evolved\nresource\nextraction rate", xlab="Benefit of harvesting", line=3, cex.lab=1.8)
-points(avg_rc[seq(25,1,by=-1)]/89, type="l", col="blue")
+# points(avg_rc[seq(25,1,by=-1)]/89, type="l", col="blue")
 # points(r_scan/1.0125e7*300, type="l", lwd=1, col="green")
 
 axis(side=1, at=as.integer(seq(1,length(kivec), length.out=5)), labels=sprintf("%.1g",bvec/.1)[as.integer(seq(1,npar, length.out=5))], cex.axis=1.8)
 mtext("Benefit of harvesting", side = 1, line = 3, outer = F, cex=1.4)
 
-dev.off()
+# dev.off()
 # abline(h=avg_rc[1]/100*600, lty=2, col="cyan4")
 
 # find_peaks <- function (x, m = 3){

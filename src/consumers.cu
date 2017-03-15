@@ -63,6 +63,7 @@ void ConsumerSystem::init(Initializer &I){
 	mu_RT = I.getScalar("mu_RT");
 	mu_kd = I.getScalar("mu_kd");
 	imresv = I.getScalar("imresv");
+	dresv = 10; //I.getScalar("dresv");
 	
 	graphics = I.getScalar("graphicsQual")>0;
 	
@@ -214,6 +215,7 @@ void ConsumerSystem::initIO(Initializer &I){
 		 << ")_mukd(" << mu_kd
 		 << ")_twv(" << vc_Tw
 //		 << ")_irv(" << imresv
+		 << ")_drv(" << dresv
 		 << ")";
 
 	string exptDesc = sout.str(); sout.clear();
@@ -508,7 +510,8 @@ void::ConsumerSystem::calcResConsumed(float * resource_dev){
 
 __global__ void disperse_kernel(float * res, Consumer* cons, 
 								curandState * RNG_states, 
-								float L, float dL, int nc, int nx ){
+								float L, float dL, int nc, int nx,
+								float drv ){
 	
 	int tid = blockIdx.x*blockDim.x + threadIdx.x;
 	if (tid >= nc) return;
@@ -516,7 +519,7 @@ __global__ void disperse_kernel(float * res, Consumer* cons,
 	int ixc = cons[tid].pos_i.x;
 	int iyc = cons[tid].pos_i.y;
 
-	float p_disperse = 1/(1+exp(10*(res[ix2(ixc, iyc, nx)] - cons[tid].RT)));	
+	float p_disperse = 1/(1+exp(drv*(res[ix2(ixc, iyc, nx)] - cons[tid].RT)));	
 	float b_disperse = curand_uniform(&RNG_states[tid]) < p_disperse;
 	
 	float len   = fabs(curand_normal(&RNG_states[tid]))*cons[tid].Kdsd;
@@ -542,7 +545,8 @@ void ConsumerSystem::disperse(ResourceGrid * resourceGrid){
 	int nt = min(256, nc); int nb = (nc-1)/nt+1; 
 	disperse_kernel <<< nb, nt >>> (resourceGrid->res_dev, consumers_dev, 
 									cs_dev_XWstates, 
-									L, dL, nc, nx);	
+									L, dL, nc, nx,
+									dresv);	
 	getLastCudaError("disperse kernel");
 	
 }
@@ -562,7 +566,7 @@ __global__ void calc_payoffs_kernel(Consumer * cons, int nc, float b, float cd, 
 	if (tid >= nc) return;
 	
 	float Imilker = cons[tid].Kdsd < 0.2;
-	float rc_agri = Imilker*150;
+	float rc_agri = Imilker*0;
 	cons[tid].vc = b*(cons[tid].rc+rc_agri) - cd*cons[tid].ld - ch*cons[tid].h*cons[tid].h - 0.001*cons[tid].Kdsd;
 }
 
