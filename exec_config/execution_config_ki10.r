@@ -9,13 +9,13 @@
 # Directories for data output
 homeDir			/home/jaideep/austria_project/gpu_codes/output		# home dir - no spaces allowed
 outDir  		KI_ki10		    # output dir name
-exptName 	 	hom 								# expt name
+exptName 	 	hom 			# expt name
 	
 
 > SCALARS
 # > GPU_CONFIG
 # population
-particles 		512		# total number of particles 4096, 16384, 65536, 262144, 1048576
+particles 		512		# total number of particles
 blockSize	 	256		# threads / block
 
 # > GRAPHICS
