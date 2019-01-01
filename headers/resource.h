@@ -1,5 +1,5 @@
-#ifndef TURBULENCE_H
-#define TURBULENCE_H
+#ifndef RESOURCE_H
+#define RESOURCE_H
 
 #include <cufft.h>
 #include <string>

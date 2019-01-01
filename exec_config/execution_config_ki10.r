@@ -1,95 +1,104 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Input parameters for Simulations
-# If you change the order of parameters below, you will get what you deserve
+# Notations used in the paper are given in square brackets
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 > STRINGS 
 # # > DIR
 # Directories for data output
-homeDir			/home/jaideep/austria_project/gpu_codes/output		# home dir - no spaces allowed
-outDir  		KI_ki10		    # output dir name
-exptName 	 	hom 			# expt name
+homeDir			/home/jaideep/austria_project/gpu_codes/output		# home dir (no spaces allowed). Directory in which outputs of various experiments eill be stored
+outDir  		KI_ki10		    # output dir name (relative to home dir) to store output files from current run.
+exptName 	 	hom 			# "hom" for homogeneous resource, OR "het" for heterogeneous resource 
 	
 
 > SCALARS
 # > GPU_CONFIG
 # population
-particles 		512		# total number of particles
-blockSize	 	256		# threads / block
+# particles 		512		# total number of consumers
+# blockSize	 	256		# threads per block
 
 # > GRAPHICS
 # graphics
-graphicsQual 	0			# 0 = no graphics, 1 = basic graphics, 2 = good graphics, 3 = fancy graphics, charts etc
+graphicsQual 	0			# 0 = no graphics, 1 = show graphics
 dispInterval  	50 			# display interval in ms, -ve = number of mv steps to run before display
-b_anim_on 		0		  	# turn animation on immediately on start? if false (0), wait for user to press "a" to start sim
+# b_anim_on 		0		  	# turn animation on immediately on start? if false (0), wait for user to press "a" to start sim
 
 # > EXPT
 # experiment properties
-b_baseline 		1			# Baseline  - is this a baseline experiment (Rs = 0)
-b_constRg  		1			# Grouping  - use constant radius of grouping?
+# b_baseline 		1			# Baseline  - is this a baseline experiment 
+# b_constRg  		1			# 
 
 # > RESOURCE GRID
-nx 				450
-ny				450
-D				0
-r				0.2
-K				50
-L 				225			# the size of the entire space (x & y), when body size = 1 --# > determines density
+nx 				450			# Resource grid size (x)
+ny				450			# Resource grid size (y)
+D				0			# Diffusion constant for resource
+r				0.2			# [r] Intrinsic growth rate of resource
+K				50			# [K] Carrying capacity of resource
+L 				225			# System size
  
 
 # > PARTICLES
 # movement parameters
-dt  			0.1			# time step (for movement)
-h0				0.1
-RT0				15
-kdsd0			2
+dt  			0.1			# [dt] Integration time step 
 
-nc				512
-Ke_sd			4
-Ke_cutoff		6
+Ke_sd			4			# [sigma_H] Harvesting radius (exploitation radius)
+Ke_cutoff		6			# 
+h0				0.1			# [r_H(t=0)] Initial harvesting rate of consumers
+kdsd0			2			# [sigma_D(t=0)] Initial dispersal radius of consumers
+RT0				15			# [R_T(t=0)] Initial resource threshold for dispersal
 
-Ki_sd			10 
+nc				512			# [N] Number of consumers
 
-payoff_Tw		20
-out_Tw 			100
 
 # > SELECTION
-# payoff
-b				0.002
-cd				0.1
-ch				0.08
+# payoff	
+b				0.002		# [b] Harvesting benefit
+cd				0.1			# [c_D] 	Dispersal cost
+ch				0.08		# [c_H] Harvesting cost
+payoff_Tw		20			# [T] Window over which payoffs are averaged
+out_Tw 			100			# Steps to skip before output 
 
 # > IMIT
-imitation_rate	0.02	
-imitate_h		1
-imitate_RT		0
-imitate_Kd		1
+imitation_rate	0.02		# [r_I] Imitation rate
+Ki_sd			10 			# [sigma_I] Imitation radius
 
+imitate_h		1			# Imitate harvesting rate? (0/1) 
+imitate_RT		0			# Imitate dispersal threshold? (0/1)
+imitate_Kd		1			# Imitate dispersal radius? (0/1)
+
+mu_h			0.02		# Mutation step size in harveting rate
+mu_RT			1			# Mutation step size in dispersal threshold
+mu_kd			0.2			# Mutation step size in disperal radius
+
+imresv			100			# [k_I] 1/Smoothness of imitation response function
+dresv			10			# [k_D] 1/Smoothness of dispersal response function
 
 # > OUTPUT
 # output
-dataOut  		1			# output all values in files?
+# dataOut  		1			# output all values in files?
 
 # > SIM
-nsteps			750000
+nsteps			750000		# Number of timesteps to simulate
 
 
-# Altruism params
 
 # Turbulence params
+mu_t			0.1			# Controls correlation length of spatial heterogeneity. Higher mu_t -> higher correlation length (Can vary between 0.01-1.00)
+
+nu_t			0.005		# The remaining parameters are for the turbulence engine. See cited reference for details.
+xi_t 			0.05
+lambda0_t 		400
+dt_t 			0.1
 
 > ARRAYS
 # > PARAM_SWEEPS
-# parameter sets to loop over. These override any of the parameters set above.
+# parameter sets to loop over. These values override any of the parameters set above.
 # all of these MUST BE SET AFTER particle-system initialization. 
-# 	  else, particleSystem will initialize with 1st value in these vectors by default 
-# c_full = 0.1 0.12 0.14 0.16 0.19 0.22 0.26 0.3 0.35 0.41 0.48 0.56 0.65 0.77 0.89 1.05 1.22 1.43 1.67 1.96 2.29 2.68 3.13 3.66 4.28 5 5.85 6.84 8 9.36 10.95 12.8  -1
-# cS_full = 20 40 60 80 100 120 140 160 180 200 220 240 260 280 300 320 -1
-# c = 0.1 0.14 0.19 0.26 0.35 0.48 0.65 0.89 1.22 1.67 2.29 3.13 4.28 5.85 8 10.95 -1
-# c_offset = 0.12 0.16 0.22 0.3 0.41 0.56 0.77 1.05 1.43 1.96 2.68 3.66 5 6.84 9.36 12.8 -1
-# bvec		0.0002 0.002 0.02 0.2 -1
+# Each array must end in -1
+# e.g. bvec		0.0002 0.002 0.02 0.2 -1
 
+# Benefit of harvesting
 bvec	 
  0.0002	0.0002651423	0.0003515021	0.0004659904	0.0006177687	
  0.000818983	0.0010857351	0.0014393713	 0.001908191	0.0025297104	
@@ -98,33 +107,24 @@ bvec
  0.056235374	0.0745518744	0.0988342672	0.1310257114	0.1737022748	
 	-1
 
+# Imitation rate
 rimitvec 0.02 -1 
 
+# Cost of harvesting
 chvec 0.08 2 -1
 
+# Spatial correlation length of resource growth rate (for heterogeneous resource simulations)
 tmuvec  1 -1
 
+# Imitation Radius
+kivec 
+10	21.54435	46.41589	100	215.44347	464.15888	1000	316.22777	681.29207
+ -1
 
+# Imitation response smoothness
+irvvec 100 -1
 
-
-# 0.001000000  0.001325711  0.001757511 
-# 0.002329952  0.003088844  0.004094915 
-# 0.005428675  0.007196857  0.009540955 
-# 0.012648552  0.016768329  0.022229965 
-# 0.029470517 -1
-
-# 0.001000000 .001151395 0.001325711 0.001526418 0.001757511 0.002023590
-# 0.002329952 0.002682696 0.003088844 0.003556480 0.004094915 0.004714866
-# 0.005428675 0.006250552 0.007196857 0.008286428 0.009540955 0.010985411
-# 0.012648552 0.014563485 0.016768329 0.019306977 0.022229965 0.025595479
-# 0.029470517 -1
-
-# 1.154782  1.333521  1.539927  1.778279  2.053525
-# 2.371374  2.738420  3.162278  3.651741  4.216965  4.869675
-# 5.623413  6.493816  7.498942  8.659643 10.000000	-1
-
-# bvec
-# 0.0002	0.0002651423	0.0003515021	0.0004659904	0.0006177687	0.000818983	0.0010857351	0.0014393713	0.001908191	0.0025297104	0.0033536659	0.004445993	0.0058941034	0.0078138799	0.0103589494	0.0137329769	0.0182059636	0.0241358528	0.0319971744	0.0424190178	0.056235374	0.0745518744	0.0988342672	0.1310257114	0.1737022748
-# 0.0002302791	0.0003052836	0.0004047179	0.0005365392	0.0007112961	0.0009429733	0.0012501104	0.0016572855	0.0021970823	0.002912697	0.0038613955	0.0051190958	0.0067864435	0.0089968653	0.0119272466	0.0158120864	0.0209622627	0.0277899099	0.0368413994	0.0488410619	0.0647491509	0.0858386852	0.1137973206	0.1508624013	0.2
+# Dispersal response smoothness
+drvvec 10 -1
 
 

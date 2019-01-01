@@ -16,22 +16,22 @@ using namespace std;
 
 class Consumer{
 	public:
-	float2 pos;		// actual pos (float) 
-	int2 pos_i;		// grid cell id of pos
+	float2 pos;		// actual position of consumer (float) 
+	int2 pos_i;		// cell id in which consumer is located
 
-	float h;
-	float RT;
-	float Kdsd;
+	float h;		// harvesting rate [r_H]
+	float RT;		// dispersal threshold [R_T]
+	float Kdsd;		// disperal radius [sigma_D]
 	
-	float rc;
+	float rc;		// Resource consumed [R]
 	
-	float ld;
+	float ld;		// length dispersed
 	float nd;
-	float vc;
+	float vc;		// Instantaneous payoff [V]
 	float vc_x;
-	float vc_avg;
+	float vc_avg;	// Average payoff over time T [V]
 	
-	float wsum;		// sum of imitation kernel weights (i.e. row sum of pd[i,:])
+	float wsum;		// sum of imitation kernel weights [1/C] (i.e. row sum of pd[i,:])
 	int imit_whom;
 	
 	// for output

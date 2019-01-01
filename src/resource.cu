@@ -155,7 +155,7 @@ void ResourceGrid::diffuse(){
 	cudaMemcpy(res_dev, res_new_dev, nx*ny*sizeof(float), cudaMemcpyDeviceToDevice);
 }
 
-
+// TAG: Resource Dynamics (Eq. 1 in Methods)
 __global__ void resource_growth_kernel(float * res, float *r, float *Ke_all, float *K, float dt, int nx, int ny){
 	
 	int tid = blockIdx.x*blockDim.x + threadIdx.x;

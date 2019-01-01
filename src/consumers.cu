@@ -16,7 +16,7 @@ using namespace std;
 
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// KERNEL to set up RANDOM GENERATOR STATES
+// Set up RANDOM NUMBER GENERATOR for ConsumerSystem
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 __global__ void csRngStateSetup_kernel(int * rng_Seeds, curandState * rngStates, int nc){
@@ -44,6 +44,7 @@ void ConsumerSystem::initRNG(){
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 void ConsumerSystem::init(Initializer &I){
+	// initialize all variables from the config file
 	nx = I.getScalar("nx"); 
 	ny = I.getScalar("ny");
 	L  = I.getScalar("L");
@@ -68,13 +69,14 @@ void ConsumerSystem::init(Initializer &I){
 	graphics = I.getScalar("graphicsQual")>0;
 	
 	ke_lmax = I.getScalar("Ke_cutoff");		// bound for exploitation kernel in length units
-	ke_nmax = int(ke_lmax/dL);
+	ke_nmax = int(ke_lmax/dL);				// bound for exploitation kernel in index units
 	ke_sd = I.getScalar("Ke_sd");
 	cout << "ke_nmax = " << ke_nmax << endl;
 
 	ki_sd = I.getScalar("Ki_sd");
 	
-	// calculate and allocate exploitation kernels
+	// TAG: Calculation of template exploitation kernel (Eq.3 in Methods).  
+	// calculate and allocate a template exploitation kernel. This will be scaled and shifted to calculate Hi
 	int ke_arrlen = (2*ke_nmax+1)*(2*ke_nmax+1);  // ke goes from [-ke_nmax, ke_nmax]
 	ke = new float[ke_arrlen];
 	float kernelSum = 0;
@@ -215,7 +217,7 @@ void ConsumerSystem::initIO(Initializer &I){
 		 << ")_mukd(" << mu_kd
 		 << ")_twv(" << vc_Tw
 //		 << ")_irv(" << imresv
-		 << ")_drv(" << dresv
+//		 << ")_drv(" << dresv
 		 << ")";
 
 	string exptDesc = sout.str(); sout.clear();
@@ -394,7 +396,7 @@ void ConsumerSystem::graphics_updateArrays(){
 
 // blocks run over consumers
 // threads run over gridcells in Ke
-
+// TAG: Calculation of exploitation kernels of all consumers (Eq. 4 and Eq. 5 in Methods). Note that Multiplication by R(x,y) happens in resource growth kernel. 
 __global__ void calc_exploitation_kernels_kernel(float* ke_all, Consumer* cons, int nc, float* ke, int rkn, int nx){
 	
 	int ke_nx = (2*rkn+1);
@@ -465,6 +467,7 @@ __global__ void resetRc_kernel(Consumer * cons, int nc){
 // in this kernel, blocks run over grid cells and threads run over consumers.
 // this is done to minimize conflicts in atomicAdd
 // this puts limitation on max number of consumers, but thats OK.
+// TAG: Calculation of Resource consumed by each consumer (Eq. 2 in Methods). 
 __global__ void calc_resource_consumed_kernel(float *res, Consumer* cons, int nc, float* ke, int rkn, int nx, float dt){
 
 	int ke_nx = (2*rkn+1);
@@ -507,7 +510,8 @@ void::ConsumerSystem::calcResConsumed(float * resource_dev){
 //	cout << "\n\n";
 }
 
-
+// TAG: Dispersal (Including Eq.6 in Methods).
+// Also calculates dispersal distance and direction. 
 __global__ void disperse_kernel(float * res, Consumer* cons, 
 								curandState * RNG_states, 
 								float L, float dL, int nc, int nx,
@@ -561,6 +565,7 @@ void ConsumerSystem::disperse(ResourceGrid * resourceGrid){
 //	cn	
 //
 
+// TAG: Instantaneous payoff to consumers (Integrand in Eq. 7 in Methods).
 __global__ void calc_payoffs_kernel(Consumer * cons, int nc, float b, float cd, float ch){
 	int tid = blockIdx.x*blockDim.x + threadIdx.x;
 	if (tid >= nc) return;
@@ -570,6 +575,7 @@ __global__ void calc_payoffs_kernel(Consumer * cons, int nc, float b, float cd, 
 	cons[tid].vc = b*(cons[tid].rc+rc_agri) - cd*cons[tid].ld - ch*cons[tid].h*cons[tid].h - 0.001*cons[tid].Kdsd;
 }
 
+// TAG: Time averaged payoff to consumers (Integral in Eq. 7 in Methods). Since this is a running window, the integral is implemented by adding the latest payoff and discarding the oldest payoff at each timestep. 
 __global__ void avg_payoffs_kernel(Consumer * cons, int nc, int tw){
 	
 	int tid = blockIdx.x*blockDim.x + threadIdx.x;
@@ -615,8 +621,11 @@ void ConsumerSystem::calcPayoff(int t){
 /*------------------------------------------------------------------------------
 
 	periodic pairwise distances on GPU
-	returns f(x) where x is pairwise distance, and f is gaussian with sd ki
-
+	Pairwise distances are stored in an (nx x nx)  matrix pd.
+	This kernel uses 2D blocks of 256 threads each. Each thread refers to a unique location (o) in pd. 
+	Each dimention runs over all consumers.
+	Each consumer calculates the imitation probability for all other consumers
+	Each consumer also calculates the sum of imitation probabilities for all other consumers and stores it in its wsum. 
 ------------------------------------------------------------------------------*/
 
 __global__ void pairwise_distance_kernel(Consumer * cons, float * pd, int nc, float ki, float L, float dL){
@@ -723,6 +732,7 @@ __global__ void imitate_sync_kernel(Consumer* cons, Consumer* cons_child, curand
 	
 		int id_whom = cons[tid].imit_whom;
 		
+		// TAG: Imitation response (Eq: 8 in Methods). 	
 		float dv = cons[id_whom].vc_avg - cons[tid].vc_avg;
 		float imitation_prob = float(dv > 0);	// no imitation for 0 payoff difference
 		//float imitation_prob = 1/(1+exp(-imresv*(dv)));	
@@ -751,13 +761,14 @@ __global__ void imitate_sync_kernel(Consumer* cons, Consumer* cons_child, curand
 
 }
 
-
+// TAG: Imitation (Calculate probabilities to imitate any other consumer based on imitation kernel, choose consumer to imitate, perform imitation)
 void ConsumerSystem::imitate_by_kernel_sync(){
 	
 	// calculate pairwise distances
 	dim3 nt(16,16);
 	dim3 nb((nc-1)/16+1, (nc-1)/16+1); 
 
+	// Get probabilities for imitating any other consumer using imitation kernel
 	cudaMemcpy2D(&consumers_dev[0].wsum, sizeof(Consumer), nc_zeros, sizeof(float), sizeof(float), nc, cudaMemcpyHostToDevice); 
 	//cudaMemcpy(wsum_dev, nc_zeros, nc*sizeof(float), cudaMemcpyHostToDevice);	// reset wsum to zero
 	pairwise_distance_kernel <<<nb, nt >>> (consumers_dev, pd_dev, nc, ki_sd, L, dL);

@@ -105,7 +105,7 @@ int main(int argc, char **argv){
 		// **** init consumer sys
 		csys->init(I);
 
-		// re-init scan parameter 
+		// re-init scan parameters	 
 		csys->b = bvec[ib];
 		csys->ch = chvec[ich];
 		csys->rImit = rimitvec[iri];
