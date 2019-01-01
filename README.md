@@ -11,7 +11,7 @@ You will need the NVIDIA CUDA-Toolkit, OpenGL libraries (Glut, GLEW), and libGSL
 
 ### Compile
 
-In src/Makefile, change the CUDA_INSTALL_PATH to your CUDA directory. By default, it is set to /usr/local/cuda. Then compile speficying the executable name. E.g.
+In `src/Makefile`, change the CUDA_INSTALL_PATH to your CUDA directory. By default, it is set to `/usr/local/cuda`. Then compile speficying the executable name. E.g.
 
 ```
 make TARGET=simulate
@@ -19,7 +19,7 @@ make TARGET=simulate
 
 ### Set up simulation parameters
 
-All simulation parameters must be listed in an "execution configuration file" in the exec_config folder. For a correctly formatted example file, see "execution_config_ki10.r". 
+All simulation parameters must be listed in an "execution configuration file" in the `exec_config` folder. For a correctly formatted example file, see "exec_config/execution_config_ki10.r". 
 
 ### Simulate
 
