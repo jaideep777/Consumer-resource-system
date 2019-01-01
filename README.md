@@ -21,6 +21,8 @@ make TARGET=simulate
 
 All simulation parameters must be listed in an "execution configuration file" in the `exec_config` folder. For a correctly formatted example file, see "exec_config/execution_config_ki10.r". 
 
+Fore more details on the format of the configuration files, see the documentation of the `Initializer` class in https://github.com/jaideep777/Flare.
+
 ### Simulate
 
 After setting the simulation parameters, run the executable as follows:
@@ -31,4 +33,4 @@ After setting the simulation parameters, run the executable as follows:
 
 where device_id is the GPU on which to run the executable (if your system has only one NVIDIA GPU, device_id=0), and <config_file> is the relative path the the execution configuration file.
 
-
+	
