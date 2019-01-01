@@ -34,3 +34,11 @@ After setting the simulation parameters, run the executable as follows:
 where device_id is the GPU on which to run the executable (if your system has only one NVIDIA GPU, device_id=0), and <config_file> is the relative path the the execution configuration file.
 
 	
+### Plot
+
+After a successful simulation run, the output files (histograms of r_H, sigma_D, and Rc) will be stored in the specified output folder. These histograms can be plotted using R. E.g. to plot the timeseries as in Fig. 1, set the parameters as per the output files in `plotting/plot_histograms_singleParam_timeseries.R` and run the script. 
+
+Other R scripts process outputs from multiple simulation runs, such as a parameter scan.
+
+
+
