@@ -1,11 +1,11 @@
 ## Introduction
 
-This code accompanies the paper "Emergence of Social Inequality in Spatial Ecological Public Goods Games" by Jaideep Joshi, Ake Brannstrom, and Ulf Dieckmann. 
+This code accompanies the paper "Emergence of Social Inequality in Spatial Ecological Public Goods Games" by Jaideep Joshi, Åke Brännström, and Ulf Dieckmann. 
 
 The full code includes numerous utility functions and classes to enable execution on GPU and to make it generic enough to be able to run multiple parameter configurations. However,  implementations of the core model equations (Eqs. 1-8 in the above paper) are tagged with the word "TAG". These can be viewed in one go by typing 
 
 ```
-grep -r "TAG"
+grep -rn "TAG"
 ``` 
 
 
