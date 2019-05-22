@@ -75,7 +75,7 @@ void ConsumerSystem::init(Initializer &I){
 
 	ki_sd = I.getScalar("Ki_sd");
 	
-	// TAG: Calculation of template exploitation kernel (Eq.3 in Methods).  
+	// TAG: Calculation of template exploitation kernel (Eq.2 in Methods).  
 	// calculate and allocate a template exploitation kernel. This will be scaled and shifted to calculate Hi
 	int ke_arrlen = (2*ke_nmax+1)*(2*ke_nmax+1);  // ke goes from [-ke_nmax, ke_nmax]
 	ke = new float[ke_arrlen];
@@ -396,7 +396,7 @@ void ConsumerSystem::graphics_updateArrays(){
 
 // blocks run over consumers
 // threads run over gridcells in Ke
-// TAG: Calculation of exploitation kernels of all consumers (Eq. 4 and Eq. 5 in Methods). Note that Multiplication by R(x,y) happens in resource growth kernel. 
+// TAG: Calculation of exploitation kernels of all consumers (Eqs. 3-5 in Methods). Note that Multiplication by R(x,y) happens in resource growth kernel. 
 __global__ void calc_exploitation_kernels_kernel(float* ke_all, Consumer* cons, int nc, float* ke, int rkn, int nx){
 	
 	int ke_nx = (2*rkn+1);
@@ -467,7 +467,7 @@ __global__ void resetRc_kernel(Consumer * cons, int nc){
 // in this kernel, blocks run over grid cells and threads run over consumers.
 // this is done to minimize conflicts in atomicAdd
 // this puts limitation on max number of consumers, but thats OK.
-// TAG: Calculation of Resource consumed by each consumer (Eq. 2 in Methods). 
+// TAG: Calculation of Resource consumed by each consumer (Eq. 3 in Methods). 
 __global__ void calc_resource_consumed_kernel(float *res, Consumer* cons, int nc, float* ke, int rkn, int nx, float dt){
 
 	int ke_nx = (2*rkn+1);
