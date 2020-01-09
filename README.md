@@ -1,3 +1,8 @@
+
+
+[![DOI](https://zenodo.org/badge/43763334.svg)](https://zenodo.org/badge/latestdoi/43763334)
+
+
 ## Introduction
 
 This code accompanies the paper "Emergence of Social Inequality in Spatial Ecological Public Goods Games" by Jaideep Joshi, Åke Brännström, and Ulf Dieckmann. 
